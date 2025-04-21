@@ -4,44 +4,38 @@
   <meta charset="UTF-8">
   <title>Ficha de Personagem</title>
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      padding: 20px;
-      background: #f4f4f4;
-    }
-    h2 {
-      margin-top: 30px;
-    }
+    body { font-family: Arial, sans-serif; padding: 20px; background: #f4f4f4; }
+    h2 { margin-top: 30px; }
     label, select, textarea, input[type="text"] {
-      display: block;
-      margin: 10px 0;
-      width: 100%;
-      padding: 8px;
+      display: block; margin: 10px 0; width: 100%; padding: 8px;
     }
     .section {
-      background: #fff;
-      padding: 15px;
-      margin-bottom: 20px;
-      border-radius: 8px;
-      box-shadow: 0 0 5px rgba(0,0,0,0.1);
+      background: #fff; padding: 15px; margin-bottom: 20px;
+      border-radius: 8px; box-shadow: 0 0 5px rgba(0,0,0,0.1);
     }
     button {
-      padding: 10px 15px;
-      background: #333;
-      color: #fff;
-      border: none;
-      cursor: pointer;
-      margin-top: 10px;
+      padding: 10px 15px; background: #333; color: #fff;
+      border: none; cursor: pointer; margin-top: 10px;
     }
     table {
-      width: 100%;
-      border-collapse: collapse;
-      margin-top: 20px;
+      width: 100%; border-collapse: collapse; margin-top: 20px;
     }
     th, td {
-      border: 1px solid #999;
-      padding: 8px;
-      text-align: center;
+      border: 1px solid #999; padding: 8px; text-align: center;
+    }
+    .tooltip {
+      display: inline-block; position: relative; cursor: pointer;
+      color: #007BFF; font-weight: bold; margin-left: 5px;
+    }
+    .tooltiptext {
+      visibility: hidden; width: 300px; height: 200px; overflow-y: auto;
+      background-color: #333; color: #fff; text-align: left; border-radius: 6px;
+      padding: 10px; position: absolute; z-index: 1;
+      bottom: 125%; left: 50%; transform: translateX(-50%);
+      opacity: 0; transition: opacity 0.3s; white-space: pre-line;
+    }
+    .tooltip:hover .tooltiptext {
+      visibility: visible; opacity: 1;
     }
   </style>
 </head>
@@ -60,44 +54,32 @@
   </div>
 
   <div class="section">
-    <h2>Escolha sua(s) Classe(s)</h2>
-    <select id="classe1">
+    <h2>
+      Escolha sua(s) Classe(s)
+      <span class="tooltip">(?)<span class="tooltiptext" id="classTooltip"></span></span>
+    </h2>
+    <select id="classe1" onchange="atualizarSubclasses()">
       <option value="">-- Selecione a primeira classe --</option>
-      <option value="Guerreiro">Guerreiro</option>
-      <option value="Mago">Mago</option>
-      <option value="Bardo">Bardo</option>
-      <option value="Caçador">Caçador</option>
-      <option value="Clérigo">Clérigo</option>
-      <option value="Assassino">Assassino</option>
     </select>
-    <select id="classe2">
+    <select id="classe2" onchange="atualizarSubclasses()">
       <option value="">-- Selecione a segunda classe (opcional) --</option>
-      <option value="Guerreiro">Guerreiro</option>
-      <option value="Mago">Mago</option>
-      <option value="Bardo">Bardo</option>
-      <option value="Caçador">Caçador</option>
-      <option value="Clérigo">Clérigo</option>
-      <option value="Assassino">Assassino</option>
     </select>
 
-    <label>Subclasse (opcional):</label>
+    <label>Subclasse (opcional)
+      <span class="tooltip">(?)<span class="tooltiptext" id="subclassTooltip"></span></span>
+    </label>
     <select id="subclasse" disabled>
       <option value="">-- Selecione uma subclasse --</option>
     </select>
   </div>
 
   <div class="section">
-    <h2>Escolha sua Raça</h2>
+    <h2>
+      Escolha sua Raça
+      <span class="tooltip">(?)<span class="tooltiptext" id="raceTooltip"></span></span>
+    </h2>
     <select id="raca">
       <option value="">-- Selecione uma raça --</option>
-      <option value="Humano">Humano</option>
-      <option value="Elfo">Elfo</option>
-      <option value="Anão">Anão</option>
-      <option value="Fantasma">Fantasma</option>
-      <option value="Goblin">Goblin</option>
-      <option value="Ogro">Ogro</option>
-      <option value="Fada">Fada</option>
-      <option value="Feras">Feras</option>
     </select>
   </div>
 
@@ -111,28 +93,78 @@
     <p><strong>Classe(s):</strong> <span id="res_classes"></span></p>
     <p><strong>Subclasse:</strong> <span id="res_subclasse"></span></p>
     <p><strong>Raça:</strong> <span id="res_raca"></span></p>
+    <p><strong>Habilidades Comuns:</strong><br><span id="res_habilidades"></span></p>
 
     <h3>Atributos com bônus:</h3>
     <table>
       <thead>
-        <tr>
-          <th>FOR</th><th>INT</th><th>DES</th><th>DEF</th><th>AGI</th>
-        </tr>
+        <tr><th>FOR</th><th>INT</th><th>DES</th><th>DEF</th><th>AGI</th></tr>
       </thead>
-      <tbody>
-        <tr id="res_atributos"></tr>
-      </tbody>
+      <tbody><tr id="res_atributos"></tr></tbody>
     </table>
   </div>
 
   <script>
     const bonusClasse = {
-      "Guerreiro": { FOR: 1 },
-      "Mago": { INT: 1 },
-      "Bardo": { DEF: 1 },
-      "Caçador": { AGI: 1 },
-      "Clérigo": { INT: 1 },
-      "Assassino": { DES: 1 },
+      "Guerreiro": { FOR: 1 }, "Mago": { INT: 1 }, "Bardo": { DEF: 1 },
+      "Clérigo": { INT: 1 }, "Caçador": { AGI: 1 }, "Assassino": { DES: 1 }
+    };
+
+    const bonusSubclasse = {
+      "Mestre de Armas": { DES: 1 }, "Berserker": { FOR: 1 }, "Cavaleiro": { DEF: 1 },
+      "Elementalista": { INT: 1 }, "Ilusionista": { INT: 1 }, "Conjurador Arcano": { INT: 1 },
+      "Inspirador": { DEF: 1 }, "Trapaceiro": { INT: 1 }, "Duelista Musical": { FOR: 1 },
+      "Atirador": { DES: 1 }, "Mestre das Feras": { DEF: 1 }, "Rastreador": { AGI: 1 },
+      "Curandeiro": { INT: 1 }, "Exorcista": { INT: 1 }, "Oráculo": { INT: 1 },
+      "Assassino Mortal": { FOR: 1 }, "Dançarino Mortal": { AGI: 1 }, "Toxicista": { FOR: 1 }
+    };
+
+    const bonusRaca = {
+      "Humano": { DES: 1 }, "Elfo": { INT: 1 }, "Anão": { DES: 1 },
+      "Fantasma": { DEF: 1 }, "Goblin": { AGI: 1 }, "Ogro": { FOR: 1 },
+      "Fada": { INT: 1 }, "Feras": { AGI: 1 }, "Druida": { INT: 1 }
+    };
+
+    const habilidadesClasse = {
+      "Guerreiro": "Investida: Avança e causa dano extra = 1d3",
+      "Mago": "Explosão Arcana: Dano mágico em área = 1d3",
+      "Bardo": "Canção Amaldiçoada: Reduz dano do inimigo em 1d3",
+      "Clérigo": "Benção: Cura a si ou aliados = 2d10",
+      "Caçador": "Disparo preciso: Ignora até 1d3 de DEF e dano extra = 1d3 pelas costas",
+      "Assassino": "Ataque Sorrateiro: Dano dobrado se AGI > inimigo"
+    };
+
+    const habilidadesRaca = {
+      "Humano": "Versátil: +1 em qualquer atributo à escolha.",
+      "Elfo": "Precisão Élfica: Dano extra à distância = 1d3",
+      "Anão": "Resistência Anã: Reduz 1d3 de dano recebido.",
+      "Fantasma": "Intangibilidade: Atravessa obstáculos 1x por combate.",
+      "Goblin": "Emboscada: Dano extra = 1d3 na 1ª ação.",
+      "Ogro": "Golpe Atordoante: Chance 1d4 (3 ou 4) de atordoar.",
+      "Fada": "Contra-Ataque: Desvia e contra-ataca 1x por batalha.",
+      "Feras": "Instinto Selvagem: Chance 1d2 de esquiva se AGI > inimigo.",
+      "Druida": "Ataque de Vinhas: Ataca 3x, 1D3 cada (a cada 3 turnos)."
+    };
+
+    const habilidadesSubclasse = {
+      "Mestre de Armas": "Especialista em várias armas.",
+      "Berserker": "Fúria e dano bruto.",
+      "Cavaleiro": "Defesa e proteção.",
+      "Elementalista": "Controla elementos.",
+      "Ilusionista": "Confunde inimigos.",
+      "Conjurador Arcano": "Suporte mágico.",
+      "Inspirador": "Cura e bônus com música.",
+      "Trapaceiro": "Manipula e engana.",
+      "Duelista Musical": "Combate com ritmo.",
+      "Atirador": "Especialista em arcos.",
+      "Mestre das Feras": "Companheiro animal.",
+      "Rastreador": "Movimento e rastreio.",
+      "Curandeiro": "Cura e purificação.",
+      "Exorcista": "Expulsa espíritos.",
+      "Oráculo": "Visões e profecias.",
+      "Assassino Mortal": "Furtividade e dano.",
+      "Dançarino Mortal": "Agilidade letal.",
+      "Toxicista": "Veneno e dano contínuo."
     };
 
     const subclassePorClasse = {
@@ -141,71 +173,31 @@
       "Bardo": ["Inspirador", "Trapaceiro", "Duelista Musical"],
       "Caçador": ["Atirador", "Mestre das Feras", "Rastreador"],
       "Clérigo": ["Curandeiro", "Exorcista", "Oráculo"],
-      "Assassino": ["Assassino Mortal", "Dançarino Mortal", "Toxicista", "Sombra Silenciosa"]
-    };
-
-    const bonusSubclasse = {
-      "Mestre de Armas": { DES: 1 },
-      "Berserker": { FOR: 1 },
-      "Cavaleiro": { DEF: 1 },
-      "Elementalista": { INT: 1 },
-      "Ilusionista": { INT: 1 },
-      "Conjurador Arcano": { INT: 1 },
-      "Inspirador": { DEF: 1 },
-      "Trapaceiro": { INT: 1 },
-      "Duelista Musical": { FOR: 1 },
-      "Atirador": { DES: 1 },
-      "Mestre das Feras": { DEF: 1 },
-      "Rastreador": { AGI: 1 },
-      "Curandeiro": { INT: 1 },
-      "Exorcista": { INT: 1 },
-      "Oráculo": { INT: 1 },
-      "Assassino Mortal": { FOR: 1 },
-      "Dançarino Mortal": { AGI: 1 },
-      "Toxicista": { FOR: 1 },
-      "Sombra Silenciosa": { DES: 1 },
-      "Arcano Espiritual": { INT: 1 }
-    };
-
-    const bonusRaca = {
-      "Humano": { DES: 1 },
-      "Elfo": { INT: 1 },
-      "Anão": { DES: 1 },
-      "Fantasma": { DEF: 1 },
-      "Goblin": { AGI: 1 },
-      "Ogro": { FOR: 1 },
-      "Fada": { INT: 1 },
-      "Feras": { AGI: 1 }
+      "Assassino": ["Assassino Mortal", "Dançarino Mortal", "Toxicista"]
     };
 
     function atualizarSubclasses() {
       const classe1 = document.getElementById("classe1").value;
       const classe2 = document.getElementById("classe2").value;
       const subclasseSelect = document.getElementById("subclasse");
-
       if (!classe1 && !classe2) {
         subclasseSelect.disabled = true;
         subclasseSelect.innerHTML = '<option value="">-- Selecione uma subclasse --</option>';
         return;
       }
-
-      const subclassesDisponiveis = new Set([
+      const subclasses = new Set([
         ...(subclassePorClasse[classe1] || []),
         ...(subclassePorClasse[classe2] || [])
       ]);
-
       subclasseSelect.disabled = false;
       subclasseSelect.innerHTML = '<option value="">-- Selecione uma subclasse --</option>';
-      subclassesDisponiveis.forEach(sub => {
+      subclasses.forEach(sc => {
         const opt = document.createElement("option");
-        opt.value = sub;
-        opt.textContent = sub;
+        opt.value = sc;
+        opt.textContent = sc;
         subclasseSelect.appendChild(opt);
       });
     }
-
-    document.getElementById("classe1").addEventListener("change", atualizarSubclasses);
-    document.getElementById("classe2").addEventListener("change", atualizarSubclasses);
 
     function gerarFicha() {
       const nome = document.getElementById("nome").value;
@@ -220,14 +212,12 @@
         alert("Você não pode escolher duas classes iguais.");
         return;
       }
-
       if (subclasse && ![...(subclassePorClasse[classe1] || []), ...(subclassePorClasse[classe2] || [])].includes(subclasse)) {
         alert("Subclasse inválida para as classes escolhidas.");
         return;
       }
 
       const atributos = { FOR: 0, INT: 0, DES: 0, DEF: 0, AGI: 0 };
-
       if (bonusClasse[classe1]) adicionarBonus(atributos, bonusClasse[classe1]);
       if (bonusClasse[classe2]) adicionarBonus(atributos, bonusClasse[classe2]);
       if (bonusSubclasse[subclasse]) adicionarBonus(atributos, bonusSubclasse[subclasse]);
@@ -236,9 +226,15 @@
       document.getElementById("res_nome").textContent = nome;
       document.getElementById("res_poder").textContent = poder;
       document.getElementById("res_historia").textContent = historia;
-      document.getElementById("res_classes").textContent = `${classe1} ${classe2 ? "/ " + classe2 : ""}`;
+      document.getElementById("res_classes").textContent = `${classe1}${classe2 ? " / " + classe2 : ""}`;
       document.getElementById("res_subclasse").textContent = subclasse || "Nenhuma";
       document.getElementById("res_raca").textContent = raca;
+      const habilidades = [];
+      if (habilidadesClasse[classe1]) habilidades.push(habilidadesClasse[classe1]);
+      if (classe2 && habilidadesClasse[classe2]) habilidades.push(habilidadesClasse[classe2]);
+      if (habilidadesSubclasse[subclasse]) habilidades.push(habilidadesSubclasse[subclasse]);
+      if (habilidadesRaca[raca]) habilidades.push(habilidadesRaca[raca]);
+      document.getElementById("res_habilidades").innerHTML = habilidades.map(h => `• ${h}`).join("<br>");
 
       document.getElementById("res_atributos").innerHTML = `
         <td>${atributos.FOR}</td>
@@ -254,6 +250,22 @@
       for (const chave in bonus) {
         atr[chave] += bonus[chave];
       }
+    }
+
+    window.onload = function() {
+      const classe1 = document.getElementById("classe1");
+      const classe2 = document.getElementById("classe2");
+      const raca = document.getElementById("raca");
+      for (let classe in habilidadesClasse) {
+        classe1.innerHTML += `<option value="${classe}">${classe}</option>`;
+        classe2.innerHTML += `<option value="${classe}">${classe}</option>`;
+      }
+      for (let r in habilidadesRaca) {
+        raca.innerHTML += `<option value="${r}">${r}</option>`;
+      }
+      document.getElementById("classTooltip").textContent = Object.entries(habilidadesClasse).map(([c,h]) => `${c}:\n${h}`).join("\n\n");
+      document.getElementById("raceTooltip").textContent = Object.entries(habilidadesRaca).map(([r,h]) => `${r}:\n${h}`).join("\n\n");
+      document.getElementById("subclassTooltip").textContent = Object.entries(habilidadesSubclasse).map(([s,d]) => `${s}:\n${d}`).join("\n\n");
     }
   </script>
 </body>
