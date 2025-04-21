@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Ficha de Personagem</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      background: #f4f4f4;
+    }
+    h2 {
+      margin-top: 30px;
+    }
+    label, select, textarea, input[type="text"] {
+      display: block;
+      margin: 10px 0;
+      width: 100%;
+      padding: 8px;
+    }
+    .section {
+      background: #fff;
+      padding: 15px;
+      margin-bottom: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 5px rgba(0,0,0,0.1);
+    }
+    button {
+      padding: 10px 15px;
+      background: #333;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+    th, td {
+      border: 1px solid #999;
+      padding: 8px;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <h1>Ficha de Personagem</h1>
+
+  <div class="section">
+    <label>Nome:</label>
+    <input type="text" id="nome">
+
+    <label>Poder:</label>
+    <input type="text" id="poder">
+
+    <label>História:</label>
+    <textarea id="historia" rows="4"></textarea>
+  </div>
+
+  <div class="section">
+    <h2>Escolha sua(s) Classe(s)</h2>
+    <select id="classe1">
+      <option value="">-- Selecione a primeira classe --</option>
+      <option value="Guerreiro">Guerreiro</option>
+      <option value="Mago">Mago</option>
+      <option value="Bardo">Bardo</option>
+      <option value="Caçador">Caçador</option>
+      <option value="Clérigo">Clérigo</option>
+      <option value="Assassino">Assassino</option>
+    </select>
+    <select id="classe2">
+      <option value="">-- Selecione a segunda classe (opcional) --</option>
+      <option value="Guerreiro">Guerreiro</option>
+      <option value="Mago">Mago</option>
+      <option value="Bardo">Bardo</option>
+      <option value="Caçador">Caçador</option>
+      <option value="Clérigo">Clérigo</option>
+      <option value="Assassino">Assassino</option>
+    </select>
+
+    <label>Subclasse (opcional):</label>
+    <select id="subclasse" disabled>
+      <option value="">-- Selecione uma subclasse --</option>
+    </select>
+  </div>
+
+  <div class="section">
+    <h2>Escolha sua Raça</h2>
+    <select id="raca">
+      <option value="">-- Selecione uma raça --</option>
+      <option value="Humano">Humano</option>
+      <option value="Elfo">Elfo</option>
+      <option value="Anão">Anão</option>
+      <option value="Fantasma">Fantasma</option>
+      <option value="Goblin">Goblin</option>
+      <option value="Ogro">Ogro</option>
+      <option value="Fada">Fada</option>
+      <option value="Feras">Feras</option>
+    </select>
+  </div>
+
+  <button onclick="gerarFicha()">Gerar Ficha</button>
+
+  <div class="section" id="resultado" style="display:none;">
+    <h2>Resultado</h2>
+    <p><strong>Nome:</strong> <span id="res_nome"></span></p>
+    <p><strong>Poder:</strong> <span id="res_poder"></span></p>
+    <p><strong>História:</strong> <span id="res_historia"></span></p>
+    <p><strong>Classe(s):</strong> <span id="res_classes"></span></p>
+    <p><strong>Subclasse:</strong> <span id="res_subclasse"></span></p>
+    <p><strong>Raça:</strong> <span id="res_raca"></span></p>
+
+    <h3>Atributos com bônus:</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>FOR</th><th>INT</th><th>DES</th><th>DEF</th><th>AGI</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr id="res_atributos"></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <script>
+    const bonusClasse = {
+      "Guerreiro": { FOR: 1 },
+      "Mago": { INT: 1 },
+      "Bardo": { DEF: 1 },
+      "Caçador": { AGI: 1 },
+      "Clérigo": { INT: 1 },
+      "Assassino": { DES: 1 },
+    };
+
+    const subclassePorClasse = {
+      "Guerreiro": ["Mestre de Armas", "Berserker", "Cavaleiro"],
+      "Mago": ["Elementalista", "Ilusionista", "Conjurador Arcano"],
+      "Bardo": ["Inspirador", "Trapaceiro", "Duelista Musical"],
+      "Caçador": ["Atirador", "Mestre das Feras", "Rastreador"],
+      "Clérigo": ["Curandeiro", "Exorcista", "Oráculo"],
+      "Assassino": ["Assassino Mortal", "Dançarino Mortal", "Toxicista", "Sombra Silenciosa"]
+    };
+
+    const bonusSubclasse = {
+      "Mestre de Armas": { DES: 1 },
+      "Berserker": { FOR: 1 },
+      "Cavaleiro": { DEF: 1 },
+      "Elementalista": { INT: 1 },
+      "Ilusionista": { INT: 1 },
+      "Conjurador Arcano": { INT: 1 },
+      "Inspirador": { DEF: 1 },
+      "Trapaceiro": { INT: 1 },
+      "Duelista Musical": { FOR: 1 },
+      "Atirador": { DES: 1 },
+      "Mestre das Feras": { DEF: 1 },
+      "Rastreador": { AGI: 1 },
+      "Curandeiro": { INT: 1 },
+      "Exorcista": { INT: 1 },
+      "Oráculo": { INT: 1 },
+      "Assassino Mortal": { FOR: 1 },
+      "Dançarino Mortal": { AGI: 1 },
+      "Toxicista": { FOR: 1 },
+      "Sombra Silenciosa": { DES: 1 },
+      "Arcano Espiritual": { INT: 1 }
+    };
+
+    const bonusRaca = {
+      "Humano": { DES: 1 },
+      "Elfo": { INT: 1 },
+      "Anão": { DES: 1 },
+      "Fantasma": { DEF: 1 },
+      "Goblin": { AGI: 1 },
+      "Ogro": { FOR: 1 },
+      "Fada": { INT: 1 },
+      "Feras": { AGI: 1 }
+    };
+
+    function atualizarSubclasses() {
+      const classe1 = document.getElementById("classe1").value;
+      const classe2 = document.getElementById("classe2").value;
+      const subclasseSelect = document.getElementById("subclasse");
+
+      if (!classe1 && !classe2) {
+        subclasseSelect.disabled = true;
+        subclasseSelect.innerHTML = '<option value="">-- Selecione uma subclasse --</option>';
+        return;
+      }
+
+      const subclassesDisponiveis = new Set([
+        ...(subclassePorClasse[classe1] || []),
+        ...(subclassePorClasse[classe2] || [])
+      ]);
+
+      subclasseSelect.disabled = false;
+      subclasseSelect.innerHTML = '<option value="">-- Selecione uma subclasse --</option>';
+      subclassesDisponiveis.forEach(sub => {
+        const opt = document.createElement("option");
+        opt.value = sub;
+        opt.textContent = sub;
+        subclasseSelect.appendChild(opt);
+      });
+    }
+
+    document.getElementById("classe1").addEventListener("change", atualizarSubclasses);
+    document.getElementById("classe2").addEventListener("change", atualizarSubclasses);
+
+    function gerarFicha() {
+      const nome = document.getElementById("nome").value;
+      const poder = document.getElementById("poder").value;
+      const historia = document.getElementById("historia").value;
+      const classe1 = document.getElementById("classe1").value;
+      const classe2 = document.getElementById("classe2").value;
+      const subclasse = document.getElementById("subclasse").value;
+      const raca = document.getElementById("raca").value;
+
+      if (classe1 && classe2 && classe1 === classe2) {
+        alert("Você não pode escolher duas classes iguais.");
+        return;
+      }
+
+      if (subclasse && ![...(subclassePorClasse[classe1] || []), ...(subclassePorClasse[classe2] || [])].includes(subclasse)) {
+        alert("Subclasse inválida para as classes escolhidas.");
+        return;
+      }
+
+      const atributos = { FOR: 0, INT: 0, DES: 0, DEF: 0, AGI: 0 };
+
+      if (bonusClasse[classe1]) adicionarBonus(atributos, bonusClasse[classe1]);
+      if (bonusClasse[classe2]) adicionarBonus(atributos, bonusClasse[classe2]);
+      if (bonusSubclasse[subclasse]) adicionarBonus(atributos, bonusSubclasse[subclasse]);
+      if (bonusRaca[raca]) adicionarBonus(atributos, bonusRaca[raca]);
+
+      document.getElementById("res_nome").textContent = nome;
+      document.getElementById("res_poder").textContent = poder;
+      document.getElementById("res_historia").textContent = historia;
+      document.getElementById("res_classes").textContent = `${classe1} ${classe2 ? "/ " + classe2 : ""}`;
+      document.getElementById("res_subclasse").textContent = subclasse || "Nenhuma";
+      document.getElementById("res_raca").textContent = raca;
+
+      document.getElementById("res_atributos").innerHTML = `
+        <td>${atributos.FOR}</td>
+        <td>${atributos.INT}</td>
+        <td>${atributos.DES}</td>
+        <td>${atributos.DEF}</td>
+        <td>${atributos.AGI}</td>`;
+
+      document.getElementById("resultado").style.display = "block";
+    }
+
+    function adicionarBonus(atr, bonus) {
+      for (const chave in bonus) {
+        atr[chave] += bonus[chave];
+      }
+    }
+  </script>
+</body>
+</html>
