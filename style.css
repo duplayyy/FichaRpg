@@ -137,4 +137,54 @@
   font-size: 12px;
 }
 
+/* ====== Hiragana page ====== */
+
+.main-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+  margin-top: 100px;
+}
+
+.stats-box, .card {
+  background-color: #b8e5ff;
+  border-radius: 20px;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.stats-box {
+  width: 200px;
+  text-align: left;
+}
+
+.card {
+  width: 300px;
+  text-align: center;
+}
+
+.character {
+  font-size: 80px;
+  margin: 30px 0;
+}
+
+input {
+  border: none;
+  border-radius: 20px;
+  padding: 10px;
+  width: 80%;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.next-btn {
+  border: 2px solid #94bfff;
+  background-color: transparent;
+  padding: 8px 20px;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+
 
