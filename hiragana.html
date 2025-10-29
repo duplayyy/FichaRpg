@@ -34,5 +34,34 @@
       <button class="next-btn">Próximo</button>
     </div>
   </main>
+  <script>
+  // Lista básica de hiragana (pode expandir depois!)
+  const hiragana = [
+    "あ", "い", "う", "え", "お",
+    "か", "き", "く", "け", "こ",
+    "さ", "し", "す", "せ", "そ",
+    "た", "ち", "つ", "て", "と",
+    "な", "に", "ぬ", "ね", "の",
+    "は", "ひ", "ふ", "へ", "ほ",
+    "ま", "み", "む", "め", "も",
+    "や", "ゆ", "よ",
+    "ら", "り", "る", "れ", "ろ",
+    "わ", "を", "ん"
+  ];
+
+  const characterDiv = document.querySelector(".character");
+  const nextBtn = document.querySelector(".next-btn");
+
+  // Função que mostra uma letra aleatória
+  function mostrarLetra() {
+    const aleatorio = Math.floor(Math.random() * hiragana.length);
+    characterDiv.textContent = hiragana[aleatorio];
+  }
+
+  nextBtn.addEventListener("click", mostrarLetra);
+
+  // Mostrar uma letra ao carregar a página
+  mostrarLetra();
+</script>
 </body>
 </html>
