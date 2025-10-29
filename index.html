@@ -1,414 +1,53 @@
-# Creating project files for DUPPON Alpha 1.0
-# This will create a folder /mnt/data/duppon_alpha with index.html, hiragana.html, style.css, script.js and an img/ folder.
-# It will also copy the provided logo and avatar images into the img/ folder and save a zip for easy download.
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Hello, World!</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="top-bar">
+  <div class="logo-area">
+    <img src="logo.png" alt="Logo Duppon">
+    <h1>DUPPON!</h1>
+  </div>
 
-import os, shutil, json, textwrap, zipfile
-
-PROJECT_DIR = "/mnt/data/duppon_alpha"
-IMG_DIR = os.path.join(PROJECT_DIR, "img")
-os.makedirs(IMG_DIR, exist_ok=True)
-
-# Copy provided images (paths from developer message container)
-src_logo = "/mnt/data/Black Yellow Brush Abstract Typographic Logo Studio Instagram Media Post - 1.png"
-src_avatar = "/mnt/data/0e16cc66e2b4da46ce88355100a5c69e (1).jpg"
-
-dst_logo = os.path.join(IMG_DIR, "logo.png")
-dst_avatar = os.path.join(IMG_DIR, "avatar.png")
-
-# Copy if the source exists
-for src, dst in [(src_logo, dst_logo), (src_avatar, dst_avatar)]:
-    if os.path.exists(src):
-        shutil.copy(src, dst)
-    else:
-        # create placeholder if not present
-        with open(dst, "wb") as f:
-            f.write(b"")
-
-
-# Create files content
-index_html = textwrap.dedent("""\
-<!doctype html>
-<html lang="pt-BR">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>DUPPON - Alpha 1.0</title>
-
-  <!-- COLOQUE O CSS AQUI: este arquivo está em style.css -->
-  <link rel="stylesheet" href="style.css" />
-</head>
-<body>
-  <!-- COLOQUE SUA LOGO AQUI -->
-  <!-- A imagem da logo está em /img/logo.png -->
-  <header class="topbar">
-    <div class="left">
-      <div class="avatar-wrap">
-        <!-- A imagem do avatar padrão está em /img/avatar.png -->
-        <img id="avatarImg" src="img/avatar.png" alt="avatar" class="avatar" />
-        <!-- Círculo de XP (inicia em 0, invisível) -->
-        <svg class="xp-circle" viewBox="0 0 36 36" width="48" height="48">
-          <path class="xp-bg" d="M18 2a16 16 0 1 1 0 32 16 16 0 1 1 0-32" />
-          <path id="xpBar" class="xp-bar" d="M18 2a16 16 0 1 1 0 32 16 16 0 1 1 0-32" stroke-dasharray="0 100" />
-        </svg>
-      </div>
-      <img src="img/logo.png" alt="DUPPON logo" class="logo" />
+  <div class="menu-area">
+    <button class="login-btn">Entrar</button>
+    <div class="menu-icon">
+      <div></div>
+      <div></div>
+      <div></div>
     </div>
+  </div>
+</header>
+<main class="cards-container">
+  <!-- Card 1 -->
+  <div class="card">
+    <h2>Hiragana / Katakana</h2>
+    <button>Iniciar Hiragana</button>
+    <p>Vezes feitas: <span>0</span></p>
+    <button>Iniciar Katakana</button>
+    <p>Vezes feitas: <span>0</span></p>
+  </div>
 
-    <div class="right">
-      <button id="loginBtn" class="ghost">Entrar</button>
-      <button id="menuBtn" class="hamburger">☰</button>
-    </div>
-  </header>
+  <!-- Card 2 -->
+  <div class="card">
+    <h2>Kanji</h2>
+    <button>Iniciar JLPT-N5</button>
+    <button disabled>Iniciar JLPT-N4 🔒</button>
+    <button disabled>Iniciar JLPT-N3 🔒</button>
+    <button disabled>Iniciar JLPT-N2 🔒</button>
+    <button disabled>Iniciar JLPT-N1 🔒</button>
+    <small>Faça os testes de JLPT para desbloquear!</small>
+  </div>
 
-  <main class="container">
-    <section class="cards-row">
-      <div class="card">
-        <h3>Hiragana / Katakana</h3>
-        <button id="startHiragana" class="big-btn">Iniciar Hiragana</button>
-        <div class="small-text">Vezes feitas:<span id="timesHiragana">0</span></div>
-      </div>
-
-      <div class="card">
-        <h3>Kanji</h3>
-        <div class="jlpt-list">
-          <button class="mini-btn">Iniciar JLPT-N5</button>
-          <button class="mini-btn locked">Iniciar JLPT-N4 🔒</button>
-          <button class="mini-btn locked">Iniciar JLPT-N3 🔒</button>
-          <button class="mini-btn locked">Iniciar JLPT-N2 🔒</button>
-          <button class="mini-btn locked">Iniciar JLPT-N1 🔒</button>
-        </div>
-        <p class="hint">Faça os testes de JLPT para desbloquear!</p>
-      </div>
-
-      <div class="card">
-        <h3>Partículas</h3>
-        <button class="big-btn disabled">Iniciar partículas</button>
-        <div class="small-text">Vezes feitas: 0</div>
-      </div>
-    </section>
-  </main>
-
-  <!-- COLOQUE O JS AQUI: script.js -->
-  <script src="script.js"></script>
-</body>
+  <!-- Card 3 -->
+  <div class="card">
+    <h2>Partículas</h2>
+    <button>Iniciar partículas</button>
+    <p>Vezes feitas: <span>0</span></p>
+  </div>
+</main>
+      <script src="script.js"></script>
+  </body>
 </html>
-""")
-
-hiragana_html = textwrap.dedent("""\
-<!doctype html>
-<html lang="pt-BR">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>DUPPON - Hiragana</title>
-  <link rel="stylesheet" href="style.css" />
-</head>
-<body>
-  <header class="topbar">
-    <div class="left">
-      <div class="avatar-wrap">
-        <img id="avatarImg2" src="img/avatar.png" alt="avatar" class="avatar" />
-        <svg class="xp-circle" viewBox="0 0 36 36" width="48" height="48">
-          <path class="xp-bg" d="M18 2a16 16 0 1 1 0 32 16 16 0 1 1 0-32" />
-          <path id="xpBar2" class="xp-bar" d="M18 2a16 16 0 1 1 0 32 16 16 0 1 1 0-32" stroke-dasharray="0 100" />
-        </svg>
-      </div>
-      <img src="img/logo.png" alt="DUPPON logo" class="logo" />
-    </div>
-
-    <div class="right">
-      <button id="loginBtn2" class="ghost">Entrar</button>
-      <button id="menuBtn2" class="hamburger">☰</button>
-    </div>
-  </header>
-
-  <main class="container">
-    <section class="hiragana-area">
-      <aside class="stats">
-        <h4>Estatísticas</h4>
-        <div>Letras conhecidas: <span id="knownCount">0</span></div>
-        <div>Letras desconhecidas: <span id="unknownCount">0</span></div>
-        <div>Testes feitos: <span id="testsDone">0</span></div>
-      </aside>
-
-      <div class="hiragana-card">
-        <h3>Hiragana</h3>
-        <div id="charDisplay" class="big-char">あ</div>
-
-        <label for="answer">Responda aqui:</label>
-        <input id="answer" placeholder="Digite o som (romaji)..." />
-
-        <div class="controls">
-          <button id="checkBtn" class="mini-btn">Checar</button>
-          <button id="nextBtn" class="mini-btn outline">Próximo</button>
-        </div>
-
-        <div id="feedback" class="feedback"></div>
-      </div>
-    </section>
-  </main>
-
-  <script src="script.js"></script>
-</body>
-</html>
-""")
-
-style_css = textwrap.dedent("""\
-/* COLOQUE O CSS AQUI - DUPPON Alpha 1.0 */
-/* Arquivo: style.css */
-/* Design simplificado inspirado nas imagens enviadas */
-
-:root{
-  --bg: #ffffff;
-  --card: #cfefff;
-  --card-dark: #9ec8ff;
-  --accent: #80a9ff;
-  --muted: #6b86b3;
-  --text: #123;
-  --round: 18px;
-}
-
-/* Reset simples */
-*{box-sizing:border-box;margin:0;padding:0;font-family:Inter, 'Arial', sans-serif}
-body{background:var(--bg);color:var(--text);min-height:100vh}
-
-/* Topbar */
-.topbar{display:flex;justify-content:space-between;align-items:center;padding:12px 20px;background:linear-gradient(90deg,#9fc4ff,#b6d4ff);}
-.topbar .left{display:flex;align-items:center;gap:12px}
-.logo{height:64px}
-.avatar-wrap{position:relative;width:56px;height:56px;border-radius:999px;display:flex;align-items:center;justify-content:center;overflow:visible}
-.avatar{width:48px;height:48px;border-radius:999px;border:2px solid #dfe6ef;display:block}
-.xp-circle{position:absolute;right:-6px;top:-6px}
-.xp-bg{fill:none;stroke:#e0e6ee;stroke-width:3}
-.xp-bar{fill:none;stroke:#49cb49;stroke-width:3;transform:rotate(-90deg);transform-origin:center;stroke-linecap:round}
-
-/* Top right */
-.right{display:flex;align-items:center;gap:8px}
-.ghost{background:transparent;border:none;padding:8px 12px;border-radius:12px;color:white;font-weight:600;cursor:pointer}
-.hamburger{background:transparent;border:none;font-size:20px;color:white;cursor:pointer}
-
-/* Main layout */
-.container{padding:30px 40px}
-.cards-row{display:flex;gap:36px;justify-content:center;align-items:flex-start;flex-wrap:wrap}
-.card{background:var(--card);padding:26px;border-radius:18px;min-width:240px;text-align:center;box-shadow:0 4px 0 rgba(0,0,0,0.04)}
-.big-btn{background:var(--card-dark);border:none;padding:18px 28px;border-radius:40px;font-size:16px;cursor:pointer;transition:all .2s}
-.big-btn:hover{transform:translateY(-3px)}
-
-/* smaller */
-.small-text{margin-top:12px;color:var(--muted)}
-
-/* JLPT list */
-.jlpt-list{display:flex;flex-direction:column;gap:8px;margin-top:8px}
-.mini-btn{background:#91b8ff;border:none;padding:8px 12px;border-radius:999px;cursor:pointer}
-.mini-btn.locked{opacity:0.6;cursor:not-allowed}
-
-/* Hiragana page layout */
-.hiragana-area{display:flex;gap:30px;align-items:flex-start;justify-content:center;padding-top:20px}
-.stats{background:var(--card);padding:18px;border-radius:12px;min-width:220px}
-.hiragana-card{background:var(--card);padding:22px;border-radius:20px;min-width:420px;text-align:center}
-.big-char{font-size:96px;margin:18px 0;font-weight:700}
-#answer{width:80%;padding:12px;border-radius:999px;border:1px solid #d0e6ff;margin:8px auto;display:block}
-.controls{display:flex;gap:12px;justify-content:center;margin-top:12px}
-.mini-btn.outline{background:transparent;border:3px solid #9fbfff;padding:10px 18px;border-radius:999px}
-
-/* feedback */
-.feedback{height:28px;margin-top:10px;font-weight:700;color:#2b6b2b}
-
-/* responsiveness */
-@media(max-width:800px){
-  .cards-row{flex-direction:column;align-items:center}
-  .hiragana-area{flex-direction:column;padding:12px}
-}
-""")
-
-script_js = textwrap.dedent("""\
-// COLOQUE O JS AQUI - script.js
-// Este arquivo controla a navegação simples e o mini jogo de Hiragana.
-// Comentários grandes para facilitar a leitura:
-
-
-/* -----------------------------
-   CONFIGURAÇÃO E DADOS
-   ----------------------------- */
-
-/* Lista básica de hiragana (46 básicos) com romaji correspondente.
-   Se quiser adicionar mais caracteres posteriormente, acrescente aqui.
-*/
-const HIRAGANA = [
-  {ch:'あ', r:'a'},{ch:'い', r:'i'},{ch:'う', r:'u'},{ch:'え', r:'e'},{ch:'お', r:'o'},
-  {ch:'か', r:'ka'},{ch:'き', r:'ki'},{ch:'く', r:'ku'},{ch:'け', r:'ke'},{ch:'こ', r:'ko'},
-  {ch:'さ', r:'sa'},{ch:'し', r:'shi'},{ch:'す', r:'su'},{ch:'せ', r:'se'},{ch:'そ', r:'so'},
-  {ch:'た', r:'ta'},{ch:'ち', r:'chi'},{ch:'つ', r:'tsu'},{ch:'て', r:'te'},{ch:'と', r:'to'},
-  {ch:'な', r:'na'},{ch:'に', r:'ni'},{ch:'ぬ', r:'nu'},{ch:'ね', r:'ne'},{ch:'の', r:'no'},
-  {ch:'は', r:'ha'},{ch:'ひ', r:'hi'},{ch:'ふ', r:'fu'},{ch:'へ', r:'he'},{ch:'ほ', r:'ho'},
-  {ch:'ま', r:'ma'},{ch:'み', r:'mi'},{ch:'む', r:'mu'},{ch:'め', r:'me'},{ch:'も', r:'mo'},
-  {ch:'や', r:'ya'},{ch:'ゆ', r:'yu'},{ch:'よ', r:'yo'},
-  {ch:'ら', r:'ra'},{ch:'り', r:'ri'},{ch:'る', r:'ru'},{ch:'れ', r:'re'},{ch:'ろ', r:'ro'},
-  {ch:'わ', r:'wa'},{ch:'を', r:'wo'},{ch:'ん', r:'n'}
-];
-
-// Estado do jogo (apenas em memória para Alpha 1.0)
-let stats = {
-  testsDone: 0,
-  correct: 0,
-  wrong: 0,
-  seenSet: new Set(),
-  correctSet: new Set(),
-  xp: 0 // para futuro
-};
-
-/* -----------------------------
-   FUNÇÕES AUXILIARES
-   ----------------------------- */
-
-function $(q){ return document.querySelector(q) }
-function $all(q){ return document.querySelectorAll(q) }
-
-/* Retorna um índice aleatório de HIRAGANA */
-function randIndex(){
-  return Math.floor(Math.random()*HIRAGANA.length);
-}
-
-/* Atualiza a exibição do círculo de XP (stroke-dasharray) */
-function updateXPBar(){
-  // xp is 0..100 (percent)
-  const pct = Math.min(100, stats.xp);
-  const path = document.getElementById('xpBar');
-  const path2 = document.getElementById('xpBar2');
-  if(path) path.setAttribute('stroke-dasharray', pct + ' 100');
-  if(path2) path2.setAttribute('stroke-dasharray', pct + ' 100');
-}
-
-/* -----------------------------
-   INDEX.HTML - LÓGICA SIMPLES
-   ----------------------------- */
-document.addEventListener('DOMContentLoaded', ()=>{
-  // Botões topbar (mensagem engraçada)
-  const loginBtn = $('#loginBtn');
-  const loginBtn2 = $('#loginBtn2');
-  const menuBtn = $('#menuBtn');
-  const menuBtn2 = $('#menuBtn2');
-  if(loginBtn) loginBtn.addEventListener('click', ()=>alert('Erro de masculinidade detectado! (≧▽≦)ゞ'));
-  if(loginBtn2) loginBtn2.addEventListener('click', ()=>alert('Erro de masculinidade detectado! (≧▽≦)ゞ'));
-  if(menuBtn) menuBtn.addEventListener('click', ()=>alert('Menu sem função nesta Alpha 1.0!'));
-  if(menuBtn2) menuBtn2.addEventListener('click', ()=>alert('Menu sem função nesta Alpha 1.0!'));
-
-  updateXPBar();
-
-  // Start Hiragana - abre hiragana.html
-  const startHiragana = $('#startHiragana');
-  if(startHiragana){
-    startHiragana.addEventListener('click', ()=>{
-      // marca que iniciou uma vez
-      const times = $('#timesHiragana');
-      if(times){
-        times.textContent = parseInt(times.textContent||'0') + 1;
-      }
-      window.location.href = 'hiragana.html';
-    });
-  }
-
-  // Se estivermos na hiragana.html, inicializa o jogo
-  if($('#charDisplay')) initHiraganaGame();
-});
-
-/* -----------------------------
-   HIRAGANA GAME - funções principais
-   ----------------------------- */
-
-function initHiraganaGame(){
-  const charDisplay = $('#charDisplay');
-  const answer = $('#answer');
-  const checkBtn = $('#checkBtn');
-  const nextBtn = $('#nextBtn');
-  const feedback = $('#feedback');
-  const knownCount = $('#knownCount');
-  const unknownCount = $('#unknownCount');
-  const testsDone = $('#testsDone');
-
-  // inicializa contadores na UI
-  knownCount.textContent = stats.correctSet.size;
-  unknownCount.textContent = HIRAGANA.length - stats.seenSet.size;
-  testsDone.textContent = stats.testsDone;
-
-  // estado do card atual
-  let currentIndex = randIndex();
-  showIndex(currentIndex);
-
-  function showIndex(i){
-    currentIndex = i;
-    charDisplay.textContent = HIRAGANA[i].ch;
-    answer.value = '';
-    feedback.textContent = '';
-    answer.focus();
-    // marcar como visto
-    stats.seenSet.add(HIRAGANA[i].ch);
-    knownCount.textContent = stats.correctSet.size;
-    unknownCount.textContent = HIRAGANA.length - stats.seenSet.size;
-  }
-
-  function checkAnswer(){
-    const val = (answer.value||'').trim().toLowerCase();
-    const correct = HIRAGANA[currentIndex].r;
-    if(!val){ feedback.textContent = 'Escreva algo antes!'; return; }
-    stats.testsDone += 1;
-    if(val === correct){
-      feedback.textContent = 'Certo! (☆ω☆)';
-      stats.correct += 1;
-      stats.correctSet.add(HIRAGANA[currentIndex].ch);
-      // ganhar XP simples: +2
-      stats.xp = Math.min(100, stats.xp + 2);
-    } else {
-      feedback.textContent = 'Errado... (；ω；) Resposta: ' + correct;
-      stats.wrong += 1;
-      // pouco XP por tentativa errada
-      stats.xp = Math.min(100, stats.xp + 0.5);
-    }
-    // atualizar UI
-    knownCount.textContent = stats.correctSet.size;
-    unknownCount.textContent = HIRAGANA.length - stats.seenSet.size;
-    testsDone.textContent = stats.testsDone;
-    updateXPBar();
-  }
-
-  checkBtn.addEventListener('click', checkAnswer);
-  answer.addEventListener('keydown', (e)=>{ if(e.key==='Enter') checkAnswer(); });
-
-  nextBtn.addEventListener('click', ()=>{
-    // escolhe uma letra aleatória — tenta priorizar não vistas
-    let unseen = HIRAGANA.filter(h=>!stats.seenSet.has(h.ch));
-    if(unseen.length>0){
-      const choice = unseen[Math.floor(Math.random()*unseen.length)];
-      const idx = HIRAGANA.findIndex(x=>x.ch===choice.ch);
-      showIndex(idx);
-    } else {
-      // se todas já vistas, escolhe aleatória
-      showIndex(randIndex());
-    }
-  });
-}
-""")
-
-# Write files
-files = {
-    os.path.join(PROJECT_DIR, "index.html"): index_html,
-    os.path.join(PROJECT_DIR, "hiragana.html"): hiragana_html,
-    os.path.join(PROJECT_DIR, "style.css"): style_css,
-    os.path.join(PROJECT_DIR, "script.js"): script_js
-}
-
-for path, content in files.items():
-    with open(path, "w", encoding="utf-8") as f:
-        f.write(content)
-
-# Create zip for download
-zip_path = "/mnt/data/duppon_alpha.zip"
-with zipfile.ZipFile(zip_path, "w", zipfile.ZIP_DEFLATED) as zf:
-    for root, dirs, filenames in os.walk(PROJECT_DIR):
-        for fn in filenames:
-            full = os.path.join(root, fn)
-            arcname = os.path.relpath(full, PROJECT_DIR)
-            zf.write(full, arcname=os.path.join("duppon_alpha", arcname))
-
-zip_path
-
