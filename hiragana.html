@@ -2,31 +2,36 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
-  <title>Hiragana - DUPPON!</title>
+  <title>Hiragana | DUUPON!</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <header class="top-bar">
     <div class="logo-area">
-      <img src="logo.png" alt="Logo" class="logo">
-      <h1>DUPPON!</h1>
+      <img src="logo.png" alt="Logo Duppon">
+      <h1>DUUPON!</h1>
     </div>
-    <a href="index.html" class="back-btn">✕</a>
+    <div class="menu-area">
+      <button class="login-btn">Entrar</button>
+      <div class="menu-icon">
+        <div></div><div></div><div></div>
+      </div>
+    </div>
   </header>
 
-  <div class="stats-box">
-    <p>Letras conhecidas: <span id="known">0</span></p>
-    <p>Letras desconhecidas: <span id="unknown">46</span></p>
-    <p>Testes feitos: <span id="tests">0</span></p>
-  </div>
+  <main class="main-container">
+    <div class="stats-box">
+      <p>Letras conhecidas: 0</p>
+      <p>Letras desconhecidas: 0</p>
+      <p>Testes feitos: 0</p>
+    </div>
 
-  <main class="quiz-area">
-    <h2>Hiragana</h2>
-    <div id="character" class="character">あ</div>
-    <input type="text" id="answer" placeholder="Responda aqui:">
-    <button id="next-btn">Próximo</button>
+    <div class="card hiragana-card">
+      <h2>Hiragana</h2>
+      <div class="character">あ</div>
+      <input type="text" placeholder="Responda aqui:">
+      <button class="next-btn">Próximo</button>
+    </div>
   </main>
-
-  <script src="script.js"></script>
 </body>
 </html>
