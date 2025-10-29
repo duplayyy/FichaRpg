@@ -2,67 +2,31 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
-  <title>Hiragana | DUUPON!</title>
+  <title>Hiragana - DUPPON!</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <header class="top-bar">
     <div class="logo-area">
-      <img src="logo.png" alt="Logo Duppon">
-      <h1>DUUPON!</h1>
-    </div>
-    <div class="menu-area">
-      <button class="login-btn">Entrar</button>
-      <div class="menu-icon">
-        <div></div><div></div><div></div>
-      </div>
+      <img src="logo.png" alt="Logo" class="logo">
+      <h1>DUPPON!</h1>
     </div>
     <a href="index.html" class="back-btn">✕</a>
   </header>
 
-  <main class="main-container">
-    <div class="stats-box">
-      <p>Letras conhecidas: 0</p>
-      <p>Letras desconhecidas: 0</p>
-      <p>Testes feitos: 0</p>
-    </div>
+  <div class="stats-box">
+    <p>Letras conhecidas: <span id="known">0</span></p>
+    <p>Letras desconhecidas: <span id="unknown">46</span></p>
+    <p>Testes feitos: <span id="tests">0</span></p>
+  </div>
 
-    <div class="card hiragana-card">
-      <h2>Hiragana</h2>
-      <div class="character">あ</div>
-      <input type="text" placeholder="Responda aqui:">
-      <button class="next-btn">Próximo</button>
-    </div>
+  <main class="quiz-area">
+    <h2>Hiragana</h2>
+    <div id="character" class="character">あ</div>
+    <input type="text" id="answer" placeholder="Responda aqui:">
+    <button id="next-btn">Próximo</button>
   </main>
-  <script>
-  // Lista básica de hiragana (pode expandir depois!)
-  const hiragana = [
-    "あ", "い", "う", "え", "お",
-    "か", "き", "く", "け", "こ",
-    "さ", "し", "す", "せ", "そ",
-    "た", "ち", "つ", "て", "と",
-    "な", "に", "ぬ", "ね", "の",
-    "は", "ひ", "ふ", "へ", "ほ",
-    "ま", "み", "む", "め", "も",
-    "や", "ゆ", "よ",
-    "ら", "り", "る", "れ", "ろ",
-    "わ", "を", "ん"
-  ];
 
-  const characterDiv = document.querySelector(".character");
-  const nextBtn = document.querySelector(".next-btn");
-
-  // Função que mostra uma letra aleatória
-  function mostrarLetra() {
-    const aleatorio = Math.floor(Math.random() * hiragana.length);
-    characterDiv.textContent = hiragana[aleatorio];
-  }
-
-  nextBtn.addEventListener("click", mostrarLetra);
-
-  // Mostrar uma letra ao carregar a página
-  mostrarLetra();
-</script>
   <script src="script.js"></script>
 </body>
 </html>
