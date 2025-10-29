@@ -100,6 +100,25 @@
 }
 
 /* ====== Botões ====== */
+
+.hiragana-btn {
+  display: inline-block;       /* Faz ele se comportar como um botão */
+  padding: 10px 20px;          /* Espaçamento interno */
+  background-color: #ff69b4;   /* Cor de fundo fofa~ */
+  color: white;                /* Cor da letra */
+  text-decoration: none;       /* Remove o underline do link */
+  border: none;                /* Sem borda */
+  border-radius: 8px;          /* Cantinhos arredondados */
+  font-weight: bold;           /* Letra em negrito */
+  text-align: center;          /* Centraliza o texto */
+  cursor: pointer;             /* Dá o efeito de botão ao passar o mouse */
+  transition: background 0.3s; /* Efeito suave ao passar o mouse */
+}
+
+.hiragana-btn:hover {
+  background-color: #ff85c1;   /* Muda a cor quando passa o mouse */
+}
+
 .card button {
   display: block;
   width: 100%;
