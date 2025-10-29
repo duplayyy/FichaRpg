@@ -207,7 +207,7 @@ input {
 
 .back-btn {
   position: absolute;
-  top: 125px;       /* distância do topo */
+  top: 100px;       /* distância do topo */
   left: 25px;      /* distância da esquerda */
   background-color: white;
   color: #3b82f6;  /* azul clarinho */
