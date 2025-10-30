@@ -206,7 +206,7 @@ input {
   cursor: pointer;
 }
 
-back-btn {
+.back-btn {
   position: absolute;
   bottom: -30px; /* aqui define o quanto ele fica abaixo do azul */
   left: 50px;    /* distância horizontal a partir do logo */
