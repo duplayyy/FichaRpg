@@ -209,8 +209,8 @@ input {
 
 .back-btn {
   position: absolute;
-  bottom: -30px; /* aqui define o quanto ele fica abaixo do azul */
-  left: 50px;    /* distância horizontal a partir do logo */
+  bottom: -65px; /* aqui define o quanto ele fica abaixo do azul */
+  left: 3px;    /* distância horizontal a partir do logo */
   background-color: white;
   color: #2b79ff;
   border: none;
