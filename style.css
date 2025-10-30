@@ -272,3 +272,27 @@ body.dark-mode input {
   background-color: #444;
   color: white;
 }
+
+/* --- BOTÃO DE MODO ESCURO --- */
+#darkModeToggle {
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  transition: transform 0.4s ease, color 0.3s ease;
+  color: #333;
+}
+
+body.dark-mode #darkModeToggle {
+  color: #f9f9f9;
+}
+
+/* Efeito de rotação quando clica */
+#darkModeToggle:active {
+  transform: rotate(360deg) scale(1.2);
+}
+
+/* Transição suave entre temas */
+body {
+  transition: background-color 0.5s ease, color 0.5s ease;
+}
