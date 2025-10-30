@@ -67,7 +67,8 @@
   background-color: white;
   border-radius: 2px;
 }
-/* ====== Container geral ====== */
+
+/* ====== Container geral (index.html) ====== */
 .cards-container {
   display: flex;
   justify-content: center;
@@ -77,9 +78,9 @@
   margin-top: 80px;
 }
 
-/* ====== Cada card ====== */
+/* ====== Cada card (geral) ====== */
 .card {
-  background-color: #b3dbff; /* azul clarinho */
+  background-color: #b3dbff;
   border-radius: 20px;
   padding: 20px;
   width: 220px;
@@ -100,8 +101,7 @@
   margin-bottom: 15px;
 }
 
-/* ====== Botões ====== */
-
+/* ====== Botões (usados no index) ====== */
 .card .hiragana-btn {
   display: block;
   width: 100%;
@@ -118,7 +118,7 @@
 }
 
 .card .hiragana-btn:hover {
-  background-color: #729fff;   
+  background-color: #729fff;
 }
 
 .card button {
@@ -163,19 +163,29 @@
 .main-container {
   display: flex;
   justify-content: center;
-  align-items: center;
+  /* Alinha a coluna da esquerda e o card da direita pelo topo */
+  align-items: flex-start;
   gap: 40px;
   margin-top: 100px;
 }
 
-.stats-box, .card {
+/* CONTAINER VERTICAL para STATS e PROVAS */
+.left-column {
+    display: flex;
+    flex-direction: column;
+    /* 10px entre o stats-box e o test-area */
+    gap: 10px; 
+}
+
+/* Estilo base para os cards da página hiragana */
+.stats-box, .card, .test-area {
   background-color: #b8e5ff;
   border-radius: 20px;
   padding: 20px;
   box-shadow: 0 0 10px rgba(0,0,0,0.1);
 }
 
-.stats-box {
+.stats-box, .test-area {
   width: 200px;
   text-align: left;
 }
@@ -185,9 +195,40 @@
   text-align: center;
 }
 
+/* ESTILIZAÇÃO DO CARD DE PROVAS */
+.test-area h2 {
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+/* ESTILO DOS BOTÕES DE PROVA (igual ao Next) */
+.test-area .test-btn {
+    display: block;
+    width: 100%;
+    border: 2px solid #94bfff;
+    background-color: transparent;
+    padding: 10px 0;
+    border-radius: 20px;
+    cursor: pointer;
+    
+    color: #4a6fff; 
+    font-size: 15px;
+    font-weight: bold;
+    margin: 8px 0;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.test-area .test-btn:hover {
+    background-color: #94bfff;
+    color: white;
+}
+/* FIM ESTILIZAÇÃO DOS BOTÕES DE PROVA */
+
+
 .character {
   font-size: 80px;
   margin: 30px 0;
+  color: #333; /* Cor padrão no modo claro */
 }
 
 input {
@@ -199,18 +240,27 @@ input {
   margin-bottom: 10px;
 }
 
+/* ESTILIZAÇÃO DO BOTÃO PRÓXIMO (Next-Btn) */
 .next-btn {
   border: 2px solid #94bfff;
-  background-color: transparent;
-  padding: 8px 20px;
+  background-color: #8cb9ff; 
+  color: white; 
+  padding: 10px 20px;
   border-radius: 20px;
   cursor: pointer;
+  width: 100%;
+  margin-top: 20px; 
 }
 
+.next-btn:hover {
+    background-color: #729fff;
+}
+
+/* BOTÃO DE VOLTAR */
 .back-btn {
   position: absolute;
-  bottom: -65px; /* aqui define o quanto ele fica abaixo do azul */
-  left: 3px;    /* distância horizontal a partir do logo */
+  bottom: -65px;
+  left: 3px;
   background-color: white;
   color: #2b79ff;
   border: none;
@@ -255,23 +305,68 @@ body.dark-mode .top-bar {
   background-color: #2b2b2b;
 }
 
+/* Aplica o estilo Dark Mode aos cards e novos elementos */
 body.dark-mode .card,
-body.dark-mode .stats-box {
+body.dark-mode .stats-box,
+body.dark-mode .test-area { 
   background-color: #333;
   color: #fff;
   box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
 }
 
 body.dark-mode .login-btn,
-body.dark-mode .back-btn,
 body.dark-mode .dark-btn {
   color: #e0e0e0;
 }
+
+/* CORREÇÃO DO BOTÃO VOLTAR */
+body.dark-mode .back-btn {
+  background-color: #444; /* Fundo escuro para o botão */
+  color: #e0e0e0;         /* Cor clara para o "✖" */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4); 
+}
+
+body.dark-mode .back-btn:hover {
+  background-color: #555; /* Cor mais clara ao passar o mouse */
+  transform: scale(1.1);
+}
+/* FIM CORREÇÃO DO BOTÃO VOLTAR */
 
 body.dark-mode input {
   background-color: #444;
   color: white;
 }
+
+/* GARANTE O BRANCO NO DARK MODE */
+body.dark-mode .character {
+  color: white;
+}
+
+/* DARK MODE para BOTÕES DE PROVA */
+body.dark-mode .test-area .test-btn {
+    border: 2px solid #555;
+    background-color: #333;
+    color: #e0e0e0; 
+}
+
+body.dark-mode .test-area .test-btn:hover {
+    background-color: #555;
+    color: #fff;
+}
+/* FIM DARK MODE para BOTÕES DE PROVA */
+
+
+/* DARK MODE para o Next-Btn */
+body.dark-mode .next-btn {
+    background-color: #555; 
+    color: white;
+    border: 2px solid #777;
+}
+
+body.dark-mode .next-btn:hover {
+    background-color: #666;
+}
+
 
 /* --- BOTÃO DE MODO ESCURO --- */
 #darkModeToggle {
