@@ -2,37 +2,41 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title> DUPPON!</title>
-    <link rel="stylesheet" href="style.css">
-  </head>
-  <body>
-    <header class="top-bar">
-  <div class="logo-area">
-    <img src="logo.png" alt="Logo Duppon">
-    <h1>DUPPON!</h1>
-  </div>
-
-  <div class="menu-area">
-    <button id="dark-mode-toggle" class="dark-btn">🌙</button>
-    <button class="login-btn">Entrar</button>
-    <div class="menu-icon">
-      <div></div>
-      <div></div>
-      <div></div>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="top-bar">
+    <div class="logo-area">
+      <img src="logo.png" alt="Logo Duppon">
+      <h1>DUPPON!</h1>
     </div>
-  </div>
+
+    <div class="menu-area">
+      <button id="dark-mode-toggle" class="dark-btn">🌙</button>
+      <button class="login-btn">Entrar</button>
+      <div class="menu-icon">
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+    </div>
   </header>
+
   <main class="cards-container">
-    
     <!-- Card 1 -->
     <div class="card">
       <h2>Hiragana / Katakana</h2>
       <a href="hiragana.html" class="hiragana-btn">Iniciar Hiragana</a>
-      <p>Vezes feitas: <span>0</span></p>
-      <button>Iniciar Katakana</button>
-      <p>Vezes feitas: <span>0</span></p>
+      <p>Vezes feitas: <span id="vezes-hiragana">0</span></p>
+
+      <!-- Link para Katakana (usei <a> para navegação simples) -->
+      <a href="katakana.html" class="hiragana-btn">Iniciar Katakana</a>
+      <p>Vezes feitas: <span id="vezes-katakana">0</span></p>
     </div>
-      <!-- Card 2 -->
+
+    <!-- Card 2 -->
     <div class="card">
       <h2>Kanji</h2>
       <button>Iniciar JLPT-N5</button>
@@ -42,13 +46,15 @@
       <button disabled>Iniciar JLPT-N1 🔒</button>
       <small>Faça os testes de JLPT para desbloquear!</small>
     </div>
-      <!-- Card 3 -->
+
+    <!-- Card 3 -->
     <div class="card">
       <h2>Partículas</h2>
-      <button>Iniciar partículas</button>
-      <p>Vezes feitas: <span>0</span></p>
+      <button id="start-particles">Iniciar partículas</button>
+      <p>Vezes feitas: <span id="vezes-particles">0</span></p>
     </div>
   </main>
+
   <script src="script.js" defer></script>
-  </body>
+</body>
 </html>
