@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Katakana | DUUPON!</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body data-mode="katakana">
+  <header class="top-bar">
+    <div class="logo-area">
+      <img src="logo.png" alt="Logo Duppon">
+      <h1>DUUPON!</h1>
+      <a href="index.html" class="back-btn">✖</a>
+    </div>
+    <div class="menu-area">
+      <button id="dark-mode-toggle" class="dark-btn">🌙</button>
+      <button class="login-btn">Entrar</button>
+      <div class="menu-icon"><div></div><div></div><div></div></div>
+    </div>
+  </header>
+
+  <main class="main-container">
+    <div class="stats-box">
+      <p>Letras conhecidas: <span id="known">0</span></p>
+      <p>Letras desconhecidas: <span id="unknown">46</span></p>
+      <p>Testes feitos: <span id="tests">0</span></p>
+    </div>
+
+    <div class="test-area">
+      <h2>Provas de Nivelamento</h2>
+      <button id="start-test-1" class="test-btn">Nível 1 (Caractere Único)</button>
+      <button id="start-test-2" class="test-btn">Nível 2 (5-7 Caracteres)</button>
+    </div>
+
+    <div class="card hiragana-card">
+      <h2>Katakana</h2>
+      <div id="character" class="character">ア</div>
+      <input type="text" id="answer" placeholder="Responda aqui:">
+      <button id="next-btn" class="next-btn">Próximo</button>
+    </div>
+  </main>
+
+  <script src="script.js" defer></script>
+</body>
+</html>
