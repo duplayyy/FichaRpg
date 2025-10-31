@@ -1,12 +1,13 @@
+/* ====== style.css ====== */
 /* ====== Header básico ====== */
 .top-bar {
-  background-color: #aee4ff; /* azul clarinho */
+  background-color: #1f2937; /* cor mais neutra para combinar com dark-mode default off */
   height: 70px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 0 25px;
-  border-radius: 10px 10px 10px 10px;
+  border-radius: 10px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
@@ -76,27 +77,28 @@
   gap: 40px;
   flex-wrap: wrap;
   margin-top: 80px;
+  padding: 20px;
 }
 
 /* ====== Cada card (geral) ====== */
 .card {
-  background-color: #b3dbff;
+  background-color: #2b3440;
   border-radius: 20px;
   padding: 20px;
   width: 220px;
   text-align: center;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
   transition: transform 0.2s, box-shadow 0.2s;
 }
 
 .card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
 }
 
 /* ====== Título ====== */
 .card h2 {
-  color: #4a6fff;
+  color: #8aa6ff;
   font-size: 18px;
   margin-bottom: 15px;
 }
@@ -107,7 +109,7 @@
   width: 100%;
   background-color: #8cb9ff;
   color: white;
-  border: none;
+  text-decoration: none;
   border-radius: 25px;
   padding: 10px 0;
   margin: 8px 0;
@@ -154,35 +156,35 @@
 .card small {
   display: block;
   margin-top: 10px;
-  color: #4a6fff;
+  color: #8aa6ff;
   font-size: 12px;
 }
 
-/* ====== Hiragana page ====== */
+/* ====== Hiragana/Katakana page ====== */
 
 .main-container {
   display: flex;
   justify-content: center;
-  /* Alinha a coluna da esquerda e o card da direita pelo topo */
   align-items: flex-start;
   gap: 40px;
-  margin-top: 100px;
+  margin-top: 40px;
+  padding: 20px;
 }
 
 /* CONTAINER VERTICAL para STATS e PROVAS */
 .left-column {
-    display: flex;
-    flex-direction: column;
-    /* 10px entre o stats-box e o test-area */
-    gap: 10px; 
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
-/* Estilo base para os cards da página hiragana */
+/* Estilo base para os cards da página */
 .stats-box, .card, .test-area {
-  background-color: #b8e5ff;
+  background-color: #2b3440;
   border-radius: 20px;
   padding: 20px;
-  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  box-shadow: 0 0 10px rgba(0,0,0,0.15);
+  color: #fff;
 }
 
 .stats-box, .test-area {
@@ -197,38 +199,35 @@
 
 /* ESTILIZAÇÃO DO CARD DE PROVAS */
 .test-area h2 {
-    text-align: center;
-    margin-bottom: 15px;
+  text-align: center;
+  margin-bottom: 15px;
 }
 
-/* ESTILO DOS BOTÕES DE PROVA (igual ao Next) */
+/* BOTÕES DE PROVA */
 .test-area .test-btn {
-    display: block;
-    width: 100%;
-    border: 2px solid #94bfff;
-    background-color: transparent;
-    padding: 10px 0;
-    border-radius: 20px;
-    cursor: pointer;
-    
-    color: #4a6fff; 
-    font-size: 15px;
-    font-weight: bold;
-    margin: 8px 0;
-    transition: background-color 0.3s, color 0.3s;
+  display: block;
+  width: 100%;
+  border: 2px solid #94bfff;
+  background-color: transparent;
+  padding: 10px 0;
+  border-radius: 20px;
+  cursor: pointer;
+  color: #8aa6ff;
+  font-size: 15px;
+  font-weight: bold;
+  margin: 8px 0;
+  transition: background-color 0.3s, color 0.3s;
 }
 
 .test-area .test-btn:hover {
-    background-color: #94bfff;
-    color: white;
+  background-color: #94bfff;
+  color: white;
 }
-/* FIM ESTILIZAÇÃO DOS BOTÕES DE PROVA */
-
 
 .character {
   font-size: 80px;
   margin: 30px 0;
-  color: #333; /* Cor padrão no modo claro */
+  color: #fff;
 }
 
 input {
@@ -240,23 +239,23 @@ input {
   margin-bottom: 10px;
 }
 
-/* ESTILIZAÇÃO DO BOTÃO PRÓXIMO (Next-Btn) */
+/* Next button */
 .next-btn {
   border: 2px solid #94bfff;
-  background-color: #8cb9ff; 
-  color: white; 
+  background-color: #8cb9ff;
+  color: white;
   padding: 10px 20px;
   border-radius: 20px;
   cursor: pointer;
   width: 100%;
-  margin-top: 20px; 
+  margin-top: 20px;
 }
 
 .next-btn:hover {
-    background-color: #729fff;
+  background-color: #729fff;
 }
 
-/* BOTÃO DE VOLTAR */
+/* Back button */
 .back-btn {
   position: absolute;
   bottom: -65px;
@@ -281,37 +280,22 @@ input {
   transform: scale(1.1);
 }
 
-/* ====== DARK MODE ====== */
-
-.dark-btn {
-  background: none;
-  border: none;
-  font-size: 22px;
-  cursor: pointer;
-  color: #2b79ff;
-  transition: transform 0.2s, color 0.2s;
-}
-
-.dark-btn:hover {
-  transform: scale(1.2);
-  color: #1e50b3;
-}
+/* Dark mode */
 body.dark-mode {
-  background-color: #1a1a1a;
+  background-color: #0f1720;
   color: #e0e0e0;
 }
 
 body.dark-mode .top-bar {
-  background-color: #2b2b2b;
+  background-color: #0b1220;
 }
 
-/* Aplica o estilo Dark Mode aos cards e novos elementos */
 body.dark-mode .card,
 body.dark-mode .stats-box,
-body.dark-mode .test-area { 
-  background-color: #333;
-  color: #fff;
-  box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+body.dark-mode .test-area {
+  background-color: #11161d;
+  color: #e6eef9;
+  box-shadow: 0 0 10px rgba(255,255,255,0.03);
 }
 
 body.dark-mode .login-btn,
@@ -319,75 +303,114 @@ body.dark-mode .dark-btn {
   color: #e0e0e0;
 }
 
-/* CORREÇÃO DO BOTÃO VOLTAR */
-body.dark-mode .back-btn {
-  background-color: #444; /* Fundo escuro para o botão */
-  color: #e0e0e0;         /* Cor clara para o "✖" */
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4); 
-}
-
-body.dark-mode .back-btn:hover {
-  background-color: #555; /* Cor mais clara ao passar o mouse */
-  transform: scale(1.1);
-}
-/* FIM CORREÇÃO DO BOTÃO VOLTAR */
-
 body.dark-mode input {
-  background-color: #444;
-  color: white;
+  background-color: #222;
+  color: #fff;
 }
 
-/* GARANTE O BRANCO NO DARK MODE */
-body.dark-mode .character {
-  color: white;
+/* Responsividade básica */
+.cards-container { gap: 20px; padding: 20px; box-sizing: border-box; }
+.card { width: 100%; max-width: 320px; box-sizing: border-box; }
+.main-container { padding: 20px; box-sizing: border-box; }
+@media (max-width: 880px) {
+  .main-container { flex-direction: column; align-items: center; }
+  .stats-box, .test-area { width: 100%; max-width: 360px; }
+  .card.hiragana-card { width: 100%; max-width: 480px; }
+}
+@media (max-width: 600px) {
+  .top-bar { flex-direction: column; height: auto; gap: 8px; align-items: flex-start; padding: 10px; }
+  .logo-area h1 { font-size: 18px; }
+  .menu-area { align-self: flex-end; }
+}
+input, .card button, .card .hiragana-btn, .test-area .test-btn, .next-btn { min-height: 44px; width: 100%; box-sizing: border-box; }
+input#answer, input#test-answer { width: 100%; max-width: 100%; padding: 12px; font-size: 1rem; }
+.character { font-size: clamp(48px, 8vw, 120px); line-height: 1; text-align: center; }
+body, html { max-width: 100%; overflow-x: hidden; }
+@media (max-width: 360px) {
+  .card { padding: 14px; }
+  .logo-area img { height: 36px; width: 36px; }
+  .logo-area h1 { font-size: 16px; }
 }
 
-/* DARK MODE para BOTÕES DE PROVA */
-body.dark-mode .test-area .test-btn {
-    border: 2px solid #555;
-    background-color: #333;
-    color: #e0e0e0; 
-}
+/* =========================
+   Dark mode button (ícone puro) e animações
+   Cole ESTE BLOCO no FINAL do style.css
+   ========================= */
 
-body.dark-mode .test-area .test-btn:hover {
-    background-color: #555;
-    color: #fff;
-}
-/* FIM DARK MODE para BOTÕES DE PROVA */
-
-
-/* DARK MODE para o Next-Btn */
-body.dark-mode .next-btn {
-    background-color: #555; 
-    color: white;
-    border: 2px solid #777;
-}
-
-body.dark-mode .next-btn:hover {
-    background-color: #666;
-}
-
-
-/* --- BOTÃO DE MODO ESCURO --- */
-#darkModeToggle {
-  background: none;
-  border: none;
-  font-size: 24px;
+/* Remove o "quadrado" / fundo e deixa só o ícone */
+#dark-mode-toggle,
+.dark-btn {
+  background: transparent !important;   /* sem fundo */
+  border: none !important;              /* sem borda */
+  padding: 6px;                         /* pequeno padding para área de clique */
+  width: auto;
+  height: auto;
+  line-height: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: inherit;                       /* herda cor do container */
+  font-size: 20px;                      /* você pode ajustar */
   cursor: pointer;
-  transition: transform 0.4s ease, color 0.3s ease;
-  color: #333;
+  border-radius: 6px;
+  transition: transform 0.4s cubic-bezier(.2,.9,.3,1), color 0.25s ease, background-color 0.25s ease;
+  /* remove qualquer sombra ou fundo residual */
+  box-shadow: none !important;
+  outline: none;
 }
 
-body.dark-mode #darkModeToggle {
-  color: #f9f9f9;
+/* Ao passar o mouse, um leve destaque (sem criar 'quadrado' perceptível) */
+#dark-mode-toggle:hover,
+.dark-btn:hover {
+  transform: scale(1.06);
+  background-color: rgba(255,255,255,0.03); /* sutil halo */
 }
 
-/* Efeito de rotação quando clica */
-#darkModeToggle:active {
-  transform: rotate(360deg) scale(1.2);
+/* Animação de girar (usada via classe .spin) */
+@keyframes dm-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
 }
 
-/* Transição suave entre temas */
-body {
-  transition: background-color 0.5s ease, color 0.5s ease;
+/* Classe que aplica uma rotação rápida */
+.dark-btn.spin, #dark-mode-toggle.spin {
+  animation: dm-spin 0.6s cubic-bezier(.2,.9,.3,1);
 }
+
+/* Suaviza a troca de cores do site quando alterna o dark-mode */
+body,
+.top-bar,
+.card,
+.stats-box,
+.test-area,
+.character,
+input,
+button {
+  transition: background-color 0.35s ease, color 0.35s ease, box-shadow 0.25s ease, transform 0.25s ease;
+}
+
+/* Pequena transição visual ao alternar o modo (fade) */
+body::before {
+  content: "";
+  pointer-events: none;
+  position: fixed;
+  inset: 0;
+  background: transparent;
+  transition: background 0.35s ease, opacity 0.35s ease;
+  z-index: 9999;
+}
+
+/* Quando o modo muda, usamos um efeito discreto de overlay breve */
+body.mode-switching::before {
+  background: var(--mode-transition-overlay, rgba(0,0,0,0.05));
+  opacity: 0.6;
+}
+
+/* Se quiser, ajuste tamanho do ícone só no header para ficar idêntico ao design anterior */
+.top-bar .dark-btn,
+.top-bar #dark-mode-toggle {
+  font-size: 20px; /* ajuste fino */
+  padding: 4px;    /* menos padding para caber na barra */
+  background: transparent;
+}
+
