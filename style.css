@@ -1,14 +1,39 @@
 /* ====== style.css ====== */
+/* Paleta e variáveis (fácil de ajustar) */
+:root {
+  /* Paleta pastel azuis (modo claro) */
+  --pastel-header: #bfe1ff;        /* header pastel claro (base) */
+  --pastel-header-dark: #9ec8ff;   /* variação levemente mais escura */
+  --card-bg: #dcefff;              /* fundo dos cards (claro) */
+  --card-bg-contrast: #94bfff;     /* contraste para bordas/elementos */
+  --button-primary: #9fc6ff;       /* botão principal (azul pastel) */
+  --button-primary-hover: #84b6ff; /* hover do botão */
+  --text-primary: #0b2b4a;         /* texto escuro legível com o pastel */
+  --accent-blue: #6e9cff;          /* títulos/hyperlinks */
+  --shadow-subtle: rgba(13,30,50,0.06);
+
+  /* Dark mode variables (ajustadas para cards mais visíveis e tons pastel escurecidos) */
+  --dark-bg: #0b1317;              /* fundo geral do site em dark */
+  --dark-top: #0f1a24;             /* topo (header) em dark */
+  --dark-card: #162027;            /* card em dark — mais claro que o fundo para visibilidade */
+  --dark-card-contrast: #1f2b36;   /* leve variação para botões/bordas */
+  --dark-text: #dfeefd;            /* texto claro no dark */
+  --dark-button: #7ea9ff;          /* botões no dark (pastel levemente escurecido) */
+  --dark-button-hover: #6a97ea;
+}
+
 /* ====== Header básico ====== */
 .top-bar {
-  background-color: #1f2937; /* cor mais neutra para combinar com dark-mode default off */
+  /* Header em gradiente pastel no modo claro por padrão */
+  background: linear-gradient(180deg, var(--pastel-header), var(--pastel-header-dark));
   height: 70px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 0 25px;
   border-radius: 10px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 8px var(--shadow-subtle);
+  transition: background-color 0.35s ease, box-shadow 0.35s ease;
 }
 
 /* ====== Logo e nome ====== */
@@ -23,12 +48,14 @@
   height: 45px;
   width: 45px;
   border-radius: 50%;
+  object-fit: cover;
 }
 
 .logo-area h1 {
-  color: white;
+  color: var(--text-primary);
   font-size: 22px;
   font-weight: bold;
+  margin: 0;
 }
 
 /* ====== Parte direita ====== */
@@ -42,7 +69,7 @@
 .login-btn {
   background: none;
   border: none;
-  color: white;
+  color: var(--text-primary);
   font-size: 16px;
   cursor: pointer;
   font-weight: bold;
@@ -65,7 +92,7 @@
 
 .menu-icon div {
   height: 3px;
-  background-color: white;
+  background-color: var(--text-primary);
   border-radius: 2px;
 }
 
@@ -78,36 +105,39 @@
   flex-wrap: wrap;
   margin-top: 80px;
   padding: 20px;
+  box-sizing: border-box;
 }
 
 /* ====== Cada card (geral) ====== */
+/* Card base no modo claro utiliza a cor de card-bg (pastel) */
 .card {
-  background-color: #2b3440;
+  background-color: var(--card-bg);
   border-radius: 20px;
   padding: 20px;
   width: 220px;
   text-align: center;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
-  transition: transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 4px 10px rgba(11,43,74,0.06);
+  transition: transform 0.2s, box-shadow 0.2s, background-color 0.25s ease;
 }
 
 .card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 6px 20px rgba(11,43,74,0.09);
 }
 
 /* ====== Título ====== */
 .card h2 {
-  color: #8aa6ff;
+  color: var(--accent-blue);
   font-size: 18px;
   margin-bottom: 15px;
 }
 
 /* ====== Botões (usados no index) ====== */
+/* Botões tipo link reutilizam a cor de botão primário pastel */
 .card .hiragana-btn {
   display: block;
   width: 100%;
-  background-color: #8cb9ff;
+  background-color: var(--button-primary);
   color: white;
   text-decoration: none;
   border-radius: 25px;
@@ -116,17 +146,20 @@
   font-size: 15px;
   font-weight: bold;
   cursor: pointer;
-  transition: 0.3s;
+  transition: background-color 0.22s ease, transform 0.12s ease;
+  border: none;
+  box-shadow: 0 6px 14px rgba(92,140,210,0.12);
 }
 
 .card .hiragana-btn:hover {
-  background-color: #729fff;
+  background-color: var(--button-primary-hover);
+  transform: translateY(-2px);
 }
 
 .card button {
   display: block;
   width: 100%;
-  background-color: #8cb9ff;
+  background-color: var(--button-primary);
   color: white;
   border: none;
   border-radius: 25px;
@@ -136,10 +169,12 @@
   font-weight: bold;
   cursor: pointer;
   transition: 0.3s;
+  box-shadow: 0 6px 14px rgba(92,140,210,0.12);
 }
 
 .card button:hover {
-  background-color: #729fff;
+  background-color: var(--button-primary-hover);
+  transform: translateY(-2px);
 }
 
 .card button:disabled {
@@ -150,13 +185,13 @@
 /* ====== Textos ====== */
 .card p {
   margin: 5px 0;
-  color: #fff;
+  color: var(--text-primary);
 }
 
 .card small {
   display: block;
   margin-top: 10px;
-  color: #8aa6ff;
+  color: var(--accent-blue);
   font-size: 12px;
 }
 
@@ -169,6 +204,7 @@
   gap: 40px;
   margin-top: 40px;
   padding: 20px;
+  box-sizing: border-box;
 }
 
 /* CONTAINER VERTICAL para STATS e PROVAS */
@@ -180,11 +216,12 @@
 
 /* Estilo base para os cards da página */
 .stats-box, .card, .test-area {
-  background-color: #2b3440;
+  background-color: var(--card-bg);
   border-radius: 20px;
   padding: 20px;
-  box-shadow: 0 0 10px rgba(0,0,0,0.15);
-  color: #fff;
+  box-shadow: 0 0 10px rgba(11,43,74,0.06);
+  color: var(--text-primary);
+  transition: background-color 0.25s ease, color 0.25s ease;
 }
 
 .stats-box, .test-area {
@@ -207,52 +244,62 @@
 .test-area .test-btn {
   display: block;
   width: 100%;
-  border: 2px solid #94bfff;
+  border: 2px solid rgba(110,156,255,0.45);
   background-color: transparent;
   padding: 10px 0;
   border-radius: 20px;
   cursor: pointer;
-  color: #8aa6ff;
+  color: var(--accent-blue);
   font-size: 15px;
   font-weight: bold;
   margin: 8px 0;
-  transition: background-color 0.3s, color 0.3s;
+  transition: background-color 0.3s, color 0.3s, transform 0.12s ease;
 }
 
 .test-area .test-btn:hover {
-  background-color: #94bfff;
+  background-color: rgba(110,156,255,0.12);
   color: white;
+  transform: translateY(-2px);
 }
 
+/* Character display */
 .character {
   font-size: 80px;
   margin: 30px 0;
-  color: #fff;
+  color: var(--text-primary);
 }
 
+/* Input styling */
 input {
-  border: none;
+  background: white;
+  color: var(--text-primary);
+  border: 2px solid rgba(11,43,74,0.07);
   border-radius: 20px;
   padding: 10px;
   width: 80%;
   text-align: center;
   margin-bottom: 10px;
+  box-shadow: 0 4px 8px rgba(11,43,74,0.04);
+  transition: background-color 0.25s ease, color 0.25s ease, box-shadow 0.2s ease;
 }
 
 /* Next button */
 .next-btn {
-  border: 2px solid #94bfff;
-  background-color: #8cb9ff;
+  border: 2px solid rgba(148,191,255,0.5);
+  background-color: var(--button-primary);
   color: white;
   padding: 10px 20px;
   border-radius: 20px;
   cursor: pointer;
   width: 100%;
   margin-top: 20px;
+  box-shadow: 0 6px 14px rgba(92,140,210,0.12);
+  transition: background-color 0.22s ease, transform 0.12s ease;
 }
 
 .next-btn:hover {
-  background-color: #729fff;
+  background-color: var(--button-primary-hover);
+  transform: translateY(-2px);
 }
 
 /* Back button */
@@ -261,7 +308,7 @@ input {
   bottom: -65px;
   left: 3px;
   background-color: white;
-  color: #2b79ff;
+  color: var(--button-primary);
   border: none;
   border-radius: 50%;
   width: 40px;
@@ -280,35 +327,70 @@ input {
   transform: scale(1.1);
 }
 
-/* Dark mode */
+/* ====== Dark mode ====== */
+/* Aplicado com a classe body.dark-mode */
+/* Agora com cards mais visíveis e tons pastel escurecidos */
 body.dark-mode {
-  background-color: #0f1720;
-  color: #e0e0e0;
+  background-color: var(--dark-bg);
+  color: var(--dark-text);
+  transition: background-color 0.35s ease, color 0.35s ease;
 }
 
 body.dark-mode .top-bar {
-  background-color: #0b1220;
+  background-color: var(--dark-top);
+  box-shadow: 0 2px 12px rgba(0,0,0,0.25);
 }
 
+/* Cards mais visíveis: usamos cor levemente mais clara que o fundo e borda suave */
 body.dark-mode .card,
 body.dark-mode .stats-box,
 body.dark-mode .test-area {
-  background-color: #11161d;
-  color: #e6eef9;
-  box-shadow: 0 0 10px rgba(255,255,255,0.03);
+  background-color: var(--dark-card);
+  color: var(--dark-text);
+  box-shadow: 0 8px 18px rgba(0,0,0,0.45);
+  border: 1px solid rgba(255,255,255,0.03);
 }
 
-body.dark-mode .login-btn,
-body.dark-mode .dark-btn {
-  color: #e0e0e0;
+/* Botões no dark usam um azul pastel levemente escurecido para contraste */
+body.dark-mode .card .hiragana-btn,
+body.dark-mode .card button,
+body.dark-mode .next-btn {
+  background-color: var(--dark-button);
+  color: white;
+  box-shadow: 0 6px 14px rgba(16,36,60,0.35);
 }
 
+body.dark-mode .card .hiragana-btn:hover,
+body.dark-mode .card button:hover,
+body.dark-mode .next-btn:hover {
+  background-color: var(--dark-button-hover);
+  transform: translateY(-2px);
+}
+
+/* Provas: ajustar borda/hover no dark */
+body.dark-mode .test-area .test-btn {
+  border-color: rgba(126,169,255,0.28);
+  color: var(--dark-button);
+}
+body.dark-mode .test-area .test-btn:hover {
+  background-color: rgba(126,169,255,0.08);
+  color: white;
+}
+
+/* Inputs no dark */
 body.dark-mode input {
-  background-color: #222;
-  color: #fff;
+  background-color: #1a2328;
+  color: var(--dark-text);
+  border-color: rgba(255,255,255,0.03);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.5);
 }
 
-/* Responsividade básica */
+/* Menu icons no dark */
+body.dark-mode .menu-icon div {
+  background-color: var(--dark-text);
+}
+
+/* ====== Responsividade básica ====== */
 .cards-container { gap: 20px; padding: 20px; box-sizing: border-box; }
 .card { width: 100%; max-width: 320px; box-sizing: border-box; }
 .main-container { padding: 20px; box-sizing: border-box; }
@@ -334,7 +416,6 @@ body, html { max-width: 100%; overflow-x: hidden; }
 
 /* =========================
    Dark mode button (ícone puro) e animações
-   Cole ESTE BLOCO no FINAL do style.css
    ========================= */
 
 /* Remove o "quadrado" / fundo e deixa só o ícone */
@@ -354,7 +435,6 @@ body, html { max-width: 100%; overflow-x: hidden; }
   cursor: pointer;
   border-radius: 6px;
   transition: transform 0.4s cubic-bezier(.2,.9,.3,1), color 0.25s ease, background-color 0.25s ease;
-  /* remove qualquer sombra ou fundo residual */
   box-shadow: none !important;
   outline: none;
 }
@@ -363,7 +443,7 @@ body, html { max-width: 100%; overflow-x: hidden; }
 #dark-mode-toggle:hover,
 .dark-btn:hover {
   transform: scale(1.06);
-  background-color: rgba(255,255,255,0.03); /* sutil halo */
+  background-color: rgba(255,255,255,0.03); /* sutil halo no modo claro */
 }
 
 /* Animação de girar (usada via classe .spin) */
@@ -406,7 +486,7 @@ body.mode-switching::before {
   opacity: 0.6;
 }
 
-/* Se quiser, ajuste tamanho do ícone só no header para ficar idêntico ao design anterior */
+/* Ajuste do tamanho do ícone na top-bar para ficar idêntico ao design */
 .top-bar .dark-btn,
 .top-bar #dark-mode-toggle {
   font-size: 20px; /* ajuste fino */
@@ -414,3 +494,22 @@ body.mode-switching::before {
   background: transparent;
 }
 
+/* ===== Ajuste legibilidade: "Vezes feitas" no modo escuro =====
+   Cole este bloco no FINAL do seu style.css, logo após as regras do modo escuro.
+*/
+body.dark-mode .card p {
+  /* Deixa o texto dos parágrafos do card bem legível no dark */
+  color: rgba(255, 255, 255, 0.92) !important;
+}
+
+/* Se quiser deixar apenas o número (span) ainda mais destacado: */
+body.dark-mode .card p span {
+  color: #ffffff !important;          /* número em branco puro */
+  font-weight: 600;                   /* um pouco mais destacado */
+}
+
+/* Caso também queira ajustar os <small> ou textos na stats-box */
+body.dark-mode .card small,
+body.dark-mode .stats-box p {
+  color: rgba(255,255,255,0.85) !important;
+}
