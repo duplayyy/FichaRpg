@@ -1,45 +1,55 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title> DUPPON!</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>DUPPON!</title>
+  <!-- Coloque style.css na mesma pasta deste index -->
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+  <!-- Top bar / header:
+       - Ícone/logo (coloque sua imagem logo.png)
+       - Título do site
+       - Botão de alternar tema (id="dark-mode-toggle")
+       - Botão Entrar (futuro: conectar com conta)
+       - Ícone hamburger (apenas visual por enquanto)
+       OBS: não mude os ids/classes principais pois script.js usa eles -->
   <header class="top-bar">
     <div class="logo-area">
-      <img src="logo.png" alt="Logo Duppon">
+      <img src="logo.png" alt="Logo Duppon" />
       <h1>DUPPON!</h1>
     </div>
 
     <div class="menu-area">
-      <button id="dark-mode-toggle" class="dark-btn">🌙</button>
+      <!-- O botão de modo escuro é um <button> simples com id usado pelo script -->
+      <button id="dark-mode-toggle" class="dark-btn" aria-label="Alternar tema">🌙</button>
       <button class="login-btn">Entrar</button>
-      <div class="menu-icon">
-        <div></div>
-        <div></div>
-        <div></div>
+      <div class="menu-icon" aria-hidden="true">
+        <div></div><div></div><div></div>
       </div>
     </div>
   </header>
 
+  <!-- Main content: cards principais -->
   <main class="cards-container">
-    <!-- Card 1 -->
+    <!-- Hiragana / Katakana -->
     <div class="card">
       <h2>Hiragana / Katakana</h2>
+
+      <!-- Use <a> para navegar para a página de treino (arquivo local hiragana.html) -->
       <a href="hiragana.html" class="hiragana-btn">Iniciar Hiragana</a>
       <p>Vezes feitas: <span id="vezes-hiragana">0</span></p>
 
-      <!-- Link para Katakana (usei <a> para navegação simples) -->
+      <!-- Link para katakana -->
       <a href="katakana.html" class="hiragana-btn">Iniciar Katakana</a>
       <p>Vezes feitas: <span id="vezes-katakana">0</span></p>
     </div>
 
-    <!-- Card 2 -->
+    <!-- Kanji (exemplo de vários botões; alguns descartados/desabilitados) -->
     <div class="card">
       <h2>Kanji</h2>
-      <button>Iniciar JLPT-N5</button>
+      <button class="hiragana-btn">Iniciar JLPT-N5</button>
       <button disabled>Iniciar JLPT-N4 🔒</button>
       <button disabled>Iniciar JLPT-N3 🔒</button>
       <button disabled>Iniciar JLPT-N2 🔒</button>
@@ -47,14 +57,15 @@
       <small>Faça os testes de JLPT para desbloquear!</small>
     </div>
 
-    <!-- Card 3 -->
+    <!-- Partículas (exemplo futuro) -->
     <div class="card">
       <h2>Partículas</h2>
-      <button id="start-particles">Iniciar partículas</button>
+      <button id="start-particles" class="hiragana-btn">Iniciar partículas</button>
       <p>Vezes feitas: <span id="vezes-particles">0</span></p>
     </div>
   </main>
 
+  <!-- script.js é o arquivo principal. Deve ficar na mesma pasta e conter toda a lógica. -->
   <script src="script.js" defer></script>
 </body>
 </html>
