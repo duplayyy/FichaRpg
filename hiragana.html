@@ -1,22 +1,18 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Hiragana | DUUPON!</title>
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="style.css">
 </head>
-
-<!-- IMPORTANT: data-mode="hiragana" deixa a detecção do script 100% confiável.
-     Sempre mantenha este atributo nas páginas de treino que o script controla. -->
 <body data-mode="hiragana">
   <header class="top-bar">
     <div class="logo-area">
-      <img src="logo.png" alt="Logo Duppon" />
+      <img src="logo.png" alt="Logo Duppon">
       <h1>DUUPON!</h1>
-      <a href="index.html" class="back-btn" aria-label="Voltar">✖</a>
+      <a href="index.html" class="back-btn">✖</a>
     </div>
-
     <div class="menu-area">
       <button id="dark-mode-toggle" class="dark-btn">🌙</button>
       <button class="login-btn">Entrar</button>
@@ -25,25 +21,39 @@
   </header>
 
   <main class="main-container">
-    <!-- Left column: estatísticas -->
+    <!-- Left column: stats -->
     <div class="stats-box">
       <p>Letras conhecidas: <span id="known">0</span></p>
       <p>Letras desconhecidas: <span id="unknown">46</span></p>
       <p>Testes feitos: <span id="tests">0</span></p>
     </div>
 
-    <!-- Middle column: provas -->
+    <!-- NEW: Manual card (red area) -->
+    <!--
+      Manual card:
+      - mantém a mesma aparência dos cards (classe card)
+      - botão leva para manual_hiragana.html (lista de caracteres)
+      - placed between stats-box and test-area to match UI area you marked
+      -->
+    <div class="card manual-box">
+      <h2>Manual de Hiragana</h2>
+      <p>Abra o manual para ver o mapeamento de caracteres ↔ romaji (ex.: あ = a).</p>
+      <a href="manual_hiragana.html" class="hiragana-btn">Abrir Manual Hiragana</a>
+      <small>Dica: use este manual para consultar enquanto treina.</small>
+    </div>
+
+    <!-- Middle column: tests -->
     <div class="test-area">
       <h2>Provas de Nivelamento</h2>
       <button id="start-test-1" class="test-btn">Nível 1 (Caractere Único)</button>
       <button id="start-test-2" class="test-btn">Nível 2 (5-7 Caracteres)</button>
     </div>
 
-    <!-- Right column: card de treino -->
+    <!-- Right column: training card -->
     <div class="card hiragana-card">
       <h2>Hiragana</h2>
       <div id="character" class="character">あ</div>
-      <input type="text" id="answer" placeholder="Responda aqui:" autocomplete="off" />
+      <input type="text" id="answer" placeholder="Responda aqui:">
       <button id="next-btn" class="next-btn">Próximo</button>
     </div>
   </main>
