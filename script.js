@@ -50,7 +50,60 @@ const HIRAGANA_LETTERS = [
   {char:'ま', romaji:'ma'},{char:'み', romaji:'mi'},{char:'む', romaji:'mu'},{char:'め', romaji:'me'},{char:'も', romaji:'mo'},
   {char:'や', romaji:'ya'},{char:'ゆ', romaji:'yu'},{char:'よ', romaji:'yo'},
   {char:'ら', romaji:'ra'},{char:'り', romaji:'ri'},{char:'る', romaji:'ru'},{char:'れ', romaji:'re'},{char:'ろ', romaji:'ro'},
-  {char:'わ', romaji:'wa'},{char:'を', romaji:'wo'},{char:'ん', romaji:'n'}
+  {char:'わ', romaji:'wa'},{char:'を', romaji:'wo'},{char:'ん', romaji:'n'},{ char: 'が', romaji: 'ga' },{ char: 'ぎ', romaji: 'gi' },
+  { char: 'ぐ', romaji: 'gu' },{ char: 'げ', romaji: 'ge' },{ char: 'ご', romaji: 'go' },{ char: 'ざ', romaji: 'za' },
+  { char: 'じ', romaji: 'ji' },{ char: 'ず', romaji: 'zu' },{ char: 'ぜ', romaji: 'ze' },{ char: 'ぞ', romaji: 'zo' },{ char: 'だ', romaji: 'da' },
+  { char: 'ぢ', romaji: 'ji' },{ char: 'づ', romaji: 'zu' }, { char: 'で', romaji: 'de' },{ char: 'ど', romaji: 'do' },{ char: 'ば', romaji: 'ba' },
+  { char: 'び', romaji: 'bi' },{ char: 'ぶ', romaji: 'bu' },{ char: 'べ', romaji: 'be' },{ char: 'ぼ', romaji: 'bo' },{ char: 'ぱ', romaji: 'pa' },
+  { char: 'ぴ', romaji: 'pi' },{ char: 'ぷ', romaji: 'pu' },{ char: 'ぺ', romaji: 'pe' },{ char: 'ぽ', romaji: 'po' },
+  // Kya, kyu, kyo
+  { char: 'きゃ', romaji: 'kya' },
+  { char: 'きゅ', romaji: 'kyu' },
+  { char: 'きょ', romaji: 'kyo' },
+  // Shya, shyu, shyo (sha, shu, sho)
+  { char: 'しゃ', romaji: 'sha' },
+  { char: 'しゅ', romaji: 'shu' },
+  { char: 'しょ', romaji: 'sho' },
+  // Chya, chyu, chyo (cha, chu, cho)
+  { char: 'ちゃ', romaji: 'cha' },
+  { char: 'ちゅ', romaji: 'chu' },
+  { char: 'ちょ', romaji: 'cho' },
+  // Nya, nyu, nyo
+  { char: 'にゃ', romaji: 'nya' },
+  { char: 'にゅ', romaji: 'nyu' },
+  { char: 'にょ', romaji: 'nyo' },
+  // Hya, hyu, hyo
+  { char: 'ひゃ', romaji: 'hya' },
+  { char: 'ひゅ', romaji: 'hyu' },
+  { char: 'ひょ', romaji: 'hyo' },
+  // Mya, myu, myo
+  { char: 'みゃ', romaji: 'mya' },
+  { char: 'みゅ', romaji: 'myu' },
+  { char: 'みょ', romaji: 'myo' },
+  // Rya, ryu, ryo
+  { char: 'りゃ', romaji: 'rya' },
+  { char: 'りゅ', romaji: 'ryu' },
+  { char: 'りょ', romaji: 'ryo' },
+
+  // Dakuon Yōon (Sons expressos palatalizados)
+  // Gya, gyu, gyo
+  { char: 'ぎゃ', romaji: 'gya' },
+  { char: 'ぎゅ', romaji: 'gyu' },
+  { char: 'ぎょ', romaji: 'gyo' },
+  // Jya, jyu, jyo (ja, ju, jo)
+  { char: 'じゃ', romaji: 'ja' },
+  { char: 'じゅ', romaji: 'ju' },
+  { char: 'じょ', romaji: 'jo' },
+  // Bya, byu, byo
+  { char: 'びゃ', romaji: 'bya' },
+  { char: 'びゅ', romaji: 'byu' },
+  { char: 'びょ', romaji: 'byo' },
+
+  // Han-dakuon Yōon (Sons semi-expressos palatalizados)
+  // Pya, pyu, pyo
+  { char: 'ぴゃ', romaji: 'pya' },
+  { char: 'ぴゅ', romaji: 'pyu' },
+  { char: 'ぴょ', romaji: 'pyo' }
 ];
 
 const KATAKANA_LETTERS = [
@@ -63,7 +116,83 @@ const KATAKANA_LETTERS = [
   {char:'マ', romaji:'ma'},{char:'ミ', romaji:'mi'},{char:'ム', romaji:'mu'},{char:'メ', romaji:'me'},{char:'モ', romaji:'mo'},
   {char:'ヤ', romaji:'ya'},{char:'ユ', romaji:'yu'},{char:'ヨ', romaji:'yo'},
   {char:'ラ', romaji:'ra'},{char:'リ', romaji:'ri'},{char:'ル', romaji:'ru'},{char:'レ', romaji:'re'},{char:'ロ', romaji:'ro'},
-  {char:'ワ', romaji:'wa'},{char:'ヲ', romaji:'wo'},{char:'ン', romaji:'n'}
+  {char:'ワ', romaji:'wa'},{char:'ヲ', romaji:'wo'},{char:'ン', romaji:'n'},
+  { char: 'ギ', romaji: 'gi' },
+  { char: 'グ', romaji: 'gu' },
+  { char: 'ゲ', romaji: 'ge' },
+  { char: 'ゴ', romaji: 'go' },
+  // Linha Z (za, ji, zu, ze, zo)
+  { char: 'ザ', romaji: 'za' },
+  { char: 'ジ', romaji: 'ji' },
+  { char: 'ズ', romaji: 'zu' },
+  { char: 'ゼ', romaji: 'ze' },
+  { char: 'ゾ', romaji: 'zo' },
+  // Linha D (da, ji, zu, de, do)
+  { char: 'ダ', romaji: 'da' },
+  { char: 'ヂ', romaji: 'ji' }, // Pronuncia-se como 'ji', similar ao anterior
+  { char: 'ヅ', romaji: 'zu' }, // Pronuncia-se como 'zu', similar ao anterior
+  { char: 'デ', romaji: 'de' },
+  { char: 'ド', romaji: 'do' },
+  // Linha B (ba, bi, bu, be, bo)
+  { char: 'バ', romaji: 'ba' },
+  { char: 'ビ', romaji: 'bi' },
+  { char: 'ブ', romaji: 'bu' },
+  { char: 'ベ', romaji: 'be' },
+  { char: 'ボ', romaji: 'bo' },
+   // Linha P (pa, pi, pu, pe, po)
+  { char: 'パ', romaji: 'pa' },
+  { char: 'ピ', romaji: 'pi' },
+  { char: 'プ', romaji: 'pu' },
+  { char: 'ペ', romaji: 'pe' },
+  { char: 'ポ', romaji: 'po' },
+  // Kya, kyu, kyo
+  { char: 'キャ', romaji: 'kya' },
+  { char: 'キュ', romaji: 'kyu' },
+  { char: 'キョ', romaji: 'kyo' },
+  // Shya, shyu, shyo (sha, shu, sho)
+  { char: 'シャ', romaji: 'sha' },
+  { char: 'シュ', romaji: 'shu' },
+  { char: 'ショ', romaji: 'sho' },
+  // Chya, chyu, chyo (cha, chu, cho)
+  { char: 'チャ', romaji: 'cha' },
+  { char: 'チュ', romaji: 'chu' },
+  { char: 'チョ', romaji: 'cho' },
+  // Nya, nyu, nyo
+  { char: 'ニャ', romaji: 'nya' },
+  { char: 'ニュ', romaji: 'nyu' },
+  { char: 'ニョ', romaji: 'nyo' },
+  // Hya, hyu, hyo
+  { char: 'ヒャ', romaji: 'hya' },
+  { char: 'ヒュ', romaji: 'hyu' },
+  { char: 'ヒョ', romaji: 'hyo' },
+  // Mya, myu, myo
+  { char: 'ミャ', romaji: 'mya' },
+  { char: 'ミュ', romaji: 'myu' },
+  { char: 'ミョ', romaji: 'myo' },
+  // Rya, ryu, ryo
+  { char: 'リャ', romaji: 'rya' },
+  { char: 'リュ', romaji: 'ryu' },
+  { char: 'リョ', romaji: 'ryo' },
+
+  // Dakuon Yōon (Sons expressos palatalizados)
+  // Gya, gyu, gyo
+  { char: 'ギャ', romaji: 'gya' },
+  { char: 'ギュ', romaji: 'gyu' },
+  { char: 'ギョ', romaji: 'gyo' },
+  // Jya, jyu, jyo (ja, ju, jo)
+  { char: 'ジャ', romaji: 'ja' },
+  { char: 'ジュ', romaji: 'ju' },
+  { char: 'ジョ', romaji: 'jo' },
+  // Bya, byu, byo
+  { char: 'ビャ', romaji: 'bya' },
+  { char: 'ビュ', romaji: 'byu' },
+  { char: 'ビョ', romaji: 'byo' },
+
+  // Han-dakuon Yōon (Sons semi-expressos palatalizados)
+  // Pya, pyu, pyo
+  { char: 'ピャ', romaji: 'pya' },
+  { char: 'ピュ', romaji: 'pyu' },
+  { char: 'ピョ', romaji: 'pyo' }
 ];
 
 // shuffle simples (não criptográfica)
