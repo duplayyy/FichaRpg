@@ -128,79 +128,10 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 </script>
 
-
+<script type="module" src="login.js"></script>
+  
   <!-- script.js é o arquivo principal. Deve ficar na mesma pasta e conter toda a lógica. -->
   <script src="script.js" defer></script>
-  
-<script type="module">
-  // Importa os SDKs necessários
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/12.5.0/firebase-app.js";
-  import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.5.0/firebase-analytics.js";
-  import { getAuth, GoogleAuthProvider, signInWithPopup, signInWithEmailAndPassword, createUserWithEmailAndPassword, signOut } 
-  from "https://www.gstatic.com/firebasejs/12.5.0/firebase-auth.js";
-
-  // Configuração do Firebase (a tua)
-  const firebaseConfig = {
-    apiKey: "AIzaSyCcgm_yaHJMIWrweQC04Ga3NR6mU-rCwzM",
-    authDomain: "duppon-bf5dd.firebaseapp.com",
-    projectId: "duppon-bf5dd",
-    storageBucket: "duppon-bf5dd.firebasestorage.app",
-    messagingSenderId: "37968316933",
-    appId: "1:37968316933:web:72666305b63e4294d92a6c",
-    measurementId: "G-N8B31BSHMY"
-  };
-
-  // Inicializa o Firebase
-  const app = initializeApp(firebaseConfig);
-  const analytics = getAnalytics(app);
-  const auth = getAuth(app);
-  const provider = new GoogleAuthProvider();
-
-  // --- FUNÇÕES DE LOGIN ---
-
-  // Login com Google
-  window.loginGoogle = async () => {
-    try {
-      const result = await signInWithPopup(auth, provider);
-      const user = result.user;
-      alert(`Bem-vindo, ${user.displayName}!`);
-      document.getElementById("login-card").classList.add("hidden");
-    } catch (error) {
-      alert("Erro ao entrar com Google: " + error.message);
-    }
-  };
-
-  // Login com email e senha
-  window.loginEmail = async () => {
-    const email = document.getElementById("email").value;
-    const password = document.getElementById("password").value;
-    try {
-      const result = await signInWithEmailAndPassword(auth, email, password);
-      alert(`Bem-vindo, ${result.user.email}!`);
-      document.getElementById("login-card").classList.add("hidden");
-    } catch (error) {
-      alert("Erro ao entrar: " + error.message);
-    }
-  };
-
-  // Cadastro
-  window.registerEmail = async () => {
-    const email = document.getElementById("email").value;
-    const password = document.getElementById("password").value;
-    try {
-      const result = await createUserWithEmailAndPassword(auth, email, password);
-      alert(`Conta criada com sucesso: ${result.user.email}`);
-    } catch (error) {
-      alert("Erro ao criar conta: " + error.message);
-    }
-  };
-
-  // Logout
-  window.logout = async () => {
-    await signOut(auth);
-    alert("Você saiu da conta!");
-  };
-</script>
 
 </body>
 </html>
