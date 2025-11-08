@@ -73,21 +73,17 @@
     </script>
   </main>
 
-  <!-- Botão de entrar -->
-<button id="login-btn" class="login-btn">Entrar</button>
-
-<!-- Card de login -->
-<div id="login-card" class="login-card hidden">
+<!-- ===== CARD DE LOGIN ===== -->
+<div id="login-card">
   <div class="login-content">
+    <button id="close-login">✖</button>
     <h2>Entrar no DUUPON!</h2>
-    <button id="google-login" class="google-btn">Entrar com Google</button>
-    <p>ou</p>
-    <input id="email" type="email" placeholder="Email">
-    <input id="password" type="password" placeholder="Senha">
-    <button id="email-login" class="email-btn">Entrar</button>
-    <button id="close-login" class="close-btn">Fechar</button>
+    <p>Escolha como deseja entrar:</p>
+    <button class="primary-btn">Entrar com Google</button>
+    <button class="small-btn">Entrar com Email</button>
   </div>
 </div>
+
 
   <!-- script.js é o arquivo principal. Deve ficar na mesma pasta e conter toda a lógica. -->
   <script src="script.js" defer></script>
