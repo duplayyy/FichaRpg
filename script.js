@@ -585,38 +585,6 @@ window.addEventListener('storage', (e)=>{
   }
 });
 
-// =============================
-//  LOGIN POPUP CONTROL (｡•̀ᴗ-)✧
-// =============================
-
-// Espera o HTML todo carregar antes de rodar o JS
-document.addEventListener("DOMContentLoaded", () => {
-
-  // Seleciona o botão "Entrar" lá do header
-  const loginBtn = document.querySelector(".login-btn");
-  // Seleciona o card de login (o popup)
-  const loginCard = document.getElementById("login-card");
-  // Seleciona o botão de fechar (✖)
-  const closeLoginBtn = document.getElementById("close-login");
-
-  // Abre o card de login quando clicar em "Entrar"
-  loginBtn.addEventListener("click", () => {
-    loginCard.classList.add("show"); // adiciona a classe .show (ativa o popup)
-  });
-
-  // Fecha o card quando clicar no X
-  closeLoginBtn.addEventListener("click", () => {
-    loginCard.classList.remove("show"); // remove a classe .show (fecha o popup)
-  });
-
-  // Fecha o card se o usuário clicar fora dele
-  window.addEventListener("click", (e) => {
-    if (e.target === loginCard) {
-      loginCard.classList.remove("show");
-    }
-  });
-});
-
 /* =========================
    FIM do script.js
    - Pontos fáceis de customizar:
