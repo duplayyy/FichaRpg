@@ -58,11 +58,19 @@
     </div>
 
     <!-- Partículas (exemplo futuro) -->
+    <!-- ======= BOTÃO DE PARTÍCULAS ======= -->
     <div class="card">
       <h2>Partículas</h2>
-      <button id="start-particles" class="hiragana-btn">Iniciar partículas</button>
-      <p>Vezes feitas: <span id="vezes-particles">0</span></p>
+      <button id="btnParticulas" class="btn">Iniciar partículas</button>
+      <p>Vezes feitas: <span id="vezesParticulas">0</span></p>
     </div>
+
+          <!-- ======= SCRIPT DE NAVEGAÇÃO ======= -->
+    <script>
+      document.getElementById("btnParticulas").addEventListener("click", function() {
+       window.location.href = "particulas.html";
+  }    );
+    </script>
   </main>
 
   <!-- script.js é o arquivo principal. Deve ficar na mesma pasta e conter toda a lógica. -->
