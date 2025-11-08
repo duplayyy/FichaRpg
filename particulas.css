@@ -1,0 +1,430 @@
+/* =========================
+   particulas.css
+   ====== cores/variáveis ======
+*/
+:root {
+  --pastel-header: #bfe1ff;
+  --pastel-header-dark: #9ec8ff;
+  --card-bg: #dcefff;
+  --card-contrast: #9fc6ff;
+  --text-primary: #0b2b4a;
+  --accent-blue: #6e9cff;
+  --bg-dark: #0b1317;
+  --card-dark: #162027;
+  --dark-text: #dfeefd;
+  --primary-btn: #9fc6ff;
+  --primary-hover: #84b6ff;
+  --shadow: 0 6px 18px rgba(11, 43, 74, 0.08);
+}
+
+/* =========================
+   Global / Header
+========================= */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  margin: 0;
+  color: var(--text-primary);
+  background: #fff;
+  transition: background 0.35s, color 0.35s;
+}
+
+/* ===== Header ===== */
+.top-bar {
+  background: linear-gradient(180deg, var(--pastel-header), var(--pastel-header-dark));
+  height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.logo-area {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo-area img {
+  height: 45px;
+  width: 45px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.logo-area h1 {
+  margin: 0;
+  color: var(--text-primary);
+  font-size: 22px;
+}
+
+.logo-text {
+  color: #fff !important;
+}
+
+/* ===== Botões do Header ===== */
+.menu-area {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.icon-btn img {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: none !important;
+  transition: transform 0.4s ease;
+}
+
+.icon-btn:active img {
+  transform: rotate(180deg);
+}
+
+.icon-btn,
+.entrar-btn {
+  background: none !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+/* ===== Botão de Voltar ===== */
+.back-btn {
+  position: absolute;
+  top: 76px;
+  left: 12px;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: white;
+  color: #2b79ff;
+  text-align: center;
+  line-height: 44px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
+  text-decoration: none;
+  font-weight: bold;
+  transition: transform 0.12s;
+}
+
+.back-btn:hover {
+  transform: scale(1.05);
+}
+
+/* =========================
+   Layout principal
+========================= */
+.main-container {
+  display: flex;
+  gap: 30px;
+  align-items: flex-start;
+  padding: 28px 36px;
+  justify-content: center;
+}
+
+.left-column {
+  width: 260px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.center-column {
+  flex: 1;
+  max-width: 720px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+}
+
+.right-column {
+  width: 320px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+/* =========================
+   Boxes / Cards
+========================= */
+.stats-box,
+.controls-box,
+.test-area,
+.manual-box,
+.examples-box {
+  background: var(--card-bg);
+  border-radius: 18px;
+  padding: 18px;
+  box-shadow: var(--shadow);
+  transition: 0.3s ease;
+  width: 100%;
+}
+
+.controls-box label {
+  display: block;
+  margin: 8px 0;
+}
+
+.small-btn {
+  display: inline-block;
+  padding: 8px 12px;
+  border-radius: 12px;
+  border: none;
+  background: #fff;
+  cursor: pointer;
+  margin-top: 8px;
+}
+
+.small-btn:hover {
+  background: #f0f8ff;
+}
+
+.primary-btn {
+  display: inline-block;
+  padding: 12px 20px;
+  border-radius: 20px;
+  background: var(--primary-btn);
+  border: none;
+  color: #fff;
+  cursor: pointer;
+}
+
+.primary-btn:hover {
+  background: var(--primary-hover);
+}
+
+/* =========================
+   Card de treino / Frases
+========================= */
+.test-area {
+  max-width: 720px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.phrase-card {
+  background: var(--card-bg);
+  padding: 24px;
+  border-radius: 16px;
+  box-shadow: var(--shadow);
+  width: 100%;
+  min-height: 180px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.phrase-display {
+  min-height: 72px;
+  font-size: 22px;
+  padding: 16px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.9);
+  color: var(--text-primary);
+}
+
+.options {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 12px;
+}
+
+.option-btn {
+  padding: 10px 12px;
+  border-radius: 999px;
+  border: 2px solid rgba(14, 60, 120, 0.08);
+  background: white;
+  cursor: pointer;
+  text-align: center;
+  transition: 0.25s;
+}
+
+.option-btn:hover {
+  background: var(--primary-hover);
+  color: #fff;
+}
+
+.option-btn.correct {
+  background: limegreen;
+  color: #fff;
+  border-color: transparent;
+}
+
+.option-btn.wrong {
+  background: #ff6363;
+  color: #fff;
+  border-color: transparent;
+}
+
+/* ===== Feedback ===== */
+.feedback {
+  min-height: 22px;
+  margin-top: 8px;
+  font-weight: bold;
+  text-align: center;
+}
+
+/* =========================
+   Tooltip / Kanji Significado
+========================= */
+.w {
+  position: relative;
+  cursor: help;
+  border-bottom: 1px dashed #999;
+}
+
+.w::after {
+  content: attr(data-mean);
+  position: absolute;
+  bottom: 120%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #333;
+  color: #fff;
+  padding: 4px 8px;
+  border-radius: 6px;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+  font-size: 0.9em;
+  z-index: 999;
+}
+
+.w:hover::after {
+  opacity: 1;
+}
+
+/* Tooltip modo claro */
+body:not(.dark-mode) .w::after {
+  background: #fff;
+  color: #000;
+  border: 1px solid #ccc;
+}
+
+/* =========================
+   Manual / Right Column
+========================= */
+.manual-box h3 {
+  margin-top: 0;
+}
+
+.manual-box ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.manual-box li {
+  padding: 8px 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.03);
+}
+
+/* =========================
+   MODO ESCURO TOTAL
+========================= */
+body.dark-mode {
+  background: var(--bg-dark);
+  color: var(--dark-text);
+}
+
+body.dark-mode .stats-box,
+body.dark-mode .controls-box,
+body.dark-mode .test-area,
+body.dark-mode .manual-box,
+body.dark-mode .examples-box,
+body.dark-mode .phrase-card {
+  background: var(--card-dark) !important;
+  color: var(--dark-text) !important;
+  border: 1px solid #333;
+}
+
+body.dark-mode .phrase-display {
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--dark-text);
+}
+
+body.dark-mode .option-btn {
+  background: #222;
+  border-color: #333;
+  color: #eee;
+}
+
+body.dark-mode .option-btn:hover {
+  background: var(--primary-hover);
+  color: #fff;
+}
+
+body.dark-mode .manual-box,
+body.dark-mode .controls-box {
+  background: #1f1f1f !important;
+  color: #eee !important;
+  border: 1px solid #333;
+}
+
+body.dark-mode .w::after {
+  background: #111;
+  color: #fff;
+  border: 1px solid #555;
+}
+
+/* =========================
+   Ajuste de tamanhos e layout
+========================= */
+.test-area,
+.stats-box,
+.controls-box,
+.manual-box {
+  width: 100%;
+  max-width: 720px;
+}
+
+.stats-box {
+  max-width: 280px;
+  align-self: flex-start;
+}
+
+/* =========================
+   Responsividade
+========================= */
+@media (max-width: 980px) {
+  .main-container {
+    flex-direction: column;
+    align-items: center;
+    padding: 18px;
+  }
+
+  .left-column,
+  .right-column {
+    width: 100%;
+    max-width: 560px;
+  }
+
+  .center-column {
+    width: 100%;
+  }
+
+  .back-btn {
+    left: 8px;
+  }
+}
+
+/* ===== Correção cores feedback modo escuro ===== */
+body.dark-mode .option-btn.correct {
+  background: limegreen !important;
+  color: #fff !important;
+  border-color: transparent !important;
+}
+
+body.dark-mode .option-btn.wrong {
+  background: #ff6363 !important;
+  color: #fff !important;
+  border-color: transparent !important;
+}
