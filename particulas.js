@@ -25,37 +25,37 @@ const BANK = [
   {
     id: 1,
     particle: 'は',
-    sentenceHTML: '<ruby><span class="w" data-mean="eu">私</span><rt>わたし</rt></ruby>____<ruby><span class="w" data-mean="estudante, aluno">学生</span><rt>がくせい</rt></ruby><span class="w" data-mean="cópula de polidez">です</span>。',
+    sentenceHTML: '<ruby><span class="w" data-mean="eu">私</span><rt>わたし</rt></ruby>____<ruby><span class="w" data-mean="estudante">学生</span><rt>がくせい</rt></ruby>です。',
     answer: 'wa',
-    hint: 'Marca o tópico principal da frase (Eu).',
+    hint: 'Marca o tópico principal da frase (Eu).'
   },
   {
     id: 2,
     particle: 'は',
-    sentenceHTML: '<span class="w" data-mean="este">この</span><ruby><span class="w" data-mean="livro">本</span><rt>ほん</rt></ruby>____<span class="w" data-mean="interessante">おもしろい</span><span class="w" data-mean="cópula de polidez">です</span>。',
+    sentenceHTML: 'この<ruby><span class="w" data-mean="livro">本</span><rt>ほん</rt></ruby>____<ruby><span class="w" data-mean="interessante">おもしろい</span><rt>おもしろい</rt></ruby>です。',
     answer: 'wa',
-    hint: 'Marca o tópico "este livro".',
+    hint: 'Marca o tópico "este livro".'
   },
   {
     id: 3,
     particle: 'は',
-    sentenceHTML: '<ruby><span class="w" data-mean="hoje">今日</span><rt>きょう</rt></ruby>____<ruby><span class="w" data-mean="frio">寒</span><rt>さむ</rt></ruby><span class="w" data-mean="negação">くありません</span>。',
+    sentenceHTML: '<ruby><span class="w" data-mean="hoje">今日</span><rt>きょう</rt></ruby>____<ruby><span class="w" data-mean="frio">寒くありません</span><rt>さむくありません</rt></ruby>。',
     answer: 'wa',
-    hint: 'Marca o tópico "hoje" (com negação, usado para contraste).',
+    hint: 'Marca o tópico "hoje" (com negação, usado para contraste).'
   },
   {
     id: 4,
     particle: 'は',
-    sentenceHTML: '<span class="w" data-mean="café">コーヒー</span>____<ruby><span class="w" data-mean="beber">飲</span><rt>の</rt></ruby><span class="w" data-mean="partícula de objeto direto">み</span><span class="w" data-mean="partícula conjuntiva">ます</span><span class="w" data-mean="partícula conjuntiva (mas)">が</span>、<ruby><span class="w" data-mean="chá">お茶</span><rt>おちゃ</rt></ruby><span class="w" data-mean="partícula de tópico">は</span><ruby><span class="w" data-mean="beber">飲</span><rt>の</rt></ruby><span class="w" data-mean="negação">みません</span>。',
+    sentenceHTML: 'コーヒー____<ruby><span class="w" data-mean="beber">飲みます</span><rt>のみます</rt></ruby>が、<ruby><span class="w" data-mean="chá">お茶</span><rt>おちゃ</rt></ruby>は<ruby><span class="w" data-mean="beber">飲みません</span><rt>のみません</rt></ruby>。',
     answer: 'wa',
-    hint: 'Usado para **contraste** ("quanto ao café, eu bebo, mas...").',
+    hint: 'Usado para **contraste** ("quanto ao café, eu bebo, mas...").'
   },
   {
     id: 5,
     particle: 'は',
-    sentenceHTML: '<ruby><span class="w" data-mean="senhor Tanaka">田中</span><rt>たなか</rt></ruby><span class="w" data-mean="sufixo de polidez">さん</span>____<ruby><span class="w" data-mean="professor">先生</span><rt>せんせい</rt></ruby><span class="w" data-mean="cópula de polidez">です</span><span class="w" data-mean="partícula de pergunta">か</span>。',
+    sentenceHTML: '<ruby><span class="w" data-mean="senhor Tanaka">田中さん</span><rt>たなかさん</rt></ruby>____<ruby><span class="w" data-mean="professor">先生</span><rt>せんせい</rt></ruby>ですか。',
     answer: 'wa',
-    hint: 'Marca o tópico principal da pergunta ("Quanto ao Sr. Tanaka?").',
+    hint: 'Marca o tópico principal da pergunta ("Quanto ao Sr. Tanaka?").'
   },
 
   // =================================
@@ -64,37 +64,37 @@ const BANK = [
   {
     id: 6,
     particle: 'が',
-    sentenceHTML: '<ruby><span class="w" data-mean="chuva">雨</span><rt>あめ</rt></ruby>____<ruby><span class="w" data-mean="cair, chover">降</span><rt>ふ</rt></ruby><span class="w" data-mean="estar em andamento">っています</span>。',
+    sentenceHTML: '<ruby><span class="w" data-mean="chuva">雨</span><rt>あめ</rt></ruby>____<ruby><span class="w" data-mean="estar caindo">降っています</span><rt>ふっています</rt></ruby>。',
     answer: 'ga',
-    hint: 'Indica o sujeito que executa a ação (a chuva é que está caindo).',
+    hint: 'Indica o sujeito que executa a ação (a chuva é que está caindo).'
   },
   {
     id: 7,
     particle: 'が',
-    sentenceHTML: '<ruby><span class="w" data-mean="eu">私</span><rt>わたし</rt></ruby><span class="w" data-mean="partícula de tópico">は</span>、<ruby><span class="w" data-mean="gato">猫</span><rt>ねこ</rt></ruby>____<ruby><span class="w" data-mean="gostar">好</span><rt>す</rt></ruby><span class="w" data-mean="cópula de polidez">きです</span>。',
+    sentenceHTML: '<ruby><span class="w" data-mean="eu">私</span><rt>わたし</rt></ruby>は、<ruby><span class="w" data-mean="gato">猫</span><rt>ねこ</rt></ruby>____<ruby><span class="w" data-mean="gostar">好きです</span><rt>すきです</rt></ruby>。',
     answer: 'ga',
-    hint: 'Usado com verbos/adjetivos de desejo/gosto (好き, 欲しい).',
+    hint: 'Usado com verbos/adjetivos de desejo/gosto (好き, 欲しい).'
   },
   {
     id: 8,
     particle: 'が',
-    sentenceHTML: '<span class="w" data-mean="qual">どの</span><ruby><span class="w" data-mean="pessoa">人</span><rt>ひと</rt></ruby>____<ruby><span class="w" data-mean="senhor Tanaka">田中</span><rt>たなか</rt></ruby><span class="w" data-mean="sufixo de polidez">さん</span><span class="w" data-mean="cópula de polidez">です</span><span class="w" data-mean="partícula de pergunta">か</span>。',
+    sentenceHTML: 'どの<ruby><span class="w" data-mean="pessoa">人</span><rt>ひと</rt></ruby>____<ruby><span class="w" data-mean="senhor Tanaka">田中さん</span><rt>たなかさん</rt></ruby>ですか。',
     answer: 'ga',
-    hint: 'Usado para perguntar pelo sujeito (Quem/Qual/O que).',
+    hint: 'Usado para perguntar pelo sujeito (Quem/Qual/O que).'
   },
   {
     id: 9,
     particle: 'が',
-    sentenceHTML: '<span class="w" data-mean="porta">ドア</span>____<ruby><span class="w" data-mean="abrir">開</span><rt>あ</rt></ruby><span class="w" data-mean="estar em andamento">いています</span>。',
+    sentenceHTML: '<ruby><span class="w" data-mean="porta">ドア</span><rt>ドア</rt></ruby>____<ruby><span class="w" data-mean="abrir">開いています</span><rt>あいています</rt></ruby>。',
     answer: 'ga',
-    hint: 'Usado para descrever estados naturais ou espontâneos (a porta *está* aberta).',
+    hint: 'Usado para descrever estados naturais ou espontâneos (a porta *está* aberta).'
   },
   {
     id: 10,
     particle: 'が',
-    sentenceHTML: 'わたし<span class="w" data-mean="partícula de tópico">は</span><ruby><span class="w" data-mean="japonês">日本</span><rt>にほん</rt></ruby><ruby><span class="w" data-mean="linguagem">語</span><rt>ご</rt></ruby>____<ruby><span class="w" data-mean="entender, saber">分</span><rt>わ</rt></ruby><span class="w" data-mean="polidez">かります</span>。',
+    sentenceHTML: 'わたしは<ruby><span class="w" data-mean="japonês">日本語</span><rt>にほんご</rt></ruby>____<ruby><span class="w" data-mean="entender">分かります</span><rt>わかります</rt></ruby>。',
     answer: 'ga',
-    hint: 'Usado com verbos de percepção e habilidade (わかる, できる).',
+    hint: 'Usado com verbos de percepção e habilidade (わかる, できる).'
   },
 
   // =================================
@@ -103,37 +103,37 @@ const BANK = [
   {
     id: 11,
     particle: 'を',
-    sentenceHTML: '<ruby><span class="w" data-mean="água">水</span><rt>みず</rt></ruby>____<ruby><span class="w" data-mean="beber">飲</span><rt>の</rt></ruby><span class="w" data-mean="polidez">みます</span>。',
+    sentenceHTML: '<ruby><span class="w" data-mean="água">水</span><rt>みず</rt></ruby>____<ruby><span class="w" data-mean="beber">飲みます</span><rt>のみます</rt></ruby>。',
     answer: 'o',
-    hint: 'Marca o objeto direto (a água está sendo bebida).',
+    hint: 'Marca o objeto direto (a água está sendo bebida).'
   },
   {
     id: 12,
     particle: 'を',
-    sentenceHTML: '<ruby><span class="w" data-mean="jornal">新聞</span><rt>しんぶん</rt></ruby>____<ruby><span class="w" data-mean="ler">読</span><rt>よ</rt></ruby><span class="w" data-mean="polidez">みます</span>。',
+    sentenceHTML: '<ruby><span class="w" data-mean="jornal">新聞</span><rt>しんぶん</rt></ruby>____<ruby><span class="w" data-mean="ler">読みます</span><rt>よみます</rt></ruby>。',
     answer: 'o',
-    hint: 'Marca o objeto direto (o jornal está sendo lido).',
+    hint: 'Marca o objeto direto (o jornal está sendo lido).'
   },
   {
     id: 13,
     particle: 'を',
-    sentenceHTML: '<ruby><span class="w" data-mean="rua">道</span><rt>みち</rt></ruby>____<ruby><span class="w" data-mean="atravessar">渡</span><rt>わた</rt></ruby><span class="w" data-mean="polidez">ります</span>。',
+    sentenceHTML: '<ruby><span class="w" data-mean="rua">道</span><rt>みち</rt></ruby>____<ruby><span class="w" data-mean="atravessar">渡ります</span><rt>わたります</rt></ruby>。',
     answer: 'o',
-    hint: 'Usado com verbos de movimento para indicar por onde se passa (atravessar a rua).',
+    hint: 'Usado com verbos de movimento para indicar por onde se passa (atravessar a rua).'
   },
   {
     id: 14,
     particle: 'を',
-    sentenceHTML: '<ruby><span class="w" data-mean="parque">公園</span><rt>こうえん</rt></ruby>____<ruby><span class="w" data-mean="passear">散歩</span><rt>さんぽ</rt></ruby><span class="w" data-mean="verbo fazer">します</span>。',
+    sentenceHTML: '<ruby><span class="w" data-mean="parque">公園</span><rt>こうえん</rt></ruby>____<ruby><span class="w" data-mean="dar um passeio">散歩します</span><rt>さんぽします</rt></ruby>。',
     answer: 'o',
-    hint: 'Usado para indicar o local de uma ação não-linear ou passeio (passear pelo parque).',
+    hint: 'Usado para indicar o local de uma ação **não-linear** ou passeio (passear pelo parque).'
   },
   {
     id: 15,
     particle: 'を',
-    sentenceHTML: '<span class="w" data-mean="qual">どの</span><span class="w" data-mean="ônibus">バス</span>____<ruby><span class="w" data-mean="pegar, embarcar">乗</span><rt>の</rt></ruby><span class="w" data-mean="polidez">ります</span><span class="w" data-mean="partícula de pergunta">か</span>。',
+    sentenceHTML: 'どの<ruby><span class="w" data-mean="ônibus">バス</span><rt>バス</rt></ruby>____<ruby><span class="w" data-mean="pegar">乗ります</span><rt>のります</rt></ruby>か。',
     answer: 'o',
-    hint: 'Marca o objeto direto da ação (qual ônibus será pego).',
+    hint: 'Marca o objeto direto da ação (qual ônibus será pego).'
   },
 
   // =================================
@@ -142,37 +142,37 @@ const BANK = [
   {
     id: 16,
     particle: 'に',
-    sentenceHTML: '<ruby><span class="w" data-mean="escola">学校</span><rt>がっこう</rt></ruby>____<ruby><span class="w" data-mean="ir">行</span><rt>い</rt></ruby><span class="w" data-mean="polidez">きます</span>。',
+    sentenceHTML: '<ruby><span class="w" data-mean="escola">学校</span><rt>がっこう</rt></ruby>____<ruby><span class="w" data-mean="ir">行きます</span><rt>いきます</rt></ruby>。',
     answer: 'ni',
-    hint: 'Indica o **destino** final do movimento.',
+    hint: 'Indica o **destino** final do movimento.'
   },
   {
     id: 17,
     particle: 'に',
-    sentenceHTML: '<ruby><span class="w" data-mean="três">三</span><rt>さん</rt></ruby><ruby><span class="w" data-mean="hora">時</span><rt>じ</rt></ruby>____<ruby><span class="w" data-mean="acordar">起</span><rt>お</rt></ruby><span class="w" data-mean="polidez">きます</span>。',
+    sentenceHTML: '<ruby><span class="w" data-mean="três horas">三時</span><rt>さんじ</rt></ruby>____<ruby><span class="w" data-mean="acordar">起きます</span><rt>おきます</rt></ruby>。',
     answer: 'ni',
-    hint: 'Indica **tempo específico** (hora, dia da semana, ano).',
+    hint: 'Indica **tempo específico** (hora, dia da semana, ano).'
   },
   {
     id: 18,
     particle: 'に',
-    sentenceHTML: '<span class="w" data-mean="cadeira">いす</span>____<ruby><span class="w" data-mean="sentar">座</span><rt>すわ</rt></ruby><span class="w" data-mean="polidez">ります</span>。',
+    sentenceHTML: '<ruby><span class="w" data-mean="cadeira">いす</span><rt>いす</rt></ruby>____<ruby><span class="w" data-mean="sentar">座ります</span><rt>すわります</rt></ruby>。',
     answer: 'ni',
-    hint: 'Indica o **alvo/ponto de contato** da ação (sentar-se *na* cadeira).',
+    hint: 'Indica o **alvo/ponto de contato** da ação (sentar-se *na* cadeira).'
   },
   {
     id: 19,
     particle: 'に',
-    sentenceHTML: '<ruby><span class="w" data-mean="mesa, escrivaninha">机</span><rt>つくえ</rt></ruby><span class="w" data-mean="partícula de posse">の</span><ruby><span class="w" data-mean="em cima">上</span><rt>うえ</rt></ruby>____<ruby><span class="w" data-mean="ter, existir (inanimado)">あります</span><rt>あります</rt></ruby>。',
+    sentenceHTML: 'つくえの<ruby><span class="w" data-mean="em cima">上</span><rt>うえ</rt></ruby>____<ruby><span class="w" data-mean="ter/existir">あります</span><rt>あります</rt></ruby>。',
     answer: 'ni',
-    hint: 'Indica o local de **existência** (com ある - para objetos inanimados).',
+    hint: 'Indica o local de **existência** (com ある - para objetos inanimados).'
   },
   {
     id: 20,
     particle: 'に',
-    sentenceHTML: '<ruby><span class="w" data-mean="mãe">母</span><rt>はは</rt></ruby>____<span class="w" data-mean="dar (para outrem)">あげます</span>。',
+    sentenceHTML: '<ruby><span class="w" data-mean="mãe">母</span><rt>はは</rt></ruby>____<ruby><span class="w" data-mean="dar">あげます</span><rt>あげます</rt></ruby>。',
     answer: 'ni',
-    hint: 'Indica a **pessoa alvo** (receptor) da ação (dar *para* a mãe).',
+    hint: 'Indica a **pessoa alvo** (receptor) da ação (dar *para* a mãe).'
   },
 
   // =================================
@@ -181,37 +181,37 @@ const BANK = [
   {
     id: 21,
     particle: 'で',
-    sentenceHTML: '<span class="w" data-mean="restaurante">レストラン</span>____<ruby><span class="w" data-mean="comer">食</span><rt>た</rt></ruby><span class="w" data-mean="polidez">べます</span>。',
+    sentenceHTML: '<ruby><span class="w" data-mean="restaurante">レストラン</span><rt>レストラン</rt></ruby>____<ruby><span class="w" data-mean="comer">食べます</span><rt>たべます</rt></ruby>。',
     answer: 'de',
-    hint: 'Indica o **local onde** a ação acontece.',
+    hint: 'Indica o **local onde** a ação acontece.'
   },
   {
     id: 22,
     particle: 'で',
-    sentenceHTML: '<span class="w" data-mean="inglês">えいご</span>____<ruby><span class="w" data-mean="falar">話</span><rt>はな</rt></ruby><span class="w" data-mean="polidez">します</span>。',
+    sentenceHTML: 'えいご____<ruby><span class="w" data-mean="falar">話します</span><rt>はなします</rt></ruby>。',
     answer: 'de',
-    hint: 'Indica o **instrumento** ou **língua** usada ("de inglês").',
+    hint: 'Indica o **instrumento** ou **língua** usada ("de inglês").'
   },
   {
     id: 23,
     particle: 'で',
-    sentenceHTML: '<span class="w" data-mean="este">この</span><ruby><span class="w" data-mean="lápis">鉛筆</span><rt>えんぴつ</rt></ruby>____<ruby><span class="w" data-mean="escrever">書</span><rt>か</rt></ruby><span class="w" data-mean="polidez">きます</span>。',
+    sentenceHTML: 'この<ruby><span class="w" data-mean="lápis">えんぴつ</span><rt>えんぴつ</rt></ruby>____<ruby><span class="w" data-mean="escrever">書きます</span><rt>かきます</rt></ruby>。',
     answer: 'de',
-    hint: 'Indica o **meio/ferramenta** usado (escrever *com* o lápis).',
+    hint: 'Indica o **meio/ferramenta** usado (escrever *com* o lápis).'
   },
   {
     id: 24,
     particle: 'で',
-    sentenceHTML: '<ruby><span class="w" data-mean="doença">病気</span><rt>びょうき</rt></ruby>____<ruby><span class="w" data-mean="morrer">死</span><rt>し</rt></ruby><span class="w" data-mean="passado">にました</span>。',
+    sentenceHTML: '<ruby><span class="w" data-mean="doença">病気</span><rt>びょうき</rt></ruby>____<ruby><span class="w" data-mean="morrer">死にました</span><rt>しにました</rt></ruby>。',
     answer: 'de',
-    hint: 'Indica a **causa** (morreu *por causa da* doença).',
+    hint: 'Indica a **causa** (morreu *por causa da* doença).'
   },
   {
     id: 25,
     particle: 'で',
-    sentenceHTML: '<ruby><span class="w" data-mean="tudo">全部</span><rt>ぜんぶ</rt></ruby>____<span class="w" data-mean="duzentos ienes">200円</span><span class="w" data-mean="cópula de polidez">です</span>。',
+    sentenceHTML: '<ruby><span class="w" data-mean="tudo">全部</span><rt>ぜんぶ</rt></ruby>____<ruby><span class="w" data-mean="duzentos ienes">200円</span><rt>200えん</rt></ruby>です。',
     answer: 'de',
-    hint: 'Indica o **limite/escopo** (o total dá 200 ienes).',
+    hint: 'Indica o **limite/escopo** (o total dá 200 ienes).'
   },
 
   // =================================
@@ -220,37 +220,37 @@ const BANK = [
   {
     id: 26,
     particle: 'の',
-    sentenceHTML: '<ruby><span class="w" data-mean="eu">私</span><rt>わたし</rt></ruby>____<ruby><span class="w" data-mean="carro">車</span><rt>くるま</rt></ruby><span class="w" data-mean="cópula de polidez">です</span>。',
+    sentenceHTML: '<ruby><span class="w" data-mean="eu">私</span><rt>わたし</rt></ruby>____<ruby><span class="w" data-mean="carro">車</span><rt>くるま</rt></ruby>です。',
     answer: 'no',
-    hint: 'Indica **posse** (carro *de* mim).',
+    hint: 'Indica **posse** (carro *de* mim).'
   },
   {
     id: 27,
     particle: 'の',
-    sentenceHTML: '<span class="w" data-mean="este">これ</span><span class="w" data-mean="partícula de tópico">は</span><ruby><span class="w" data-mean="Japão">日本</span><rt>にほん</rt></ruby>____<ruby><span class="w" data-mean="produto">製品</span><rt>せいひん</rt></ruby><span class="w" data-mean="cópula de polidez">です</span>。',
+    sentenceHTML: 'これは<ruby><span class="w" data-mean="japonês">日本</span><rt>にほん</rt></ruby>____<ruby><span class="w" data-mean="produto">製品</span><rt>せいひん</rt></ruby>です。',
     answer: 'no',
-    hint: 'Indica **origem** ou **relação** (produto *do* Japão).',
+    hint: 'Indica **origem** ou **relação** (produto *do* Japão).'
   },
   {
     id: 28,
     particle: 'の',
-    sentenceHTML: '<ruby><span class="w" data-mean="professor">先生</span><rt>せんせい</rt></ruby>____<ruby><span class="w" data-mean="filho">子</span><rt>こ</rt></ruby><span class="w" data-mean="partícula de tópico">どもは</span><span class="w" data-mean="bonito, limpo">きれいです</span>。',
+    sentenceHTML: '<ruby><span class="w" data-mean="professor">先生</span><rt>せんせい</rt></ruby>____<ruby><span class="w" data-mean="filho">子</span><rt>こ</rt></ruby>どもは<ruby><span class="w" data-mean="bonito">きれいです</span><rt>きれいです</rt></ruby>。',
     answer: 'no',
-    hint: 'Indica **posse/relação** (filho *do* professor).',
+    hint: 'Indica **posse/relação** (filho *do* professor).'
   },
   {
     id: 29,
     particle: 'の',
-    sentenceHTML: '<ruby><span class="w" data-mean="quebrar">壊</span><rt>こわ</rt></ruby><span class="w" data-mean="passado">れた</span>____<span class="w" data-mean="partícula de tópico">は</span><span class="w" data-mean="este">これ</span><span class="w" data-mean="cópula de polidez">です</span>。',
+    sentenceHTML: '<ruby><span class="w" data-mean="quebrar">壊れた</span><rt>こわれた</rt></ruby>____は<ruby><span class="w" data-mean="este">これ</span><rt>これ</rt></ruby>です。',
     answer: 'no',
-    hint: 'Usado como **nominalizador** (o que quebrou *é* este).',
+    hint: 'Usado como **nominalizador** (o que quebrou *é* este).'
   },
   {
     id: 30,
     particle: 'の',
-    sentenceHTML: '<ruby><span class="w" data-mean="trabalhar">働</span><rt>はたら</rt></ruby><span class="w" data-mean="nominalizador">く</span>____が<ruby><span class="w" data-mean="gostar">好</span><rt>す</rt></ruby><span class="w" data-mean="cópula de polidez">きです</span>。',
+    sentenceHTML: '<ruby><span class="w" data-mean="trabalhar">働く</span><rt>はたらく</rt></ruby>____が<ruby><span class="w" data-mean="gostar">好きです</span><rt>すきです</rt></ruby>。',
     answer: 'no',
-    hint: 'Transforma o verbo (trabalhar) em substantivo (ação *de* trabalhar) para ser o objeto de "gostar".',
+    hint: 'Transforma o verbo (trabalhar) em substantivo (ação *de* trabalhar) para ser o objeto de "gostar".'
   },
 
   // =================================
@@ -259,37 +259,37 @@ const BANK = [
   {
     id: 31,
     particle: 'と',
-    sentenceHTML: '<ruby><span class="w" data-mean="amigo">友達</span><rt>ともだち</rt></ruby>____<ruby><span class="w" data-mean="falar">話</span><rt>はな</rt></ruby><span class="w" data-mean="polidez">します</span>。',
+    sentenceHTML: '<ruby><span class="w" data-mean="amigo">友達</span><rt>ともだち</rt></ruby>____<ruby><span class="w" data-mean="conversar">話します</span><rt>はなします</rt></ruby>。',
     answer: 'to',
-    hint: 'Indica o **parceiro** da ação ("com" um amigo).',
+    hint: 'Indica o **parceiro** da ação ("com" um amigo).'
   },
   {
     id: 32,
     particle: 'と',
-    sentenceHTML: '<ruby><span class="w" data-mean="cachorro">犬</span><rt>いぬ</rt></ruby>____<ruby><span class="w" data-mean="gato">猫</span><rt>ねこ</rt></ruby><span class="w" data-mean="partícula de sujeito">が</span><ruby><span class="w" data-mean="ter, existir (animado)">います</span><rt>います</rt></ruby>。',
+    sentenceHTML: '<ruby><span class="w" data-mean="cachorro">犬</span><rt>いぬ</rt></ruby>____<ruby><span class="w" data-mean="gato">猫</span><rt>ねこ</rt></ruby>が<ruby><span class="w" data-mean="estar">います</span><rt>います</rt></ruby>。',
     answer: 'to',
-    hint: 'Indica **lista completa** de itens (cachorro *e* gato).',
+    hint: 'Indica **lista completa** de itens (cachorro *e* gato).'
   },
   {
     id: 33,
     particle: 'と',
-    sentenceHTML: '「<span class="w" data-mean="adeus">さようなら</span>」____<ruby><span class="w" data-mean="dizer">言</span><rt>い</rt></ruby><span class="w" data-mean="passado">いました</span>。',
+    sentenceHTML: '「さようなら」____<ruby><span class="w" data-mean="dizer">言いました</span><rt>いいました</rt></ruby>。',
     answer: 'to',
-    hint: 'Usado para **citação** ("disse *o quê*?").',
+    hint: 'Usado para **citação** ("disse *o que*?").'
   },
   {
     id: 34,
     particle: 'と',
-    sentenceHTML: '<ruby><span class="w" data-mean="o que">何</span><rt>なに</rt></ruby>____<ruby><span class="w" data-mean="pensar">思</span><rt>おも</rt></ruby><span class="w" data-mean="polidez">います</span><span class="w" data-mean="partícula de pergunta">か</span>。',
+    sentenceHTML: '<ruby><span class="w" data-mean="o que">何</span><rt>なに</rt></ruby>____<ruby><span class="w" data-mean="pensar">思いますか</span><rt>おもいますか</rt></ruby>。',
     answer: 'to',
-    hint: 'Usado para citar um **pensamento** ("pensar *o quê*?").',
+    hint: 'Usado para citar um **pensamento** ("pensar *o que*?").'
   },
   {
     id: 35,
     particle: 'と',
-    sentenceHTML: '<ruby><span class="w" data-mean="eu">私</span><rt>わたし</rt></ruby>____<ruby><span class="w" data-mean="ele">彼</span><rt>かれ</rt></ruby><span class="w" data-mean="partícula de tópico">は</span><ruby><span class="w" data-mean="irmãos">兄弟</span><rt>きょうだい</rt></ruby><span class="w" data-mean="cópula de polidez">です</span>。',
+    sentenceHTML: '<ruby><span class="w" data-mean="eu">私</span><rt>わたし</rt></ruby>____<ruby><span class="w" data-mean="ele">彼</span><rt>かれ</rt></ruby>は<ruby><span class="w" data-mean="irmãos">兄弟</span><rt>きょうだい</rt></ruby>です。',
     answer: 'to',
-    hint: 'Liga dois substantivos em uma lista completa (Eu *e* ele).',
+    hint: 'Liga dois substantivos em uma lista completa (Eu *e* ele).'
   },
 
   // =================================
@@ -298,37 +298,37 @@ const BANK = [
   {
     id: 36,
     particle: 'へ',
-    sentenceHTML: '<span class="w" data-mean="Brasil">ブラジル</span>____<ruby><span class="w" data-mean="voltar">帰</span><rt>かえ</rt></ruby><span class="w" data-mean="polidez">ります</span>。',
+    sentenceHTML: 'ブラジル____<ruby><span class="w" data-mean="voltar">帰ります</span><rt>かえります</rt></ruby>。',
     answer: 'e',
-    hint: 'Indica a **direção** do movimento (voltando *para* o Brasil).',
+    hint: 'Indica a **direção** do movimento (voltando *para* o Brasil).'
   },
   {
     id: 37,
     particle: 'へ',
-    sentenceHTML: '<ruby><span class="w" data-mean="casa">家</span><rt>いえ</rt></ruby>____<ruby><span class="w" data-mean="voltar">帰</span><rt>かえ</rt></ruby><span class="w" data-mean="polidez">ります</span>。',
+    sentenceHTML: '<ruby><span class="w" data-mean="casa">家</span><rt>いえ</rt></ruby>____<ruby><span class="w" data-mean="voltar">帰ります</span><rt>かえります</rt></ruby>。',
     answer: 'e',
-    hint: 'Indica a **direção** do movimento (voltando *para* casa).',
+    hint: 'Indica a **direção** do movimento (voltando *para* casa).'
   },
   {
     id: 38,
     particle: 'へ',
-    sentenceHTML: '<ruby><span class="w" data-mean="Tokyo">東京</span><rt>とうきょう</rt></ruby>____<ruby><span class="w" data-mean="ir">行</span><rt>い</rt></ruby><span class="w" data-mean="polidez">きます</span>。',
+    sentenceHTML: '<ruby><span class="w" data-mean="Tokyo">東京</span><rt>とうきょう</rt></ruby>____<ruby><span class="w" data-mean="ir">行きます</span><rt>いきます</rt></ruby>。',
     answer: 'e',
-    hint: 'Indica a **direção** do movimento (indo *para* Tóquio).',
+    hint: 'Indica a **direção** do movimento (indo *para* Tóquio).'
   },
   {
     id: 39,
     particle: 'へ',
-    sentenceHTML: '<ruby><span class="w" data-mean="Japão">日本</span><rt>にほん</rt></ruby>____<ruby><span class="w" data-mean="vir">来</span><rt>き</rt></ruby><span class="w" data-mean="passado">ました</span>。',
+    sentenceHTML: '<ruby><span class="w" data-mean="Japão">日本</span><rt>にほん</rt></ruby>____<ruby><span class="w" data-mean="vir">来ました</span><rt>きました</rt></ruby>。',
     answer: 'e',
-    hint: 'Indica a **direção** do movimento (vindo *para* o Japão).',
+    hint: 'Indica a **direção** do movimento (vindo *para* o Japão).'
   },
   {
     id: 40,
     particle: 'へ',
-    sentenceHTML: '<ruby><span class="w" data-mean="amigo">友達</span><rt>ともだち</rt></ruby>____<ruby><span class="w" data-mean="mandar carta">手紙</span><rt>てがみ</rt></ruby><span class="w" data-mean="partícula de objeto direto">を</span><ruby><span class="w" data-mean="enviar">送</span><rt>おく</rt></ruby><span class="w" data-mean="polidez">ります</span>。',
+    sentenceHTML: '<ruby><span class="w" data-mean="amigo">友達</span><rt>ともだち</rt></ruby>____<ruby><span class="w" data-mean="mandar carta">手紙を送ります</span><rt>てがみをおくります</rt></ruby>。',
     answer: 'e',
-    hint: 'Usado para indicar o **receptor** (enviar *para* um amigo - focado na direção).',
+    hint: 'Usado para indicar o **receptor** (enviar *para* um amigo - focado na direção).'
   },
 
   // =================================
@@ -337,37 +337,37 @@ const BANK = [
   {
     id: 41,
     particle: 'も',
-    sentenceHTML: '<ruby><span class="w" data-mean="eu">私</span><rt>わたし</rt></ruby>____<ruby><span class="w" data-mean="estudante, aluno">学生</span><rt>がくせい</rt></ruby><span class="w" data-mean="cópula de polidez">です</span>。',
+    sentenceHTML: '<ruby><span class="w" data-mean="eu">私</span><rt>わたし</rt></ruby>____<ruby><span class="w" data-mean="estudante">学生</span><rt>がくせい</rt></ruby>です。',
     answer: 'mo',
-    hint: 'Significa "**também**" (Eu *também* sou estudante).',
+    hint: 'Significa "**também**" (Eu *também* sou estudante).'
   },
   {
     id: 42,
     particle: 'も',
-    sentenceHTML: '<span class="w" data-mean="este">これ</span>____<span class="w" data-mean="aquele">それ</span>____<ruby><span class="w" data-mean="caro">高</span><rt>たか</rt></ruby><span class="w" data-mean="cópula de polidez">いです</span>。',
+    sentenceHTML: '<ruby><span class="w" data-mean="este">これ</span><rt>これ</rt></ruby>____<ruby><span class="w" data-mean="aquele">それ</span><rt>それ</rt></ruby>____<ruby><span class="w" data-mean="caro">高い</span><rt>たかい</rt></ruby>です。',
     answer: 'mo',
-    hint: 'Usado para dizer que **ambos** são caros ("tanto isso *quanto* aquilo").',
+    hint: 'Usado para dizer que **ambos** são caros ("tanto isso *quanto* aquilo").'
   },
   {
     id: 43,
     particle: 'も',
-    sentenceHTML: '<span class="w" data-mean="ninguém">だれ</span>____<ruby><span class="w" data-mean="vir">来</span><rt>き</rt></ruby><span class="w" data-mean="negação passado">ませんでした</span>。',
+    sentenceHTML: '<ruby><span class="w" data-mean="nenhum">だれ</span><rt>だれ</rt></ruby>____<ruby><span class="w" data-mean="não vir">来ませんでした</span><rt>きませんでした</rt></ruby>。',
     answer: 'mo',
-    hint: 'Usado com pronomes interrogativos na forma negativa para significar "**ninguém/nada**" (Ninguém *sequer* veio).',
+    hint: 'Usado com pronomes interrogativos na forma negativa para significar "**ninguém/nada**" (Ninguém *sequer* veio).'
   },
   {
     id: 44,
     particle: 'も',
-    sentenceHTML: '<ruby><span class="w" data-mean="dinheiro">お金</span><rt>おかね</rt></ruby>____<span class="w" data-mean="não ter">ありません</span>。',
+    sentenceHTML: '<ruby><span class="w" data-mean="dinheiro">お金</span><rt>おかね</rt></ruby>____ありません。',
     answer: 'mo',
-    hint: 'Significa "nem (dinheiro)" na forma negativa ("Não tenho *sequer* dinheiro").',
+    hint: 'Significa "nem (dinheiro)" na forma negativa ("Eu *também* não tenho dinheiro", ou "Não tenho *sequer* dinheiro").'
   },
   {
     id: 45,
     particle: 'も',
-    sentenceHTML: '<span class="w" data-mean="este">この</span><span class="w" data-mean="pão">パン</span><span class="w" data-mean="partícula de tópico">は</span>、<ruby><span class="w" data-mean="doce">甘</span><rt>あま</rt></ruby><span class="w" data-mean="partícula 'e também'">い</span>____<ruby><span class="w" data-mean="salgado">塩辛</span><rt>しおから</rt></ruby><span class="w" data-mean="cópula de polidez">いです</span>。',
+    sentenceHTML: '<ruby><span class="w" data-mean="este">この</span><rt>この</rt></ruby><ruby><span class="w" data-mean="pão">パン</span><rt>パン</rt></ruby>は、<ruby><span class="w" data-mean="doce">甘い</span><rt>あまい</rt></ruby>____<ruby><span class="w" data-mean="salgado">塩辛い</span><rt>しおからい</rt></ruby>です。',
     answer: 'mo',
-    hint: 'Significa "**e também**" quando usado para listar características (é *doce e também* salgado).',
+    hint: 'Significa "**e também**" quando usado para listar características (é *doce e também* salgado).'
   },
 
   // =================================
@@ -376,37 +376,37 @@ const BANK = [
   {
     id: 46,
     particle: 'から',
-    sentenceHTML: '8<ruby><span class="w" data-mean="hora">時</span><rt>じ</rt></ruby>____<ruby><span class="w" data-mean="estudar">勉強</span><rt>べんきょう</rt></ruby><span class="w" data-mean="verbo fazer">します</span>。',
+    sentenceHTML: '8<ruby><span class="w" data-mean="hora">時</span><rt>じ</rt></ruby>____<ruby><span class="w" data-mean="estudar">勉強します</span><rt>べんきょうします</rt></ruby>。',
     answer: 'kara',
-    hint: 'Indica o **ponto inicial** no tempo ("desde" as 8h).',
+    hint: 'Indica o **ponto inicial** no tempo ("desde" as 8h).'
   },
   {
     id: 47,
     particle: 'から',
-    sentenceHTML: '<span class="w" data-mean="Brasil">ブラジル</span>____<ruby><span class="w" data-mean="vir">来</span><rt>き</rt></ruby><span class="w" data-mean="passado">ました</span>。',
+    sentenceHTML: '<ruby><span class="w" data-mean="Brasil">ブラジル</span><rt>ブラジル</rt></ruby>____<ruby><span class="w" data-mean="vir">来ました</span><rt>きました</rt></ruby>。',
     answer: 'kara',
-    hint: 'Indica o **ponto de origem** no espaço ("de" ou "vindo de").',
+    hint: 'Indica o **ponto de origem** no espaço ("de" ou "vindo de").'
   },
   {
     id: 48,
     particle: 'から',
-    sentenceHTML: '<ruby><span class="w" data-mean="cansar">疲</span><rt>つか</rt></ruby><span class="w" data-mean="passado">れた</span>____<ruby><span class="w" data-mean="voltar">帰</span><rt>かえ</rt></ruby><span class="w" data-mean="polidez">ります</span>。',
+    sentenceHTML: '<ruby><span class="w" data-mean="cansar">疲れた</span><rt>つかれた</rt></ruby>____<ruby><span class="w" data-mean="voltar">帰ります</span><rt>かえります</rt></ruby>。',
     answer: 'kara',
-    hint: 'Indica a **razão/causa** ("porque/já que").',
+    hint: 'Indica a **razão/causa** ("porque/já que").'
   },
   {
     id: 49,
     particle: 'から',
-    sentenceHTML: '<span class="w" data-mean="aqui">ここ</span><span class="w" data-mean="partícula locativa">で</span><ruby><span class="w" data-mean="parar">止</span><rt>と</rt></ruby><span class="w" data-mean="forma te">まって</span>____<ruby><span class="w" data-mean="ir">行</span><rt>い</rt></ruby><span class="w" data-mean="forma te">って</span><span class="w" data-mean="pedir">ください</span>。',
+    sentenceHTML: 'ここで<ruby><span class="w" data-mean="parar">止まって</span><rt>とまって</rt></ruby>____<ruby><span class="w" data-mean="ir">行ってください</span><rt>いってください</rt></ruby>。',
     answer: 'kara',
-    hint: 'Indica a ordem das ações (pare **e depois** vá).',
+    hint: 'Indica a ordem das ações (pare **e depois** vá).'
   },
   {
     id: 50,
     particle: 'から',
-    sentenceHTML: '<ruby><span class="w" data-mean="estação de trem">駅</span><rt>えき</rt></ruby>____<ruby><span class="w" data-mean="andar">歩</span><rt>ある</rt></ruby><span class="w" data-mean="polidez">きます</span>。',
+    sentenceHTML: '<ruby><span class="w" data-mean="estação de trem">駅</span><rt>えき</rt></ruby>____<ruby><span class="w" data-mean="andar">歩きます</span><rt>あるきます</rt></ruby>。',
     answer: 'kara',
-    hint: 'Indica o **ponto de partida** ("a partir da" estação).',
+    hint: 'Indica o **ponto de partida** ("a partir da" estação).'
   },
 
   // =================================
@@ -415,37 +415,37 @@ const BANK = [
   {
     id: 51,
     particle: 'まで',
-    sentenceHTML: '5<ruby><span class="w" data-mean="hora">時</span><rt>じ</rt></ruby>____<ruby><span class="w" data-mean="trabalhar">働</span><rt>はたら</rt></ruby><span class="w" data-mean="polidez">きます</span>。',
+    sentenceHTML: '5<ruby><span class="w" data-mean="hora">時</span><rt>じ</rt></ruby>____<ruby><span class="w" data-mean="trabalhar">働きます</span><rt>はたらきます</rt></ruby>。',
     answer: 'made',
-    hint: 'Indica o **ponto final** no tempo ("até" as 5h).',
+    hint: 'Indica o **ponto final** no tempo ("até" as 5h).'
   },
   {
     id: 52,
     particle: 'まで',
-    sentenceHTML: '<ruby><span class="w" data-mean="estação de trem">駅</span><rt>えき</rt></ruby>____<ruby><span class="w" data-mean="ir">行</span><rt>い</rt></ruby><span class="w" data-mean="polidez">きます</span>。',
+    sentenceHTML: '<ruby><span class="w" data-mean="estação de trem">駅</span><rt>えき</rt></ruby>____<ruby><span class="w" data-mean="ir">行きます</span><rt>いきます</rt></ruby>。',
     answer: 'made',
-    hint: 'Indica o **ponto final** no espaço ("até a" estação).',
+    hint: 'Indica o **ponto final** no espaço ("até a" estação).'
   },
   {
     id: 53,
     particle: 'まで',
-    sentenceHTML: '<ruby><span class="w" data-mean="eu">私</span><rt>わたし</rt></ruby>____<ruby><span class="w" data-mean="saber">知</span><rt>し</rt></ruby><span class="w" data-mean="negação">りません</span>。',
+    sentenceHTML: '<ruby><span class="w" data-mean="mesmo eu">私</span><rt>わたし</rt></ruby>____<ruby><span class="w" data-mean="saber">知りません</span><rt>しりません</rt></ruby>。',
     answer: 'made',
-    hint: 'Significa "até mesmo/inclusive" (Até *mesmo eu* não sei).',
+    hint: 'Significa "até mesmo/inclusive" (Até *mesmo eu* não sei).'
   },
   {
     id: 54,
     particle: 'まで',
-    sentenceHTML: '<span class="w" data-mean="esta">この</span><ruby><span class="w" data-mean="notícia">ニュース</span><rt>ニュース</rt></ruby><span class="w" data-mean="partícula de tópico">は</span><ruby><span class="w" data-mean="hoje">今日</span><rt>きょう</rt></ruby>____<ruby><span class="w" data-mean="chegar">届</span><rt>とど</rt></ruby><span class="w" data-mean="passado">いた</span>。',
+    sentenceHTML: 'この<ruby><span class="w" data-mean="notícia">ニュース</span><rt>ニュース</rt></ruby>は<ruby><span class="w" data-mean="hoje">今日</span><rt>きょう</rt></ruby>____<ruby><span class="w" data-mean="chegar">届いた</span><rt>とどいた</rt></ruby>。',
     answer: 'made',
-    hint: 'Indica o **limite temporal** (chegou *até* hoje).',
+    hint: 'Indica o **limite temporal** (chegou *até* hoje).'
   },
   {
     id: 55,
     particle: 'まで',
-    sentenceHTML: '<ruby><span class="w" data-mean="fim">終</span><rt>お</rt></ruby><span class="w" data-mean="fim">わり</span>____<ruby><span class="w" data-mean="ver">見</span><rt>み</rt></ruby><span class="w" data-mean="polidez">ます</span>。',
+    sentenceHTML: '<ruby><span class="w" data-mean="fim">終わり</span><rt>おわり</rt></ruby>____<ruby><span class="w" data-mean="ver">見ます</span><rt>みます</rt></ruby>。',
     answer: 'made',
-    hint: 'Indica o **limite** de uma ação (ver *até o* fim).',
+    hint: 'Indica o **limite** de uma ação (ver *até o* fim).'
   },
 
   // =================================
@@ -454,37 +454,37 @@ const BANK = [
   {
     id: 56,
     particle: 'よ',
-    sentenceHTML: '<span class="w" data-mean="aqui">ここ</span><span class="w" data-mean="partícula de tópico">は</span><ruby><span class="w" data-mean="perigoso">危</span><rt>あぶ</rt></ruby><span class="w" data-mean="adjetivo i">ない</span>____。',
+    sentenceHTML: '<ruby><span class="w" data-mean="aqui">ここ</span><rt>ここ</rt></ruby>は<ruby><span class="w" data-mean="perigoso">危ない</span><rt>あぶない</rt></ruby>____。',
     answer: 'yo',
-    hint: 'Partícula de fim de frase para **afirmar** algo importante (É perigoso, *viu*!).',
+    hint: 'Partícula de fim de frase para **afirmar** algo importante (É perigoso, *viu*!).'
   },
   {
     id: 57,
     particle: 'よ',
-    sentenceHTML: '<ruby><span class="w" data-mean="eu">私</span><rt>わたし</rt></ruby><span class="w" data-mean="partícula de sujeito">が</span><ruby><span class="w" data-mean="fazer">やります</span><rt>やります</rt></ruby>____。',
+    sentenceHTML: '<ruby><span class="w" data-mean="eu">私</span><rt>わたし</rt></ruby>が<ruby><span class="w" data-mean="fazer">やります</span><rt>やります</rt></ruby>____。',
     answer: 'yo',
-    hint: 'Usado para expressar **vontade/decisão** com convicção (Eu farei *sim*).',
+    hint: 'Usado para expressar **vontade/decisão** com convicção (Eu farei *sim*).'
   },
   {
     id: 58,
     particle: 'よ',
-    sentenceHTML: '<ruby><span class="w" data-mean="nome">名前</span><rt>なまえ</rt></ruby><span class="w" data-mean="partícula de tópico">は</span><span class="w" data-mean="Maria">マリア</span><span class="w" data-mean="cópula de polidez">です</span>____。',
+    sentenceHTML: '<ruby><span class="w" data-mean="nome">名前</span><rt>なまえ</rt></ruby>は<ruby><span class="w" data-mean="Maria">マリア</span><rt>マリア</rt></ruby>です____。',
     answer: 'yo',
-    hint: 'Usado para **corrigir** ou **dar informação nova** ao ouvinte (Meu nome é Maria, *sabe*?).',
+    hint: 'Usado para **corrigir** ou **dar informação nova** ao ouvinte (Meu nome é Maria, *sabe*?).'
   },
   {
     id: 59,
     particle: 'よ',
-    sentenceHTML: '<ruby><span class="w" data-mean="ir">行</span><rt>い</rt></ruby><span class="w" data-mean="volitivo">こう</span>____。',
+    sentenceHTML: '<ruby><span class="w" data-mean="ir">行こう</span><rt>いこう</rt></ruby>____。',
     answer: 'yo',
-    hint: 'Usado com a forma volitiva (convite) para **incentivar** (Vamos, *cara*!).',
+    hint: 'Usado com a forma volitiva (convite) para **incentivar** (Vamos, *cara*!).'
   },
   {
     id: 60,
     particle: 'よ',
-    sentenceHTML: '<span class="w" data-mean="bom dia">おはよう</span>____。',
+    sentenceHTML: '<ruby><span class="w" data-mean="bom dia">おはよう</span><rt>おはよう</rt></ruby>____。',
     answer: 'yo',
-    hint: 'Usado para **chamar a atenção** de forma amigável (Ei, bom dia!).',
+    hint: 'Usado para **chamar a atenção** de forma amigável (Ei, bom dia!).'
   },
 
   // =================================
@@ -493,37 +493,37 @@ const BANK = [
   {
     id: 61,
     particle: 'ね',
-    sentenceHTML: '<span class="w" data-mean="isto">これ</span>、<span class="w" data-mean="delicioso">おいしい</span>____。',
+    sentenceHTML: 'これ、<ruby><span class="w" data-mean="delicioso">おいしい</span><rt>おいしい</rt></ruby>____。',
     answer: 'ne',
-    hint: 'Partícula de fim de frase para buscar **concordância** (É delicioso, *né*?).',
+    hint: 'Partícula de fim de frase para buscar **concordância** (É delicioso, *né*?).'
   },
   {
     id: 62,
     particle: 'ね',
-    sentenceHTML: '<ruby><span class="w" data-mean="amanhã">明日</span><rt>あした</rt></ruby>、<ruby><span class="w" data-mean="chuva">雨</span><rt>あめ</rt></ruby><span class="w" data-mean="partícula de sujeito">が</span><ruby><span class="w" data-mean="cair, chover">降</span><rt>ふ</rt></ruby><span class="w" data-mean="polidez">ります</span>____。',
+    sentenceHTML: '<ruby><span class="w" data-mean="amanhã">明日</span><rt>あした</rt></ruby>、<ruby><span class="w" data-mean="chover">雨が降ります</span><rt>あめがふります</rt></ruby>____。',
     answer: 'ne',
-    hint: 'Usado para **confirmar** uma informação (Vai chover amanhã, *certo*?).',
+    hint: 'Usado para **confirmar** uma informação (Vai chover amanhã, *certo*?).'
   },
   {
     id: 63,
     particle: 'ね',
-    sentenceHTML: '<ruby><span class="w" data-mean="você">君</span><rt>きみ</rt></ruby><span class="w" data-mean="partícula de tópico">は</span>、<ruby><span class="w" data-mean="quem">誰</span><rt>だれ</rt></ruby><span class="w" data-mean="cópula informal">だ</span>____。',
+    sentenceHTML: '<ruby><span class="w" data-mean="você">君</span><rt>きみ</rt></ruby>は、<ruby><span class="w" data-mean="quem">誰</span><rt>だれ</rt></ruby>だ____。',
     answer: 'ne',
-    hint: 'Usado para **reflexão** ou **auto-correção** (Eu sou... quem, *hein*?).',
+    hint: 'Usado para **reflexão** ou **auto-correção** (Eu sou... quem, *hein*?).'
   },
   {
     id: 64,
     particle: 'ね',
-    sentenceHTML: '<span class="w" data-mean="onde">どこ</span>____<ruby><span class="w" data-mean="ir">行</span><rt>い</rt></ruby><span class="w" data-mean="volitivo">こう</span><span class="w" data-mean="partícula de pergunta">か</span>。',
+    sentenceHTML: '<ruby><span class="w" data-mean="lugar">どこ</span><rt>どこ</rt></ruby>____<ruby><span class="w" data-mean="ir">行こうか</span><rt>いこうか</rt></ruby>。',
     answer: 'ne',
-    hint: 'Usado com perguntas ou convites para suavizar o tom (Onde devemos ir, *hein*?).',
+    hint: 'Usado com perguntas ou convites para suavizar o tom (Onde devemos ir, *hein*?).'
   },
   {
     id: 65,
     particle: 'ね',
-    sentenceHTML: '<span class="w" data-mean="aquela">あの</span><ruby><span class="w" data-mean="loja">店</span><rt>みせ</rt></ruby>、<span class="w" data-mean="bom">いい</span>____。',
+    sentenceHTML: 'あの<ruby><span class="w" data-mean="restaurante">店</span><rt>みせ</rt></ruby>、<ruby><span class="w" data-mean="bom">いい</span><rt>いい</rt></ruby>____。',
     answer: 'ne',
-    hint: 'Suaviza uma opinião ou sugestão (Aquela loja é boa, *eu acho*).',
+    hint: 'Suaviza uma opinião ou sugestão (Aquela loja é boa, *eu acho*).'
   },
 
   // =================================
@@ -532,37 +532,37 @@ const BANK = [
   {
     id: 66,
     particle: 'か',
-    sentenceHTML: '<ruby><span class="w" data-mean="ele">彼</span><rt>かれ</rt></ruby><span class="w" data-mean="partícula de tópico">は</span><ruby><span class="w" data-mean="professor">先生</span><rt>せんせい</rt></ruby><span class="w" data-mean="cópula de polidez">です</span>____。',
+    sentenceHTML: '<ruby><span class="w" data-mean="ele">彼</span><rt>かれ</rt></ruby>は<ruby><span class="w" data-mean="professor">先生</span><rt>せんせい</rt></ruby>です____。',
     answer: 'ka',
-    hint: 'Partícula de fim de frase para fazer uma **pergunta** (Ele é professor?).',
+    hint: 'Partícula de fim de frase para fazer uma **pergunta** (Ele é professor?).'
   },
   {
     id: 67,
     particle: 'か',
-    sentenceHTML: '<ruby><span class="w" data-mean="chá verde">お茶</span><rt>おちゃ</rt></ruby>____<span class="w" data-mean="café">コーヒー</span>____<ruby><span class="w" data-mean="beber">飲</span><rt>の</rt></ruby><span class="w" data-mean="polidez">みます</span>____。',
+    sentenceHTML: '<ruby><span class="w" data-mean="chá verde">お茶</span><rt>おちゃ</rt></ruby>____コーヒー____<ruby><span class="w" data-mean="beber">飲みますか</span><rt>のみますか</rt></ruby>。',
     answer: 'ka',
-    hint: 'Usado para listar **opções** ("ou") (Chá *ou* café?). (Note: o último é para a pergunta principal)',
+    hint: 'Usado para listar **opções** ("ou") (Chá *ou* café?).'
   },
   {
     id: 68,
     particle: 'か',
-    sentenceHTML: '<ruby><span class="w" data-mean="eu">私</span><rt>わたし</rt></ruby><span class="w" data-mean="partícula de sujeito">が</span><span class="w" data-mean="fazer (informal)">やる</span>____。',
+    sentenceHTML: '<ruby><span class="w" data-mean="eu">私</span><rt>わたし</rt></ruby>が<ruby><span class="w" data-mean="fazer">やる</span><rt>やる</rt></ruby>____。',
     answer: 'ka',
-    hint: 'Usado para fazer uma **auto-pergunta** ou sugestão (Devo fazer?).',
+    hint: 'Usado para fazer uma **auto-pergunta** ou sugestão (Devo fazer?).'
   },
   {
     id: 69,
     particle: 'か',
-    sentenceHTML: '<span class="w" data-mean="quando">いつ</span>____<ruby><span class="w" data-mean="vir">来</span><rt>き</rt></ruby><span class="w" data-mean="polidez">ます</span>____。',
+    sentenceHTML: 'いつ____<ruby><span class="w" data-mean="vir">来ますか</span><rt>きますか</rt></ruby>。',
     answer: 'ka',
-    hint: 'Usado com pronomes interrogativos (Quem/O que/Quando) para formular a pergunta. (Note: o último é para a pergunta principal)',
+    hint: 'Usado com pronomes interrogativos (Quem/O que/Quando) para formular a pergunta.'
   },
   {
     id: 70,
     particle: 'か',
-    sentenceHTML: '<ruby><span class="w" data-mean="dez">十</span><rt>じっ</rt></ruby><ruby><span class="w" data-mean="minutos">分</span><rt>ぷん</rt></ruby>____<ruby><span class="w" data-mean="levar tempo">かかる</span><rt>かかる</rt></ruby>。',
+    sentenceHTML: '<ruby><span class="w" data-mean="dez minutos">十分</span><rt>じっぷん</rt></ruby>____かかる。',
     answer: 'ka',
-    hint: 'Usado para expressar **incerteza** ou estimativa ("cerca de dez minutos").',
+    hint: 'Usado para expressar **incerteza** ou estimativa ("cerca de dez minutos").'
   },
 
   // =================================
@@ -571,37 +571,37 @@ const BANK = [
   {
     id: 71,
     particle: 'や',
-    sentenceHTML: '<span class="w" data-mean="laranja">オレンジ</span>____<ruby><span class="w" data-mean="maçã">りんご</span><rt>りんご</rt></ruby><span class="w" data-mean="partícula de objeto direto">を</span><ruby><span class="w" data-mean="comprar">買</span><rt>か</rt></ruby><span class="w" data-mean="passado">いました</span>。',
+    sentenceHTML: '<ruby><span class="w" data-mean="laranja">オレンジ</span><rt>オレンジ</rt></ruby>____<ruby><span class="w" data-mean="maçã">りんご</span><rt>りんご</rt></ruby>を<ruby><span class="w" data-mean="comprar">買いました</span><rt>かいました</rt></ruby>。',
     answer: 'ya',
-    hint: 'Lista incompleta ("e coisas como...").',
+    hint: 'Lista incompleta ("e coisas como...").'
   },
   {
     id: 72,
     particle: 'や',
-    sentenceHTML: '<ruby><span class="w" data-mean="segunda-feira">月曜日</span><rt>げつようび</rt></ruby>____<ruby><span class="w" data-mean="quarta-feira">水曜日</span><rt>すいようび</rt></ruby><span class="w" data-mean="partícula de tempo">に</span><ruby><span class="w" data-mean="ter aula">授業</span><rt>じゅぎょう</rt></ruby><span class="w" data-mean="partícula de sujeito">が</span><ruby><span class="w" data-mean="ter, existir">あります</span><rt>あります</rt></ruby>。',
+    sentenceHTML: '<ruby><span class="w" data-mean="segunda-feira">月曜日</span><rt>げつようび</rt></ruby>____<ruby><span class="w" data-mean="quarta-feira">水曜日</span><rt>すいようび</rt></ruby>に<ruby><span class="w" data-mean="ter aula">授業があります</span><rt>じゅぎょうがあります</rt></ruby>。',
     answer: 'ya',
-    hint: 'Usado para listar dias ou períodos incompletamente.',
+    hint: 'Usado para listar dias ou períodos incompletamente.'
   },
   {
     id: 73,
     particle: 'や',
-    sentenceHTML: '<ruby><span class="w" data-mean="papel">紙</span><rt>かみ</rt></ruby>____<span class="w" data-mean="caneta">ペン</span><span class="w" data-mean="partícula de sujeito">が</span><ruby><span class="w" data-mean="ter, existir">あります</span><rt>あります</rt></ruby>。',
+    sentenceHTML: '<ruby><span class="w" data-mean="papel">紙</span><rt>かみ</rt></ruby>____<ruby><span class="w" data-mean="caneta">ペン</span><rt>ペン</rt></ruby>が<ruby><span class="w" data-mean="estar">あります</span><rt>あります</rt></ruby>。',
     answer: 'ya',
-    hint: 'Lista incompleta de materiais ("papel, caneta, e etc...").',
+    hint: 'Lista incompleta de materiais ("papel, caneta, e etc...").'
   },
   {
     id: 74,
     particle: 'や',
-    sentenceHTML: '<ruby><span class="w" data-mean="criança">子</span><rt>こ</rt></ruby><span class="w" data-mean="criança">ども</span>____<ruby><span class="w" data-mean="adulto">大人</span><rt>おとな</rt></ruby><span class="w" data-mean="partícula de sujeito">が</span><ruby><span class="w" data-mean="vir">来</span><rt>く</rt></ruby><span class="w" data-mean="deve">るでしょう</span>。',
+    sentenceHTML: '<ruby><span class="w" data-mean="criança">子</span><rt>こ</rt></ruby>ども____<ruby><span class="w" data-mean="adulto">大人</span><rt>おとな</rt></ruby>が<ruby><span class="w" data-mean="vir">来る</span><rt>くる</rt></ruby>でしょう。',
     answer: 'ya',
-    hint: 'Lista incompleta de pessoas ("crianças, adultos, e outros...").',
+    hint: 'Lista incompleta de pessoas ("crianças, adultos, e outros...").'
   },
   {
     id: 75,
     particle: 'や',
-    sentenceHTML: '<ruby><span class="w" data-mean="chá">お茶</span><rt>おちゃ</rt></ruby>____<span class="w" data-mean="suco">ジュース</span><span class="w" data-mean="partícula de sujeito">が</span><span class="w" data-mean="bom">いい</span><span class="w" data-mean="cópula de polidez">です</span>。',
+    sentenceHTML: '<ruby><span class="w" data-mean="chá">お茶</span><rt>おちゃ</rt></ruby>____<ruby><span class="w" data-mean="suco">ジュース</span><rt>ジュース</rt></ruby>が<ruby><span class="w" data-mean="bom">いいです</span><rt>いいです</rt></ruby>。',
     answer: 'ya',
-    hint: 'Usado para dar exemplos de bebidas ("chá, suco, ou algo assim...").',
+    hint: 'Usado para dar exemplos de bebidas ("chá, suco, ou algo assim...").'
   },
 
   // =================================
@@ -610,37 +610,37 @@ const BANK = [
   {
     id: 76,
     particle: 'より',
-    sentenceHTML: '<span class="w" data-mean="este">これ</span><span class="w" data-mean="partícula de tópico">は</span><span class="w" data-mean="aquele">それ</span>____<ruby><span class="w" data-mean="caro">高</span><rt>たか</rt></ruby><span class="w" data-mean="cópula de polidez">いです</span>。',
+    sentenceHTML: 'これは<ruby><span class="w" data-mean="aquilo">それ</span><rt>それ</rt></ruby>____<ruby><span class="w" data-mean="caro">高い</span><rt>たかい</rt></ruby>です。',
     answer: 'yori',
-    hint: 'Usado para indicar o ponto de comparação ("mais caro *do que* aquilo").',
+    hint: 'Usado para indicar o ponto de comparação ("mais caro *do que* aquilo").'
   },
   {
     id: 77,
     particle: 'より',
-    sentenceHTML: '<span class="w" data-mean="este">この</span><ruby><span class="w" data-mean="livro">本</span><rt>ほん</rt></ruby><span class="w" data-mean="partícula de tópico">は</span><span class="w" data-mean="aquele">あの</span>____<ruby><span class="w" data-mean="fácil">簡単</span><rt>かんたん</rt></ruby><span class="w" data-mean="cópula de polidez">です</span>。',
+    sentenceHTML: 'この<ruby><span class="w" data-mean="livro">本</span><rt>ほん</rt></ruby>は<ruby><span class="w" data-mean="aquele">あの</span><rt>あの</rt></ruby>____<ruby><span class="w" data-mean="fácil">簡単です</span><rt>かんたんです</rt></ruby>。',
     answer: 'yori',
-    hint: 'Usado para comparação (mais fácil *do que* aquele).',
+    hint: 'Usado para comparação (mais fácil *do que* aquele).'
   },
   {
     id: 78,
     particle: 'より',
-    sentenceHTML: '<ruby><span class="w" data-mean="eu">私</span><rt>わたし</rt></ruby><span class="w" data-mean="partícula de tópico">は</span><ruby><span class="w" data-mean="ele">彼</span><rt>かれ</rt></ruby>____<ruby><span class="w" data-mean="alto">背</span><rt>せ</rt></ruby><span class="w" data-mean="alto">が</span><ruby><span class="w" data-mean="alto">高</span><rt>たか</rt></ruby><span class="w" data-mean="cópula de polidez">いです</span>。',
+    sentenceHTML: '<ruby><span class="w" data-mean="eu">私</span><rt>わたし</rt></ruby>は<ruby><span class="w" data-mean="ele">彼</span><rt>かれ</rt></ruby>____<ruby><span class="w" data-mean="alto">背が高い</span><rt>せがたかい</rt></ruby>です。',
     answer: 'yori',
-    hint: 'Usado para indicar o ponto de comparação (mais alto *do que* ele).',
+    hint: 'Usado para indicar o ponto de comparação (mais alto *do que* ele).'
   },
   {
     id: 79,
     particle: 'より',
-    sentenceHTML: '3<ruby><span class="w" data-mean="horas">時間</span><rt>じかん</rt></ruby>____<ruby><span class="w" data-mean="muito">多</span><rt>おお</rt></ruby><span class="w" data-mean="adverbial">く</span><ruby><span class="w" data-mean="dormir">寝</span><rt>ね</rt></ruby><span class="w" data-mean="passado">ました</span>。',
+    sentenceHTML: '3<ruby><span class="w" data-mean="horas">時間</span><rt>じかん</rt></ruby>____<ruby><span class="w" data-mean="muito">多く</span><rt>おおく</rt></ruby><ruby><span class="w" data-mean="dormir">寝ました</span><rt>ねました</rt></ruby>。',
     answer: 'yori',
-    hint: 'Usado para indicar uma quantidade maior (mais *do que* 3 horas).',
+    hint: 'Usado para indicar uma quantidade maior (mais *do que* 3 horas).'
   },
   {
     id: 80,
     particle: 'より',
-    sentenceHTML: '<ruby><span class="w" data-mean="hoje">今日</span><rt>きょう</rt></ruby>____<ruby><span class="w" data-mean="ontem">昨日</span><rt>きのう</rt></ruby><span class="w" data-mean="partícula de posse">の</span><ruby><span class="w" data-mean="clima">天気</span><rt>てんき</rt></ruby><span class="w" data-mean="partícula de sujeito">が</span><span class="w" data-mean="bom">いい</span><span class="w" data-mean="cópula de polidez">です</span>。',
+    sentenceHTML: '<ruby><span class="w" data-mean="hoje">今日</span><rt>きょう</rt></ruby>____<ruby><span class="w" data-mean="ontem">昨日</span><rt>きのう</rt></ruby>の<ruby><span class="w" data-mean="clima">天気</span><rt>てんき</rt></ruby>が<ruby><span class="w" data-mean="bom">いいです</span><rt>いいです</rt></ruby>。',
     answer: 'yori',
-    hint: 'Inverte a ordem: "O clima de ontem é melhor do que o de hoje".',
+    hint: 'Inverte a ordem: "O clima de ontem é melhor do que o de hoje".'
   },
 
   // =================================
@@ -649,37 +649,37 @@ const BANK = [
   {
     id: 81,
     particle: 'だけ',
-    sentenceHTML: '<ruby><span class="w" data-mean="um">一</span><rt>ひと</rt></ruby><span class="w" data-mean="um">つ</span>____<ruby><span class="w" data-mean="comprar">買</span><rt>か</rt></ruby><span class="w" data-mean="passado">いました</span>。',
+    sentenceHTML: '<ruby><span class="w" data-mean="um">一</span><rt>ひと</rt></ruby>つ____<ruby><span class="w" data-mean="comprar">買いました</span><rt>かいました</rt></ruby>。',
     answer: 'dake',
-    hint: 'Significa "**apenas** um".',
+    hint: 'Significa "**apenas** um".'
   },
   {
     id: 82,
     particle: 'だけ',
-    sentenceHTML: '<span class="w" data-mean="isto">これ</span>____<ruby><span class="w" data-mean="suficiente">足</span><rt>た</rt></ruby><span class="w" data-mean="potencial/poder">りる</span>。',
+    sentenceHTML: 'これ____<ruby><span class="w" data-mean="suficiente">足りる</span><rt>たりる</rt></ruby>。',
     answer: 'dake',
-    hint: 'Significa "apenas isso é suficiente".',
+    hint: 'Significa "apenas isso é suficiente".'
   },
   {
     id: 83,
     particle: 'だけ',
-    sentenceHTML: '<ruby><span class="w" data-mean="ele">彼</span><rt>かれ</rt></ruby>____<span class="w" data-mean="partícula de sujeito">が</span><ruby><span class="w" data-mean="ir">行</span><rt>い</rt></ruby><span class="w" data-mean="polidez">きます</span>。',
+    sentenceHTML: '<ruby><span class="w" data-mean="ele">彼</span><rt>かれ</rt></ruby>____が<ruby><span class="w" data-mean="ir">行きます</span><rt>いきます</rt></ruby>。',
     answer: 'dake',
-    hint: 'Pode ser usado após outras partículas como が ("Apenas ele vai").',
+    hint: 'Pode ser usado após outras partículas como が ("Apenas ele vai").'
   },
   {
     id: 84,
     particle: 'だけ',
-    sentenceHTML: '<ruby><span class="w" data-mean="salário">給料</span><rt>きゅうりょう</rt></ruby>____<span class="w" data-mean="partícula instrumental">で</span><ruby><span class="w" data-mean="viver">生</span><rt>い</rt></ruby><span class="w" data-mean="nominalizador">きる</span><span class="w" data-mean="partícula de posse">の</span><span class="w" data-mean="partícula de tópico">は</span><ruby><span class="w" data-mean="difícil">大変</span><rt>たいへん</rt></ruby><span class="w" data-mean="cópula de polidez">です</span>。',
+    sentenceHTML: '<ruby><span class="w" data-mean="salário">給料</span><rt>きゅうりょう</rt></ruby>____で<ruby><span class="w" data-mean="viver">生きる</span><rt>いきる</rt></ruby>のは<ruby><span class="w" data-mean="difícil">大変です</span><rt>たいへんです</rt></ruby>。',
     answer: 'dake',
-    hint: 'Significa "**somente** com o salário".',
+    hint: 'Significa "**somente** com o salário".'
   },
   {
     id: 85,
     particle: 'だけ',
-    sentenceHTML: '<ruby><span class="w" data-mean="ver">見</span><rt>み</rt></ruby>る____。',
+    sentenceHTML: '<ruby><span class="w" data-mean="ver">見る</span><rt>みる</rt></ruby>____。',
     answer: 'dake',
-    hint: 'Usado para restringir a ação ("Apenas ver").',
+    hint: 'Usado para restringir a ação ("Apenas ver").'
   },
 
   // =================================
@@ -688,37 +688,37 @@ const BANK = [
   {
     id: 86,
     particle: 'ぐらい',
-    sentenceHTML: '10<ruby><span class="w" data-mean="minutos">分</span><rt>ぷん</rt></ruby>____<ruby><span class="w" data-mean="levar tempo">かかります</span><rt>かかります</rt></ruby>。',
+    sentenceHTML: '10<ruby><span class="w" data-mean="minutos">分</span><rt>ぷん</rt></ruby>____かかります。',
     answer: 'gurai',
-    hint: 'Indica tempo **aproximado** ("cerca de 10 minutos").',
+    hint: 'Indica tempo **aproximado** ("cerca de 10 minutos").'
   },
   {
     id: 87,
     particle: 'くらい',
-    sentenceHTML: '<span class="w" data-mean="isto">これ</span>____<ruby><span class="w" data-mean="pequeno">小</span><rt>ちい</rt></ruby><span class="w" data-mean="adjetivo i">さい</span><span class="w" data-mean="cópula de polidez">です</span>。',
+    sentenceHTML: 'これ____<ruby><span class="w" data-mean="pequeno">小さい</span><rt>ちいさい</rt></ruby>です。',
     answer: 'kurai',
-    hint: 'Indica grau **aproximado** ("aproximadamente deste tamanho").',
+    hint: 'Indica grau **aproximado** ("aproximadamente deste tamanho").'
   },
   {
     id: 88,
     particle: 'ぐらい',
-    sentenceHTML: '3<ruby><span class="w" data-mean="pessoas">人</span><rt>にん</rt></ruby>____<ruby><span class="w" data-mean="vir">来</span><rt>き</rt></ruby><span class="w" data-mean="polidez">ます</span>。',
+    sentenceHTML: '3<ruby><span class="w" data-mean="pessoas">人</span><rt>にん</rt></ruby>____<ruby><span class="w" data-mean="vir">来ます</span><rt>きます</rt></ruby>。',
     answer: 'gurai',
-    hint: 'Indica número **aproximado** ("cerca de 3 pessoas").',
+    hint: 'Indica número **aproximado** ("cerca de 3 pessoas").'
   },
   {
     id: 89,
     particle: 'くらい',
-    sentenceHTML: '<ruby><span class="w" data-mean="eu">私</span><rt>わたし</rt></ruby><span class="w" data-mean="partícula de tempo">に</span>____<ruby><span class="w" data-mean="fácil">簡単</span><rt>かんたん</rt></ruby><span class="w" data-mean="cópula de polidez">です</span>。',
+    sentenceHTML: '<ruby><span class="w" data-mean="eu">私</span><rt>わたし</rt></ruby>に____<ruby><span class="w" data-mean="fácil">簡単です</span><rt>かんたんです</rt></ruby>。',
     answer: 'kurai',
-    hint: 'Usado para indicar "grau" ("É fácil *para mim*").',
+    hint: 'Usado para indicar "grau" ("É fácil *para mim*").'
   },
   {
     id: 90,
     particle: 'ぐらい',
-    sentenceHTML: '<span class="w" data-mean="quanto">どの</span>____<ruby><span class="w" data-mean="levar tempo, custar">かかります</span><rt>かかります</rt></ruby><span class="w" data-mean="partícula de pergunta">か</span>。',
+    sentenceHTML: '<ruby><span class="w" data-mean="quanto">どの</span><rt>どの</rt></ruby>____<ruby><span class="w" data-mean="custar">かかりますか</span><rt>かかりますか</rt></ruby>。',
     answer: 'gurai',
-    hint: 'Usado em perguntas sobre quantidade/tempo aproximado ("Quanto *aproximadamente* custa?").',
+    hint: 'Usado em perguntas sobre quantidade/tempo aproximado ("Quanto *aproximadamente* custa?").'
   },
 
   // =================================
@@ -727,37 +727,37 @@ const BANK = [
   {
     id: 91,
     particle: 'ながら',
-    sentenceHTML: '<ruby><span class="w" data-mean="andar">歩</span><rt>ある</rt></ruby><span class="w" data-mean="radical do verbo">き</span>____<ruby><span class="w" data-mean="falar">話</span><rt>はな</rt></ruby><span class="w" data-mean="polidez">します</span>。',
+    sentenceHTML: '<ruby><span class="w" data-mean="andar">歩き</span><rt>あるき</rt></ruby>____<ruby><span class="w" data-mean="falar">話します</span><rt>はなします</rt></ruby>。',
     answer: 'nagara',
-    hint: 'Indica ações simultâneas (falar *enquanto* anda).',
+    hint: 'Indica ações simultâneas (falar *enquanto* anda).'
   },
   {
     id: 92,
     particle: 'ながら',
-    sentenceHTML: '<ruby><span class="w" data-mean="ver">見</span><rt>み</rt></ruby>____<ruby><span class="w" data-mean="comer">食</span><rt>た</rt></ruby><span class="w" data-mean="infomal">べる</span>。',
+    sentenceHTML: '<ruby><span class="w" data-mean="ver">見</span><rt>み</rt></ruby>____<ruby><span class="w" data-mean="comer">食べる</span><rt>たべる</rt></ruby>。',
     answer: 'nagara',
-    hint: 'Indica ações simultâneas (comer *enquanto* vê).',
+    hint: 'Indica ações simultâneas (comer *enquanto* vê).'
   },
   {
     id: 93,
     particle: 'ながら',
-    sentenceHTML: '<ruby><span class="w" data-mean="música">音楽</span><rt>おんがく</rt></ruby><span class="w" data-mean="partícula de objeto direto">を</span><ruby><span class="w" data-mean="escutar">聞</span><rt>き</rt></ruby><span class="w" data-mean="radical do verbo">き</span>____<ruby><span class="w" data-mean="estudar">勉強</span><rt>べんきょう</rt></ruby><span class="w" data-mean="verbo fazer">します</span>。',
+    sentenceHTML: '<ruby><span class="w" data-mean="música">音楽</span><rt>おんがく</rt></ruby>を<ruby><span class="w" data-mean="escutar">聞き</span><rt>きき</rt></ruby>____<ruby><span class="w" data-mean="estudar">勉強します</span><rt>べんきょうします</rt></ruby>。',
     answer: 'nagara',
-    hint: 'Indica a ação secundária (estudar *enquanto* escuta música).',
+    hint: 'Indica a ação secundária (estudar *enquanto* escuta música).'
   },
   {
     id: 94,
     particle: 'ながら',
-    sentenceHTML: '<ruby><span class="w" data-mean="ser triste">残念</span><rt>ざんねん</rt></ruby>____、<ruby><span class="w" data-mean="ir">行</span><rt>い</rt></ruby><span class="w" data-mean="não poder/ir">けない</span>。',
+    sentenceHTML: '<ruby><span class="w" data-mean="ser triste">残念</span><rt>ざんねん</rt></ruby>____、<ruby><span class="w" data-mean="ir">行けない</span><rt>いけない</rt></ruby>。',
     answer: 'nagara',
-    hint: 'Usado para indicar um contraste inesperado ("Embora seja triste...").',
+    hint: 'Usado para indicar um contraste inesperado ("Embora seja triste...").'
   },
   {
     id: 95,
     particle: 'ながら',
-    sentenceHTML: '<span class="w" data-mean="sempre">いつも</span><ruby><span class="w" data-mean="rir">笑</span><rt>わら</rt></ruby><span class="w" data-mean="radical do verbo">い</span>____<ruby><span class="w" data-mean="trabalhar">働</span><rt>はたら</rt></ruby><span class="w" data-mean="informal">く</span>。',
+    sentenceHTML: 'いつも<ruby><span class="w" data-mean="rindo">笑い</span><rt>わらい</rt></ruby>____<ruby><span class="w" data-mean="trabalhar">働く</span><rt>はたらく</rt></ruby>。',
     answer: 'nagara',
-    hint: 'Indica um estado contínuo (trabalhar *sempre rindo*).',
+    hint: 'Indica um estado contínuo (trabalhar *sempre rindo*).'
   },
 
   // =================================
@@ -766,42 +766,39 @@ const BANK = [
   {
     id: 96,
     particle: 'とか',
-    sentenceHTML: '<ruby><span class="w" data-mean="manga">漫画</span><rt>まんが</rt></ruby>____<span class="w" data-mean="anime">アニメ</span>____<span class="w" data-mean="partícula de sujeito">が</span><ruby><span class="w" data-mean="gostar">好</span><rt>す</rt></ruby><span class="w" data-mean="cópula de polidez">きです</span>。',
+    sentenceHTML: '<ruby><span class="w" data-mean="manga">漫画</span><rt>まんが</rt></ruby>____<ruby><span class="w" data-mean="anime">アニメ</span><rt>アニメ</rt></ruby>が<ruby><span class="w" data-mean="gostar">好きです</span><rt>すきです</rt></ruby>。',
     answer: 'toka',
-    hint: 'Lista exemplos informalmente ("mangá, anime, e coisas do tipo").',
+    hint: 'Lista exemplos informalmente ("mangá, anime, e coisas do tipo").'
   },
   {
     id: 97,
     particle: 'とか',
-    sentenceHTML: '<span class="w" data-mean="onde">どこ</span>____<ruby><span class="w" data-mean="o que">何</span><rt>なに</rt></ruby>____、<ruby><span class="w" data-mean="comprar">買</span><rt>か</rt></ruby><span class="w" data-mean="forma te">って</span><ruby><span class="w" data-mean="vir">来</span><rt>き</rt></ruby><span class="w" data-mean="pedir">てください</span>。',
+    sentenceHTML: '<ruby><span class="w" data-mean="onde">どこ</span><rt>どこ</rt></ruby>____<ruby><span class="w" data-mean="o que">何</span><rt>なに</rt></ruby>____、<ruby><span class="w" data-mean="comprar">買って</span><rt>かって</rt></ruby><ruby><span class="w" data-mean="vir">来てください</span><rt>きてください</rt></ruby>。',
     answer: 'toka',
-    hint: 'Usado para dar opções vagas ("Compre algo *em algum lugar ou algo* e venha"). (Preenche os dois "ou algo") ',
+    hint: 'Usado para dar opções vagas ("Compre algo *em algum lugar ou algo* e venha").'
   },
   {
     id: 98,
     particle: 'とか',
-    sentenceHTML: '<ruby><span class="w" data-mean="sair">出</span><rt>で</rt></ruby><span class="w" data-mean="volitivo">かけよう</span>____<ruby><span class="w" data-mean="pensar">思</span><rt>おも</rt></ruby><span class="w" data-mean="estar em andamento">っています</span>。',
+    sentenceHTML: '<ruby><span class="w" data-mean="sair">出かけよう</span><rt>でかけよう</rt></ruby>____<ruby><span class="w" data-mean="pensar">思っています</span><rt>おもっています</rt></ruby>。',
     answer: 'toka',
-    hint: 'Usado para citar pensamentos vagos ("Estou pensando *em sair ou algo assim*").',
+    hint: 'Usado para citar pensamentos vagos ("Estou pensando *em sair ou algo assim*").'
   },
   {
     id: 99,
     particle: 'とか',
-    sentenceHTML: '<ruby><span class="w" data-mean="eu">私</span><rt>わたし</rt></ruby>____<ruby><span class="w" data-mean="você">君</span><rt>きみ</rt></ruby>____<ruby><span class="w" data-mean="ir">行</span><rt>い</rt></ruby><span class="w" data-mean="informal">く</span>。',
+    sentenceHTML: '<ruby><span class="w" data-mean="eu">私</span><rt>わたし</rt></ruby>____<ruby><span class="w" data-mean="você">君</span><rt>きみ</rt></ruby>____<ruby><span class="w" data-mean="ir">行く</span><rt>いく</rt></ruby>。',
     answer: 'toka',
-    hint: 'Lista pessoas informalmente ("Eu, você, ou algo assim"). (Preenche os dois "ou algo") ',
+    hint: 'Lista pessoas informalmente ("Eu, você, ou algo assim").'
   },
   {
     id: 100,
     particle: 'とか',
-    sentenceHTML: '<ruby><span class="w" data-mean="Japão">日本</span><rt>にほん</rt></ruby><span class="w" data-mean="partícula de posse">の</span><ruby><span class="w" data-mean="comida">食</span><rt>た</rt></ruby><span class="w" data-mean="coisa, objeto">べ物</span>____、<span class="w" data-mean="delicioso">おいしい</span><span class="w" data-mean="cópula de polidez">です</span>。',
+    sentenceHTML: '<ruby><span class="w" data-mean="japonês">日本</span><rt>にほん</rt></ruby>の<ruby><span class="w" data-mean="comida">食べ物</span><rt>たべもの</rt></ruby>____、<ruby><span class="w" data-mean="delicioso">おいしい</span><rt>おいしい</rt></ruby>です。',
     answer: 'toka',
-    hint: 'Dá exemplos de comida japonesa ("Comida japonesa *como* sushis *ou algo assim* é deliciosa").',
+    hint: 'Dá exemplos de comida japonesa ("Comida japonesa *como* sushis *ou algo assim* é deliciosa").'
   },
-  // IDs 1 a 45 (Partículas が, を, に, で, の, と, へ, も, から, まで) continuariam aqui, mas foram omitidos para brevidade.
-  // Vou garantir que você tenha todas as 100 frases completas no seu ambiente.
 ];
-
 // ====== Estado ======
 let state = {
   pool: [],           // frases disponíveis (objetos)
