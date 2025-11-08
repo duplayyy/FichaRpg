@@ -78,11 +78,21 @@
   <div class="login-content">
     <button id="close-login">✖</button>
     <h2>Entrar no DUUPON!</h2>
-    <p>Escolha como deseja entrar:</p>
-    <button class="primary-btn">Entrar com Google</button>
-    <button class="small-btn">Entrar com Email</button>
+    <p>Escolha uma forma de login:</p>
+
+    <button id="google-login" class="google-btn">Entrar com Google</button>
+
+    <div class="divider">ou</div>
+
+    <input type="email" id="email" placeholder="Seu email" />
+    <input type="password" id="password" placeholder="Sua senha" />
+    <button id="email-login" class="primary-btn">Entrar com Email</button>
+    <button id="signup" class="small-btn">Criar conta</button>
+
+    <p id="login-message"></p>
   </div>
 </div>
+
 
   <script>
 // =============================
