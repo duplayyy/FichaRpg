@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Partículas | DUUPON!</title>
+  
+  <!-- CSS global (com modo escuro e estilos gerais) -->
+  <link rel="stylesheet" href="style.css">
+
+  <!-- CSS específico da página -->
+  <link rel="stylesheet" href="particulas.css">
+</head>
+
+<body data-mode="particulas">
+
+  <!-- ====== HEADER (mesmo estilo dos outros) ====== -->
+  <header class="top-bar">
+    <div class="logo-area">
+      <img src="logo.png" alt="Logo Duppon">
+      <h1>DUUPON!</h1>
+      <a href="index.html" class="back-btn" aria-label="Voltar">✖</a>
+    </div>
+
+    <div class="menu-area">
+      <button id="dark-mode-toggle" class="dark-btn" title="Alternar tema">🌙</button>
+      <button class="login-btn">Entrar</button>
+      <div class="menu-icon" aria-hidden="true"><div></div><div></div><div></div></div>
+    </div>
+  </header>
+
+  <!-- ====== MAIN ====== -->
+  <main class="main-container">
+    <!-- ====== COLUNA ESQUERDA: ESTATÍSTICAS E CONFIG ====== -->
+    <aside class="left-column">
+      <div class="stats-box">
+        <p>Letras conhecidas: <span id="known">0</span></p>
+        <p>Letras desconhecidas: <span id="unknown">0</span></p>
+        <p>Testes feitos: <span id="tests">0</span></p>
+      </div>
+
+      <div class="controls-box">
+        <h3>Configurações</h3>
+        <label><input type="checkbox" id="shuffleCheckbox" checked> Embaralhar frases</label>
+        <label><input type="checkbox" id="repeatErrors"> Repetir erros primeiro</label>
+        <button id="reset-session" class="small-btn">Reiniciar Sessão</button>
+        <div class="hint-box">
+          <strong>Dicas</strong>
+          <p id="hint-text">Clique em uma palavra em kanji para ver o significado. Use "Dica" no card para uma pista.</p>
+        </div>
+      </div>
+    </aside>
+
+    <!-- ====== CENTRAL: PROVAS / FRASES (INTERATIVO) ====== -->
+    <section class="center-column">
+      <div class="test-area">
+        <h2>Treino de Partículas</h2>
+        <p class="mini">Escolha a opção correta — clique em kanjis para ver significado.</p>
+
+        <div id="phrase-card" class="phrase-card">
+          <!-- frase (renderizada por JS) -->
+          <div id="phrase-display" class="phrase-display">Aguardando...</div>
+
+          <div id="options" class="options">
+            <!-- opções criadas por JS -->
+          </div>
+
+          <div class="controls">
+            <button id="hint-btn" class="small-btn">Dica</button>
+            <button id="next-btn" class="primary-btn">Próxima</button>
+          </div>
+
+          <p id="feedback" class="feedback" aria-live="polite"></p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====== DIREITA: MANUAL e LISTA COMPACTA ====== -->
+    <aside class="right-column">
+      <div class="manual-box">
+        <div class="manual-scroll" id="manual">
+          <!-- conteúdo gerado no HTML estático abaixo -->
+          <section>
+        <h3>が (ga)</h3>
+        <p>Marca o sujeito que realiza/possui a ação ou que é focado na frase. Usa-se para introduzir informação nova ou destacar. Usado com verbos de necessidade, habilidade ou gostar.</p>
+        <ul>
+            <li>Ex: 猫が好きです — Gosto de gatos (gatos são o que é gostado).</li>
+            <li>Ex: 誰が来ましたか — Quem veio? (Foco no sujeito desconhecido).</li>
+        </ul>
+    </section>
+
+    <section>
+        <h3>は (wa)</h3>
+        <p>Indica **tópico** do discurso — o que já é conhecido, o tema geral da frase, ou o elemento a ser contrastado. Contraste principal com が.</p>
+        <ul>
+            <li>Ex: 猫はかわいいです — Quanto aos gatos, (eles) são fofos (Tópico).</li>
+            <li>Ex: 私は行きますが、彼は行きません — Eu vou, mas ele não vai (Contraste).</li>
+        </ul>
+    </section>
+
+    <section>
+        <h3>を (o)</h3>
+        <p>Marca o objeto direto — a coisa que recebe diretamente a ação do verbo transitivo. Lida como 'o'.</p>
+        <ul>
+            <li>Ex: 本を読む — Ler um livro.</li>
+            <li>Ex: 窓を開ける — Abrir a janela.</li>
+        </ul>
+    </section>
+
+    <section>
+        <h3>に (ni)</h3>
+        <p>Usado para indicar **destino** de verbos de movimento, **tempo específico** (horas, datas), o **alvo** de uma ação, ou local de **existência** (com ある/いる).</p>
+        <ul>
+            <li>Ex: 学校に行く — Ir para a escola (Destino).</li>
+            <li>Ex: 3時に会います — Nos encontraremos às 3h (Tempo).</li>
+            <li>Ex: 机の上にあります — Está em cima da mesa (Local de existência).</li>
+        </ul>
+    </section>
+
+    <section>
+        <h3>で (de)</h3>
+        <p>Indica **local onde a ação ocorre**, o **instrumento** ou **meio** utilizado, ou a **causa** e limite (ex: todos **dentre** o grupo).</p>
+        <ul>
+            <li>Ex: レストランで食べる — Comer no restaurante (Local de Ação).</li>
+            <li>Ex: バスで行く — Ir de ônibus (Meio/Instrumento).</li>
+            <li>Ex: 3人です — Éramos 3 pessoas (Limite/Grupo).</li>
+        </ul>
+    </section>
+
+    <section>
+        <h3>の (no)</h3>
+        <p>Liga dois substantivos, indicando posse, relação, ou que o substantivo anterior modifica o posterior. Também pode nominalizar (transformar em substantivo).</p>
+        <ul>
+            <li>Ex: 私の車 — Meu carro (Posse).</li>
+            <li>Ex: 日本語の先生 — Professor(a) de japonês (Relação).</li>
+        </ul>
+    </section>
+
+    <section>
+        <h3>と (to)</h3>
+        <p>Usado para listar completamente itens (significa "e"). Também indica "com quem" ou é usado para **citar** o que foi dito ou pensado.</p>
+        <ul>
+            <li>Ex: 犬と猫 — Cães e gatos (Lista completa).</li>
+            <li>Ex: 友達と話す — Falar com um amigo (Parceiro).</li>
+        </ul>
+    </section>
+
+    <section>
+        <h3>へ (e)</h3>
+        <p>Marca a **direção** do movimento. Similar a に, mas foca mais no percurso e menos no destino final. Lida como 'e'.</p>
+        <ul>
+            <li>Ex: 東京へ行く — Ir em direção a Tóquio.</li>
+        </ul>
+    </section>
+    
+    <section>
+        <h3>も (mo)</h3>
+        <p>Significa **"também"** ou **"nem/sequer"**. Substitui は, が, ou を quando o elemento anterior também se aplica.</p>
+        <ul>
+            <li>Ex: 私も行きます — Eu também vou.</li>
+            <li>Ex: それもいい — Isso também é bom.</li>
+        </ul>
+    </section>
+
+    <section>
+        <h3>から (kara)</h3>
+        <p>Indica o **ponto inicial** (no tempo ou espaço) ou a **causa/razão** ("porque").</p>
+        <ul>
+            <li>Ex: 8時から — Desde as 8h.</li>
+            <li>Ex: ブラジルから来ました — Vim do Brasil.</li>
+            <li>Ex: 寒いから — Porque está frio.</li>
+        </ul>
+    </section>
+
+    <section>
+        <h3>まで (made)</h3>
+        <p>Indica o **ponto final** (no tempo ou espaço) ou o limite. **"Até"**.</p>
+        <ul>
+            <li>Ex: 5時まで — Até as 5h.</li>
+            <li>Ex: 東京まで行く — Ir até Tóquio.</li>
+        </ul>
+    </section>
+
+    <section>
+        <h3>よ (yo)</h3>
+        <p>Partícula de **fim de frase**. Usada para afirmar algo com convicção, dar informação nova ou chamar a atenção. Passa um tom assertivo.</p>
+        <ul>
+            <li>Ex: 寒いよ — Está frio, viu? (Te informando).</li>
+        </ul>
+    </section>
+
+    <section>
+        <h3>ね (ne)</h3>
+        <p>Partícula de **fim de frase**. Usada para buscar a concordância do ouvinte ou confirmar algo. Passa um tom suave ("certo?", "né?").</p>
+        <ul>
+            <li>Ex: 寒いね — Está frio, né? (Buscando concordância).</li>
+        </ul>
+    </section>
+
+    <section>
+        <h3>か (ka)</h3>
+        <p>Partícula de **fim de frase**. Transforma a frase em uma pergunta. Também pode ser usada para listar opções ("ou").</p>
+        <ul>
+            <li>Ex: 好きですか — Você gosta?</li>
+        </ul>
+    </section>
+    
+    <section>
+        <h3>や (ya)</h3>
+        <p>Usado para listar itens, sugerindo que há outros não mencionados. Significa **"e coisas como..."**.</p>
+        <ul>
+            <li>Ex: 本や鉛筆 — Livros e lápis (e outros).</li>
+        </ul>
+    </section>
+
+    <section>
+        <h3>より (yori)</h3>
+        <p>Usado para indicar a coisa que está sendo comparada (o ponto de referência). Significa **"mais do que"**.</p>
+        <ul>
+            <li>Ex: これより大きい — Maior do que isto.</li>
+        </ul>
+    </section>
+
+    <section>
+        <h3>だけ (dake)</h3>
+        <p>Restringe a palavra que o precede. Significa **"somente"** ou **"apenas"**.</p>
+        <ul>
+            <li>Ex: 水だけ飲む — Beber apenas água.</li>
+        </ul>
+    </section>
+
+    <section>
+        <h3>くらい/ぐらい (kurai/gurai)</h3>
+        <p>Indica quantidade, tempo ou grau **aproximado** ou estima. Pode ser escrito com くらい ou ぐらい.</p>
+        <ul>
+            <li>Ex: 1時間ぐらい — Cerca de 1 hora.</li>
+        </ul>
+    </section>
+
+    <section>
+        <h3>ながら (nagara)</h3>
+        <p>Indica que duas ações estão acontecendo **simultaneamente** ("enquanto"). É sempre ligado ao radical do verbo.</p>
+        <ul>
+            <li>Ex: 食べながら話す — Falar **enquanto** come.</li>
+        </ul>
+    </section>
+
+    <section>
+        <h3>とか (to ka)</h3>
+        <p>Partícula informal de listagem. Similar a **や**, mas mais casual. Usado para dar exemplos. Significa **"e coisas como"** ou **"tipo"**.</p>
+        <ul>
+            <li>Ex: 映画とか漫画とか — Filmes ou mangás, e coisas tipo essas.</li>
+        </ul>
+    </section>
+
+          <hr>
+          <p style="font-size:0.9rem">Obs: o manual aqui é resumido — use as frases interativas pra fixar o uso real. Em updates podemos expandir com exemplos, exceções e comparações entre partículas (por ex. は vs が).</p>
+        </div>
+      </div>
+
+      <div class="examples-box">
+        <h3>Exemplos rápidos</h3>
+        <p>Clique nas frases para treinar mais.</p>
+      </div>
+    </aside>
+  </main>
+
+  <!-- Tooltip flutuante para significados -->
+  <div id="kanji-tooltip" class="kanji-tooltip" role="tooltip" aria-hidden="true"></div>
+
+  <script src="particulas.js" defer></script>
+</body>
+</html>
