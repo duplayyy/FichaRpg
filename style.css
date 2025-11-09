@@ -164,26 +164,33 @@
   background: #f5f5f5;
 }
 
+/* --- CORREÇÃO PARA MODO ESCURO --- */
+body.dark-mode #login-card {
+  background: rgba(0, 0, 0, 0.7);
+}
+
 body.dark-mode .login-content {
-  background: var(--card-dark);
-  color: var(--dark-text);
+  background: rgba(25, 25, 25, 0.95);
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.05);
 }
 
 body.dark-mode #login-card input {
-  background: #1f1f1f;
+  background: rgba(40, 40, 40, 0.9);
   color: #fff;
-  border-color: #333;
+  border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 body.dark-mode .google-btn {
-  background: #222;
-  color: #ddd;
-  border-color: #444;
+  background: #3a3a3a;
+  color: #fff;
+  border-color: #555;
+}
+body.dark-mode .google-btn:hover {
+  background: #555;
 }
 
-body.dark-mode .google-btn:hover {
-  background: #333;
-}
 
 /* -------------------
    Cards layout
