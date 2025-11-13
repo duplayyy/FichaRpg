@@ -4,12 +4,17 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/12.5.0/firebase-app.js";
 import {
   getAuth,
-  GoogleAuthProvider,
-  signInWithPopup,
-  signInWithEmailAndPassword,
   createUserWithEmailAndPassword,
-  signOut,
+  signInWithEmailAndPassword,
+  sendEmailVerification,
 } from "https://www.gstatic.com/firebasejs/12.5.0/firebase-auth.js";
+import {
+  getFirestore,
+  doc,
+  setDoc,
+  updateDoc,
+  getDoc
+} from "https://www.gstatic.com/firebasejs/12.5.0/firebase-firestore.js";
 
 // Configuração do Firebase
 const firebaseConfig = {
@@ -25,71 +30,104 @@ const firebaseConfig = {
 // Inicializa Firebase
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
-const provider = new GoogleAuthProvider();
+const db = getFirestore(app);
 
 // =============================
-//  POPUP DO LOGIN
+//  TROCA ENTRE LOGIN E REGISTRO
 // =============================
-const loginBtn = document.querySelector(".login-btn");
 const loginCard = document.getElementById("login-card");
-const closeLoginBtn = document.getElementById("close-login");
-const message = document.getElementById("login-message");
+const registerCard = document.getElementById("register-card");
+const createAccountBtn = document.getElementById("create-account-btn");
+const backToLoginBtn = document.getElementById("back-to-login-btn");
 
-// Abre o card
-loginBtn.addEventListener("click", () => {
-  loginCard.classList.add("show");
+createAccountBtn?.addEventListener("click", () => {
+  loginCard.style.display = "none";
+  registerCard.style.display = "block";
 });
 
-// Fecha o card
-closeLoginBtn.addEventListener("click", () => {
-  loginCard.classList.remove("show");
+backToLoginBtn?.addEventListener("click", () => {
+  registerCard.style.display = "none";
+  loginCard.style.display = "block";
 });
 
-// Fecha clicando fora
-window.addEventListener("click", (e) => {
-  if (e.target === loginCard) {
-    loginCard.classList.remove("show");
+// =============================
+//  CRIAÇÃO DE CONTA (REGISTRO)
+// =============================
+const signupForm = document.getElementById("signup-form");
+
+signupForm?.addEventListener("submit", async (e) => {
+  e.preventDefault();
+
+  const email = document.getElementById("signup-email").value;
+  const password = document.getElementById("new-password").value;
+  const confirmPassword = document.getElementById("confirm-password").value;
+  const displayName = document.getElementById("display-name").value;
+  const uniqueNick = document.getElementById("unique-nick").value;
+
+  if (password !== confirmPassword) {
+    alert("As senhas não coincidem! (｀д´)");
+    return;
   }
-});
 
-// =============================
-//  LOGIN COM GOOGLE
-// =============================
-document.getElementById("google-login").addEventListener("click", async () => {
   try {
-    const result = await signInWithPopup(auth, provider);
-    const user = result.user;
-    message.textContent = `Bem-vindo, ${user.displayName}! (☆ω☆)`;
+    const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+    const user = userCredential.user;
+
+    await sendEmailVerification(user);
+
+    await setDoc(doc(db, "usuarios", user.uid), {
+      nome: displayName,
+      nick: uniqueNick,
+      email: email,
+      progresso: {},
+      criadoEm: new Date()
+    });
+
+    alert("Conta criada! Verifique seu e-mail antes de fazer login. ✉️");
+    registerCard.style.display = "none";
+    loginCard.style.display = "block";
   } catch (error) {
     console.error(error);
-    message.textContent = "Erro ao entrar com o Google!";
+    alert("Erro ao criar conta: " + error.message);
   }
 });
 
 // =============================
-//  LOGIN COM EMAIL
+//  LOGIN COM EMAIL E SENHA
 // =============================
-document.getElementById("email-login").addEventListener("click", async () => {
+const loginBtn = document.getElementById("email-login");
+
+loginBtn?.addEventListener("click", async () => {
   const email = document.getElementById("email").value;
   const password = document.getElementById("password").value;
+
   try {
-    await signInWithEmailAndPassword(auth, email, password);
-    message.textContent = `Logado como ${email}!`;
+    const userCredential = await signInWithEmailAndPassword(auth, email, password);
+    const user = userCredential.user;
+
+    if (!user.emailVerified) {
+      alert("Verifique seu e-mail antes de entrar! ✉️");
+      return;
+    }
+
+    alert(`Bem-vindo de volta, ${user.email}! (＾▽＾)`);
   } catch (error) {
-    message.textContent = "Erro no login! Verifique o email ou senha.";
+    console.error(error);
+    alert("Erro ao entrar: " + error.message);
   }
 });
 
 // =============================
-//  CADASTRAR NOVA CONTA
+//  SALVAR E CARREGAR PROGRESSO
 // =============================
-document.getElementById("signup").addEventListener("click", async () => {
-  const email = document.getElementById("email").value;
-  const password = document.getElementById("password").value;
-  try {
-    await createUserWithEmailAndPassword(auth, email, password);
-    message.textContent = "Conta criada com sucesso!";
-  } catch (error) {
-    message.textContent = "Erro ao criar conta!";
-  }
-});
+export async function salvarProgresso(userId, dados) {
+  const ref = doc(db, "usuarios", userId);
+  await updateDoc(ref, { progresso: dados });
+}
+
+export async function carregarProgresso(userId) {
+  const ref = doc(db, "usuarios", userId);
+  const snap = await getDoc(ref);
+  if (snap.exists()) return snap.data().progresso;
+  else return {};
+}
