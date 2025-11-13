@@ -105,13 +105,19 @@
     <button id="close-signup">✖</button>
     <h2>Crie sua conta no DUUPON!</h2>
 
-<div class="profile-pic-container">
-  <div class="profile-pic-background"></div>
-  <img id="profile-pic-preview" src="default.png" alt="Preview da foto de perfil">
-  <label for="profile-pic" class="upload-label">
-    <span class="camera-icon">📷</span>
-  </label>
-  <input type="file" id="profile-pic" accept="image/*" style="display:none;">
+<!-- ===== profile upload (substituir a versão antiga) ===== -->
+<div class="profile-upload">
+  <div class="profile-pic-container">
+    <div class="profile-pic-background"></div>
+
+    <img id="profile-pic-preview" src="" alt="Preview" style="display:none;">
+
+    <label for="profile-pic" class="upload-label">
+      <span class="camera-icon">📷</span>
+    </label>
+
+    <input type="file" id="profile-pic" accept="image/*" style="display:none;">
+  </div>
 </div>
 
     <input type="text" id="display-name" placeholder="Como podemos te chamar?" />
