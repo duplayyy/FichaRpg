@@ -148,48 +148,20 @@
   font-size: 14px;
 }
 
-.google-btn {
-  background: #aee4ff;
-  border: 1px solid #ccc;
-  color: #444;
+.loginup-btn, .singup-btn, .google-btn {
+  background: #9fc6ff;
+  border: none;
+  color: #1a1a1a;
   border-radius: 50px;
   padding: 10px 16px;
   width: 100%;
   font-weight: bold;
   cursor: pointer;
-  transition: background 0.2s;
+  transition: 0.3s ease;
 }
 
-.google-btn:hover {
-  background: #f5f5f5;
-}
-
-.loginup-btn {
-  background: ##aee4ff;
-  border: 1px solid #ccc;
-  color: #444;
-  border-radius: 50px;
-  padding: 10px 16px;
-  width: 100%;
-  font-weight: bold;
-  cursor: pointer;
-  transition: background 0.2s;
-}
-
-.loginup-btn:hover {
-  background: #f5f5f5;
-}
-
-.singup-btn {
-  background: ##aee4ff;
-  border: 1px solid #ccc;
-  color: #444;
-  border-radius: 50px;
-  padding: 10px 16px;
-  width: 100%;
-  font-weight: bold;
-  cursor: pointer;
-  transition: background 0.2s;
+.loginup-btn:hover, .singup-btn:hover, .google-btn:hover {
+  background: #82b1ff;
 }
 
 .singup-btn:hover {
@@ -214,12 +186,96 @@ body.dark-mode #login-card input {
   border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
+body.dark-mode .loginup-btn,
+body.dark-mode .singup-btn,
 body.dark-mode .google-btn {
-  color: #fff;
-  border-color: #555;
+  background: #9fc6ff;
+  color: #000;
 }
+
+body.dark-mode .loginup-btn:hover,
+body.dark-mode .singup-btn:hover,
 body.dark-mode .google-btn:hover {
-  background: #555;
+  background: #7faeff;
+}
+
+/* ===== SIGNUP POPUP ===== */
+#signup-card {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 1001;
+}
+
+#signup-card.show {
+  display: flex;
+}
+
+.signup-content {
+  background: var(--card-bg);
+  color: var(--text-primary);
+  border-radius: 18px;
+  padding: 28px;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.2);
+  width: 330px;
+  max-width: 90%;
+  text-align: center;
+  position: relative;
+  animation: fadeInUp 0.35s ease;
+}
+
+.profile-upload {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+
+.upload-label {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  background: #9fc6ff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.camera-icon {
+  font-size: 28px;
+  color: #fff;
+}
+
+#verify-email {
+  background: #9fc6ff;
+  border: none;
+  border-radius: 50px;
+  padding: 10px;
+  width: 100%;
+  margin-bottom: 8px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+#verify-email:hover {
+  background: #8bb9ff;
+}
+
+body.dark-mode .signup-content {
+  background: rgba(25, 25, 25, 0.95);
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.05);
+}
+
+body.dark-mode .upload-label {
+  background: #9fc6ff;
 }
 
 
