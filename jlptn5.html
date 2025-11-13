@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>DUPPON!</title>
+  <!-- Coloque style.css na mesma pasta deste index -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- Top bar / header:
+       - Ícone/logo (coloque sua imagem logo.png)
+       - Título do site
+       - Botão de alternar tema (id="dark-mode-toggle")
+       - Botão Entrar (futuro: conectar com conta)
+       - Ícone hamburger (apenas visual por enquanto)
+       OBS: não mude os ids/classes principais pois script.js usa eles -->
+  <header class="top-bar">
+    <div class="logo-area">
+      <img src="logo.png" alt="Logo Duppon" />
+      <h1>DUPPON!</h1>
+      <a href="index.html" class="back-btn">✖</a>
+    </div>
+
+    <div class="menu-area">
+      <!-- O botão de modo escuro é um <button> simples com id usado pelo script -->
+      <button id="dark-mode-toggle" class="dark-btn" aria-label="Alternar tema">🌙</button>
+      <button class="login-btn">Entrar</button>
+      <div class="menu-icon" aria-hidden="true">
+        <div></div><div></div><div></div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main content: cards principais -->
+  <main class="cards-container">
+    <!-- Hiragana / Katakana -->
+    <div class="card">
+      <h2>Sem função no momento</h2>
+
+    </div>
+
+    <!-- Kanji (exemplo de vários botões; alguns descartados/desabilitados) -->
+    <div class="card">
+      <h2>Sem função no momento</h2>
+
+    </div>
+
+
+    <!-- Partículas (exemplo futuro) -->
+    <!-- ======= BOTÃO DE PARTÍCULAS ======= -->
+    <div class="card">
+      <h2>Sem função no momento</h2>
+
+    </div>
+
+ 
+  </main>
+
+<!-- ===== CARD DE LOGIN ===== -->
+<div id="login-card">
+  <div class="login-content">
+    <button id="close-login">✖</button>
+    <h2>Entrar no DUUPON!</h2>
+    <p>Escolha uma forma de login:</p>
+
+    <button id="google-login" class="google-btn">Entrar com Google</button>
+
+    <div class="divider">ou</div>
+
+    <input type="email" id="email" placeholder="Seu email" />
+    <input type="password" id="password" placeholder="Sua senha" />
+    <button id="email-login" class="loginup-btn">Entrar com Email</button>
+    <button id="signup" class="singup-btn">Criar conta</button>
+
+    <p id="login-message"></p>
+  </div>
+</div>
+
+
+  <script>
+// =============================
+//  LOGIN POPUP CONTROL (｡•̀ᴗ-)✧
+// =============================
+
+// Espera o HTML todo carregar antes de rodar o JS
+document.addEventListener("DOMContentLoaded", () => {
+
+  // Seleciona o botão "Entrar" lá do header
+  const loginBtn = document.querySelector(".login-btn");
+  // Seleciona o card de login (o popup)
+  const loginCard = document.getElementById("login-card");
+  // Seleciona o botão de fechar (✖)
+  const closeLoginBtn = document.getElementById("close-login");
+
+  // Abre o card de login quando clicar em "Entrar"
+  loginBtn.addEventListener("click", () => {
+    loginCard.classList.add("show"); // adiciona a classe .show (ativa o popup)
+  });
+
+  // Fecha o card quando clicar no X
+  closeLoginBtn.addEventListener("click", () => {
+    loginCard.classList.remove("show"); // remove a classe .show (fecha o popup)
+  });
+
+  // Fecha o card se o usuário clicar fora dele
+  window.addEventListener("click", (e) => {
+    if (e.target === loginCard) {
+      loginCard.classList.remove("show");
+    }
+  });
+});
+</script>
+
+<script type="module" src="login.js"></script>
+  
+  <!-- script.js é o arquivo principal. Deve ficar na mesma pasta e conter toda a lógica. -->
+  <script src="script.js" defer></script>
+
+</body>
+</html>
