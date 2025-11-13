@@ -92,6 +92,42 @@ signupForm?.addEventListener("submit", async (e) => {
   }
 });
 
+// preview da foto de perfil + armazena o File pra upload
+let selectedProfileFile = null;
+const inputProfile = document.getElementById('profile-pic');
+const previewImg = document.getElementById('profile-pic-preview');
+const uploadLabel = document.querySelector('.upload-label');
+
+if (inputProfile && previewImg) {
+  inputProfile.addEventListener('change', (e) => {
+    const file = e.target.files && e.target.files[0];
+    if (!file) {
+      previewImg.style.display = 'none';
+      selectedProfileFile = null;
+      return;
+    }
+    if (!file.type.startsWith('image/')) {
+      alert('Escolha uma imagem válida.');
+      return;
+    }
+    selectedProfileFile = file;
+    const reader = new FileReader();
+    reader.onload = function(evt) {
+      previewImg.src = evt.target.result;
+      previewImg.style.display = 'block';
+      // esconder câmera (opcional)
+      const cam = uploadLabel.querySelector('.camera-icon');
+      if (cam) cam.style.display = 'none';
+    };
+    reader.readAsDataURL(file);
+  });
+
+  // clique também no container abre o input (mais UX)
+  document.querySelector('.profile-pic-container').addEventListener('click', ()=> {
+    inputProfile.click();
+  });
+}
+
 // =============================
 //  LOGIN COM EMAIL E SENHA
 // =============================
