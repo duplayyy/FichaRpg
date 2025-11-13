@@ -38,24 +38,30 @@
       <h2>Hiragana / Katakana</h2>
 
       <!-- Use <a> para navegar para a página de treino (arquivo local hiragana.html) -->
-      <a href="hiragana.html" class="hiragana-btn">Iniciar Hiragana</a>
+      <a href="hiragana.html" class="hiragana-btn">Iniciar Hiragana あ</a>
       <p>Vezes feitas: <span id="vezes-hiragana">0</span></p>
 
       <!-- Link para katakana -->
-      <a href="katakana.html" class="hiragana-btn">Iniciar Katakana</a>
+      <a href="katakana.html" class="hiragana-btn">Iniciar Katakana ア</a>
       <p>Vezes feitas: <span id="vezes-katakana">0</span></p>
     </div>
 
     <!-- Kanji (exemplo de vários botões; alguns descartados/desabilitados) -->
     <div class="card">
       <h2>Kanji</h2>
-      <button class="hiragana-btn">Iniciar JLPT-N5</button>
+      <button id="btn-jlptn5" class="hiragana-btn">Iniciar JLPT-N5</button>
       <button disabled>Iniciar JLPT-N4 🔒</button>
       <button disabled>Iniciar JLPT-N3 🔒</button>
       <button disabled>Iniciar JLPT-N2 🔒</button>
       <button disabled>Iniciar JLPT-N1 🔒</button>
       <small>Faça os testes de JLPT para desbloquear!</small>
     </div>
+    <!-- SCRIPT DOS KANJIS -->
+    <script>
+      document.getElementById("btn-jlptn5").addEventListener("click", function() {
+       window.location.href = "jlptn5.html";
+  }    );
+    </script>
 
     <!-- Partículas (exemplo futuro) -->
     <!-- ======= BOTÃO DE PARTÍCULAS ======= -->
@@ -86,8 +92,8 @@
 
     <input type="email" id="email" placeholder="Seu email" />
     <input type="password" id="password" placeholder="Sua senha" />
-    <button id="email-login" class="primary-btn">Entrar com Email</button>
-    <button id="signup" class="small-btn">Criar conta</button>
+    <button id="email-login" class="loginup-btn">Entrar com Email</button>
+    <button id="signup" class="singup-btn">Criar conta</button>
 
     <p id="login-message"></p>
   </div>
