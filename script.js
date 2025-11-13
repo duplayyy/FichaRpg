@@ -585,6 +585,119 @@ window.addEventListener('storage', (e)=>{
   }
 });
 
+// --- Login e Registro ---
+const loginCard = document.getElementById("login-card");
+const signupCard = document.getElementById("signup-card");
+const signupBtn = document.getElementById("signup");
+const closeLogin = document.getElementById("close-login");
+const closeSignup = document.getElementById("close-signup");
+
+// abrir registro e fechar login
+signupBtn.addEventListener("click", () => {
+  loginCard.classList.remove("show");
+  signupCard.classList.add("show");
+});
+
+// fechar registro
+closeSignup.addEventListener("click", () => {
+  signupCard.classList.remove("show");
+});
+
+// fechar login
+closeLogin.addEventListener("click", () => {
+  loginCard.classList.remove("show");
+});
+
+//============================FUNCIONAMENTO DE CONTAS========================
+
+import { 
+  getAuth, 
+  createUserWithEmailAndPassword, 
+  sendEmailVerification,
+  signInWithEmailAndPassword
+} from "https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js";
+
+import { getFirestore, doc, setDoc } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-firestore.js";
+
+// Firebase inicializado como antes
+const auth = getAuth();
+const db = getFirestore();
+
+// criar conta
+const createAccountBtn = document.getElementById("create-account");
+
+createAccountBtn.addEventListener("click", async () => {
+  const email = document.getElementById("signup-email").value;
+  const password = document.getElementById("new-password").value;
+  const confirmPassword = document.getElementById("confirm-password").value;
+  const displayName = document.getElementById("display-name").value;
+  const uniqueNick = document.getElementById("unique-nick").value;
+
+  if (password !== confirmPassword) {
+    alert("As senhas não coincidem!");
+    return;
+  }
+
+  try {
+    const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+    const user = userCredential.user;
+
+    await sendEmailVerification(user);
+
+    // Salvar dados no Firestore
+    await setDoc(doc(db, "usuarios", user.uid), {
+      nome: displayName,
+      nick: uniqueNick,
+      email: email,
+      progresso: {}, // aqui vai o progresso do usuário depois
+      criadoEm: new Date()
+    });
+
+    alert("Conta criada! Verifique seu e-mail antes de fazer login. ✉️");
+  } catch (error) {
+    console.error(error);
+    alert("Erro ao criar conta: " + error.message);
+  }
+});
+
+const loginBtn = document.getElementById("email-login");
+
+loginBtn.addEventListener("click", async () => {
+  const email = document.getElementById("email").value;
+  const password = document.getElementById("password").value;
+
+  try {
+    const userCredential = await signInWithEmailAndPassword(auth, email, password);
+    const user = userCredential.user;
+
+    if (!user.emailVerified) {
+      alert("Verifique seu e-mail antes de entrar! ✉️");
+      return;
+    }
+
+    alert("Login feito com sucesso! (＾▽＾)");
+  } catch (error) {
+    console.error(error);
+    alert("Erro ao entrar: " + error.message);
+  }
+});
+
+import { updateDoc, doc } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-firestore.js";
+
+async function salvarProgresso(userId, dados) {
+  const ref = doc(db, "usuarios", userId);
+  await updateDoc(ref, { progresso: dados });
+}
+
+import { getDoc, doc } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-firestore.js";
+
+async function carregarProgresso(userId) {
+  const ref = doc(db, "usuarios", userId);
+  const snap = await getDoc(ref);
+  if (snap.exists()) return snap.data().progresso;
+  else return {};
+}
+
 /* =========================
    FIM do script.js
    - Pontos fáceis de customizar:
