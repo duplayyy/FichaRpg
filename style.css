@@ -256,16 +256,7 @@ body.dark-mode .google-btn:hover {
 
 /* imagem do usuário */
 #profile-pic-preview {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 92px;
-  height: 92px;
-  border-radius: 50%;
-  object-fit: cover;
-  transform: translate(-50%, -50%);
-  display: none;
-  z-index: 2;
+  display: block !important;
 }
 
 /* label com o ícone de câmera */
@@ -285,11 +276,6 @@ body.dark-mode .google-btn:hover {
   font-size: 28px;
   color: #ffffff;
 }
-
-#profile-pic-preview {
-  display: block !important;
-}
-
 
 /* ajuste para dark-mode — mantém contraste */
 body.dark-mode .profile-pic-background { background-color: #6ea6ff; }
