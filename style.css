@@ -286,6 +286,11 @@ body.dark-mode .google-btn:hover {
   color: #ffffff;
 }
 
+#profile-pic-preview {
+  display: block !important;
+}
+
+
 /* ajuste para dark-mode — mantém contraste */
 body.dark-mode .profile-pic-background { background-color: #6ea6ff; }
 body.dark-mode .camera-icon { color: #fff; }
