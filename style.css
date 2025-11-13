@@ -149,10 +149,10 @@
 }
 
 .google-btn {
-  background: #fff;
+  background: #aee4ff;
   border: 1px solid #ccc;
   color: #444;
-  border-radius: 10px;
+  border-radius: 50px;
   padding: 10px 16px;
   width: 100%;
   font-weight: bold;
@@ -161,6 +161,38 @@
 }
 
 .google-btn:hover {
+  background: #f5f5f5;
+}
+
+.loginup-btn {
+  background: ##aee4ff;
+  border: 1px solid #ccc;
+  color: #444;
+  border-radius: 50px;
+  padding: 10px 16px;
+  width: 100%;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.loginup-btn:hover {
+  background: #f5f5f5;
+}
+
+.singup-btn {
+  background: ##aee4ff;
+  border: 1px solid #ccc;
+  color: #444;
+  border-radius: 50px;
+  padding: 10px 16px;
+  width: 100%;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.singup-btn:hover {
   background: #f5f5f5;
 }
 
@@ -183,7 +215,6 @@ body.dark-mode #login-card input {
 }
 
 body.dark-mode .google-btn {
-  background: #3a3a3a;
   color: #fff;
   border-color: #555;
 }
