@@ -294,13 +294,6 @@ body.dark-mode .google-btn:hover {
 body.dark-mode .profile-pic-background { background-color: #6ea6ff; }
 body.dark-mode .camera-icon { color: #fff; }
 
-
-
-.camera-icon {
-  font-size: 28px;
-  color: #fff;
-}
-
 #verify-email {
   background: #9fc6ff;
   border: none;
