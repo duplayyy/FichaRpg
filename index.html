@@ -99,6 +99,33 @@
   </div>
 </div>
 
+<!-- ===== CARD DE REGISTRO ===== -->
+<div id="signup-card">
+  <div class="signup-content">
+    <button id="close-signup">✖</button>
+    <h2>Crie sua conta no DUUPON!</h2>
+
+    <div class="profile-upload">
+      <label for="profile-pic" class="upload-label">
+        <span class="camera-icon">📷</span>
+      </label>
+      <input type="file" id="profile-pic" accept="image/*" style="display:none;">
+    </div>
+
+    <input type="text" id="display-name" placeholder="Como podemos te chamar?" />
+    <input type="text" id="unique-nick" placeholder="Crie um nome único!" />
+    <input type="email" id="signup-email" placeholder="Seu email" />
+    <button id="verify-email">Enviar código de verificação</button>
+    <input type="text" id="verification-code" placeholder="Digite o código recebido" />
+    <input type="password" id="new-password" placeholder="Crie uma senha forte (mín. 5 letras)" />
+    <input type="password" id="confirm-password" placeholder="Confirme sua senha" />
+
+    <button id="create-account" class="google-btn">Criar conta</button>
+    <p id="signup-message"></p>
+  </div>
+</div>
+
+
 
   <script>
 // =============================
