@@ -112,9 +112,9 @@ if (inputProfile && previewImg) {
     }
     selectedProfileFile = file;
     const reader = new FileReader();
-    reader.onload = function(evt) {
-      previewImg.src = evt.target.result;
-      previewImg.style.display = 'block';
+    reader.onload = (e) => {
+      previewImg.src = e.target.result;
+      previewImg.classList.add("show");
       // esconder câmera (opcional)
       const cam = uploadLabel.querySelector('.camera-icon');
       if (cam) cam.style.display = 'none';
