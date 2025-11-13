@@ -128,6 +128,22 @@ if (inputProfile && previewImg) {
   });
 }
 
+// pré-visualização da imagem de perfil
+const profilePicInput = document.getElementById("profile-pic");
+const profilePicPreview = document.getElementById("profile-pic-preview");
+
+profilePicInput.addEventListener("change", function () {
+  const file = this.files[0];
+  if (file) {
+    const reader = new FileReader();
+    reader.onload = function (e) {
+      profilePicPreview.src = e.target.result;
+    };
+    reader.readAsDataURL(file);
+  }
+});
+
+
 // =============================
 //  LOGIN COM EMAIL E SENHA
 // =============================
