@@ -265,7 +265,7 @@ body.dark-mode .google-btn:hover {
   object-fit: cover;
   transform: translate(-50%, -50%);
   display: none; /* normal */
-  z-index: 2;
+  z-index: 4;
 }
 
 #profile-pic-preview.show {
