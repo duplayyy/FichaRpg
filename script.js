@@ -608,6 +608,21 @@ closeLogin.addEventListener("click", () => {
   loginCard.classList.remove("show");
 });
 
+function toggleMenu() {
+    var sidebar = document.getElementById("sidebar");
+    var overlay = document.getElementById("overlay");
+
+    if (sidebar.style.width === "250px") {
+        // Fechar
+        sidebar.style.width = "0";
+        overlay.classList.remove("active");
+    } else {
+        // Abrir
+        sidebar.style.width = "250px";
+        overlay.classList.add("active");
+    }
+}
+
 
 
 /* =========================
