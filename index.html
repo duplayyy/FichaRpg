@@ -25,9 +25,36 @@
       <!-- O botão de modo escuro é um <button> simples com id usado pelo script -->
       <button id="dark-mode-toggle" class="dark-btn" aria-label="Alternar tema">🌙</button>
       <button class="login-btn">Entrar</button>
-      <div class="menu-icon" aria-hidden="true">
-        <div></div><div></div><div></div>
+      <!-- Seu ícone de menu existente -->
+      <div class="menu-icon" aria-hidden="true" onclick="toggleMenu()">
+      <!-- O conteúdo do seu ícone (por exemplo, 3 linhas <div> ou um ícone de fonte) -->
+        <div></div><div></div> <div></div>
       </div>
+
+      <!-- O novo menu lateral (sidebar) -->
+      <div class="sidebar" id="sidebar">
+        <a href="javascript:void(0)" class="close-btn" onclick="toggleMenu()">&times;</a>
+        <!-- Seus links e informações aqui -->
+         <!-- Novo Container para a Foto de Perfil -->
+          <div class="profile-area">
+           <!-- Container principal do anel de progresso -->
+            <div class="xp-ring-container">
+              <!-- Camada de baixo (cinza, 100% visível) -->
+              <div class="xp-ring-gray"></div>
+            
+              <!-- Camada de cima (verde, que será preenchida com XP) -->
+              <div class="xp-ring-green"></div>
+
+              <!-- A Imagem de Perfil fica por cima de tudo -->
+              <img src="URL_DA_SUA_FOTO_DE_PERFIL.jpg" alt="Foto de Perfil" class="profile-pic">
+            </div>
+       </div>
+        <a href="#home">Início</a>
+        <a href="#services">Serviços</a>
+        <a href="#contact">Contato</a>
+         <!-- Você pode adicionar mais botões ou conteúdo aqui -->
+      </div>
+      <div id="overlay" class="overlay" onclick="toggleMenu()"></div>
     </div>
   </header>
 
@@ -167,6 +194,13 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 });
+</script>
+
+<script type="text/javascript"
+  src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
+</script>
+<script>
+  emailjs.init("kObwvZ7n4D0S94EOA");
 </script>
 
 <script type="module" src="login.js"></script>
