@@ -183,3 +183,177 @@ export async function carregarProgresso(userId) {
   if (snap.exists()) return snap.data().progresso;
   else return {};
 }
+
+// =============================
+// SISTEMA DE VERIFICAÇÃO POR CÓDIGO (EMAILJS)
+// =============================
+
+// Armazena o código gerado para comparar depois
+let generatedCode = null;
+
+// Botão de enviar o código
+document.getElementById("verify-email").addEventListener("click", async () => {
+    const email = document.getElementById("signup-email").value;
+
+    if (!email) {
+        alert("Coloca o email aí néé (；ω；)");
+        return;
+    }
+
+    // Gera código aleatório de 6 dígitos
+    generatedCode = Math.floor(100000 + Math.random() * 900000).toString();
+
+    // Dados que vão pro EmailJS
+    const params = {
+        to_email: email,
+        message: `Seu código de verificação é: ${generatedCode}`
+    };
+
+    try {
+        await emailjs.send("service_ing0mtg", "template_lbz6p8p", params);
+        alert("Código enviado! Vai lá olhar o email (≧◡≦)b");
+    } catch (error) {
+        console.error(error);
+        alert("Opa, deu erro no envio... (；ω；)");
+    }
+});
+
+// =============================
+// VALIDAÇÃO ANTES DE CRIAR CONTA
+// =============================
+document.getElementById("create-account").addEventListener("click", () => {
+    const displayName = document.getElementById("display-name").value;
+    const uniqueNick = document.getElementById("unique-nick").value;
+    const email = document.getElementById("signup-email").value;
+    const codeTyped = document.getElementById("verification-code").value;
+    const pass = document.getElementById("new-password").value;
+    const confirm = document.getElementById("confirm-password").value;
+
+    const msg = document.getElementById("signup-message");
+
+    // Verifica se todos os campos foram preenchidos
+    if (!displayName || !uniqueNick || !email || !codeTyped || !pass || !confirm) {
+        msg.textContent = "Preenche tudo aí primeiro, preguiçoso(a) kkk (°ロ°)！";
+        return;
+    }
+
+    // Verifica código
+    if (codeTyped !== generatedCode) {
+        msg.textContent = "Código incorreto! Tenta de novo (；ω；)";
+        return;
+    }
+
+    // Verifica senha
+    if (pass.length < 5) {
+        msg.textContent = "Senha muito curtinha! Coloca 5+ letras (´･ω･`)";
+        return;
+    }
+
+    if (pass !== confirm) {
+        msg.textContent = "As senhas não batem! (；ω；)";
+        return;
+    }
+
+    // SE CHEGOU AQUI → CRIA A CONTA NO FIREBASE
+    msg.textContent = "Criando conta... (*≧▽≦)ﾉ";
+
+    firebase.auth().createUserWithEmailAndPassword(email, pass)
+        .then(async userCred => {
+            const user = userCred.user;
+
+            // Atualiza displayName no Firebase
+            await user.updateProfile({
+                displayName: displayName
+            });
+
+            msg.textContent = "Conta criadaaa! (≧◡≦)/ 🎉";
+        })
+        .catch(err => {
+            console.error(err);
+            msg.textContent = "Erro ao criar conta (；ω；)";
+        });
+});
+
+// -------------------------------
+//  VARIÁVEIS IMPORTANTES
+// -------------------------------
+const verifyBtn = document.getElementById("verify-email");
+const createBtn = document.getElementById("create-account");
+const verificationInput = document.getElementById("verification-code");
+const emailInput = document.getElementById("signup-email");
+
+let generatedCode = null;  // código aleatório
+let emailVerified = false; // status da verificação
+
+// Desabilita o botão de criar conta até validar o email
+createBtn.disabled = true;
+
+// -------------------------------
+// 1. GERAR CÓDIGO DE 6 DIGITOS
+// -------------------------------
+function generateCode() {
+  return Math.floor(100000 + Math.random() * 900000).toString();
+}
+
+// -------------------------------
+// 2. ENVIAR O CÓDIGO PARA O EMAIL
+// -------------------------------
+verifyBtn.addEventListener("click", () => {
+  const email = emailInput.value.trim();
+
+  if (!email) {
+    alert("Digite um email antes, nééé (；ω；)");
+    return;
+  }
+
+  generatedCode = generateCode(); // cria o código
+  console.log("Código gerado:", generatedCode); // debug
+
+  verifyBtn.disabled = true;
+  verifyBtn.innerText = "Enviando...";
+
+  emailjs.send("SEU_SERVICE_ID", "SEU_TEMPLATE_ID", {
+    code: generatedCode,
+    to_email: email
+  })
+  .then(() => {
+    alert("Código enviado! Checa seu email (≧▽≦)");
+    verifyBtn.innerText = "Código enviado ✔";
+  })
+  .catch((err) => {
+    console.error(err);
+    alert("Deu erro ao enviar (；ω；) tenta de novo depois.");
+    verifyBtn.disabled = false;
+    verifyBtn.innerText = "Enviar código";
+  });
+});
+
+// -------------------------------
+// 3. VERIFICAR O CÓDIGO DIGITADO
+// -------------------------------
+verificationInput.addEventListener("input", () => {
+  const typed = verificationInput.value.trim();
+
+  if (typed === generatedCode) {
+    emailVerified = true;
+    verificationInput.style.border = "2px solid #00cc66";
+    createBtn.disabled = false;
+
+  } else {
+    emailVerified = false;
+    verificationInput.style.border = "2px solid red";
+    createBtn.disabled = true;
+  }
+});
+
+// -------------------------------
+// 4. AO CRIAR CONTA, CHECA SE EMAIL VALIDADO
+// -------------------------------
+createBtn.addEventListener("click", () => {
+  if (!emailVerified) {
+    alert("O email ainda não foi verificado! (°ロ°)！");
+    return;
+  }
+
+  alert("Email verificado! Agora pode criar conta (≧◡≦)b");
+});
