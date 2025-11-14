@@ -623,6 +623,22 @@ function toggleMenu() {
     }
 }
 
+const profileInput = document.getElementById("profile-pic");
+const profilePreview = document.getElementById("profile-pic-preview");
+
+profileInput.addEventListener("change", function () {
+  const file = profileInput.files[0];
+  if (!file) return;
+
+  const reader = new FileReader();
+  reader.onload = function (e) {
+    profilePreview.src = e.target.result;
+    profilePreview.classList.add("show");
+  };
+  reader.readAsDataURL(file);
+});
+
+
 
 
 /* =========================
