@@ -94,7 +94,7 @@ verifyBtn.addEventListener("click", () => {
   verifyBtn.textContent = "Enviando...";
 
   emailjs
-    .send(service_ing0mtg, template_lbz6p8p, {
+    .send(SERVICE_ID, TEMPLATE_ID, {
       name: nomeDoUsuario,
       to_email: email,
       code: generatedCode,
