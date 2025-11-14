@@ -93,23 +93,21 @@ verifyBtn.addEventListener("click", () => {
   verifyBtn.disabled = true;
   verifyBtn.textContent = "Enviando...";
 
-  emailjs
-    .send(SERVICE_ID, TEMPLATE_ID, {
-      name: nomeDoUsuario,
-      to_email: email,
-      code: generatedCode,
-    })
-    .then(() => {
-      alert("Código enviado! Vai lá olhar o email (≧◡≦)b");
-      verifyBtn.textContent = "Código enviado ✔";
-    })
-    .catch((err) => {
-      console.error(err);
-      alert("Erro ao enviar (；ω；)");
-      verifyBtn.disabled = false;
-      verifyBtn.textContent = "Enviar código";
-    });
-});
+  emailjs.send("service_ing0mtg", "template_lbz6p8p", {
+    name: nomeDoUsuario,
+    to_email: email,
+    code: generatedCode,
+  })
+  .then(() => {
+    alert("Código enviado! Vai lá olhar o email (≧◡≦)b");
+    verifyBtn.textContent = "Código enviado ✔";
+  })
+  .catch((err) => {
+    console.error(err);
+    alert("Erro ao enviar (；ω；)");
+    verifyBtn.disabled = false;
+    verifyBtn.textContent = "Enviar código";
+   });
 
 // =============================
 // VERIFICAR CÓDIGO DIGITADO
