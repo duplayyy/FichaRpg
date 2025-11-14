@@ -81,6 +81,176 @@
 .menu-icon{ display:flex; flex-direction:column; justify-content:space-between; width:25px; height:18px; cursor:pointer; }
 .menu-icon div{ height:3px; background-color:var(--text-primary); border-radius:2px; }
 
+/* Estilo básico para o ícone do menu (exemplo, ajuste conforme seu design) */
+.menu-icon .bar {
+    width: 25px;
+    height: 3px;
+    background-color: #333;
+    margin: 6px 0;
+    transition: 0.4s;
+}
+
+/* ---------------------------------------
+   ABA LATERAL (SIDEBAR)
+----------------------------------------*/
+
+/* Menu lateral */
+.sidebar {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 999;
+    top: 0;
+    right: 0;
+    background-color: #dcefff;
+    text-align: center;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+    box-sizing: border-box;
+}
+
+/* Links */
+.sidebar a {
+    padding: 10px 0;
+    text-decoration: none;
+    font-size: 25px;
+    color: #85C3FF;
+    display: block;
+    transition: 0.3s;
+}
+
+.sidebar a:hover {
+    color: #aee4ff;
+}
+
+/* Botão X (visível em todos os modos) */
+.sidebar .close-btn {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    font-size: 40px;
+    color: #333;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.sidebar .close-btn:hover {
+    color: #4a8aff;
+}
+
+/* Fundo escurecido quando o menu abre */
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* Escurece */
+    z-index: 500; /* Fica atrás da sidebar, mas acima do conteúdo */
+    display: none; /* Inicialmente invisível */
+    transition: opacity 0.3s;
+    opacity: 0;
+}
+
+/* Quando estiver ativo */
+.overlay.active {
+    display: block;
+    opacity: 1;
+}
+
+/* -------------------------------
+   ÁREA DO PERFIL + XP RING
+--------------------------------*/
+
+.profile-area {
+    text-align: center;
+    margin: 10px 0 25px 0;
+}
+
+/* Container do XP ring */
+.xp-ring-container {
+    position: relative;
+    width: 110px;
+    height: 110px;
+    margin: 0 auto;
+}
+
+/* Anéis */
+.xp-ring-gray,
+.xp-ring-green {
+    width: 110px;
+    height: 110px;
+    border-radius: 50%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    border: 7px solid transparent;
+    box-sizing: border-box;
+}
+
+/* Fundo do anel */
+.xp-ring-gray {
+    border-color: #d4d4d4;
+}
+
+/* Anel verde (pode ser animado depois) */
+.xp-ring-green {
+    border-color: transparent #4CAF50 #4CAF50 transparent;
+    transform: rotate(45deg);
+}
+
+/* Foto de perfil */
+.profile-pic {
+    width: 86px;
+    height: 86px;
+    border-radius: 50%;
+    object-fit: cover;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 3px solid #fff;
+    z-index: 10;
+}
+
+/* --------------- 
+   MODO ESCURO DA ABA LATERAL
+--------------- */
+
+body.dark-mode .sidebar {
+    background-color: #162027;
+}
+
+body.dark-mode .sidebar a {
+    color: #85C3FF;
+}
+
+body.dark-mode .sidebar a:hover {
+    color: #aee4ff;
+}
+
+body.dark-mode .close-btn {
+    color: #9fc6ff;
+}
+
+body.dark-mode .close-btn:hover {
+    color: #aee4ff;
+}
+
+body.dark-mode .xp-ring-gray {
+    border-color: #555;
+}
+
+body.dark-mode .xp-ring-green {
+    border-color: transparent #66bb6a #66bb6a transparent;
+}
+
+body.dark-mode .profile-pic {
+    border: 3px solid #444;
+}
+
+
 /* ===== LOGIN POPUP ===== */
 #login-card {
   position: fixed;
@@ -246,15 +416,17 @@ body.dark-mode .google-btn:hover {
 /* fundo azul */
 .profile-pic-background {
   position: absolute;
-  top: 0; left: 0;
-  width: 100px; height: 100px;
+  top: 0;
+  left: 0;
+  width: 100px;
+  height: 100px;
   background-color: #9fc6ff;
   border-radius: 50%;
   box-shadow: 0 6px 18px rgba(0,0,0,0.25);
-  z-index: 2;
+  z-index: 3;
 }
 
-/* imagem do usuário */
+/* imagem */
 #profile-pic-preview {
   position: absolute;
   top: 50%;
@@ -264,24 +436,26 @@ body.dark-mode .google-btn:hover {
   border-radius: 50%;
   object-fit: cover;
   transform: translate(-50%, -50%);
-  display: none; /* normal */
-  z-index: 4;
+  display: none;
+  z-index: 5;
 }
 
 #profile-pic-preview.show {
   display: block !important;
 }
 
-/* label com o ícone de câmera */
+/* ícone de câmera */
 .upload-label {
   position: absolute;
-  top: 0; left: 0;
-  width: 100px; height: 100px;
+  top: 0;
+  left: 0;
+  width: 100px;
+  height: 100px;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  z-index: 3;
+  z-index: 4;
   border-radius: 50%;
 }
 
@@ -290,9 +464,13 @@ body.dark-mode .google-btn:hover {
   color: #ffffff;
 }
 
-/* ajuste para dark-mode — mantém contraste */
-body.dark-mode .profile-pic-background { background-color: #6ea6ff; }
-body.dark-mode .camera-icon { color: #fff; }
+/* dark mode */
+body.dark-mode .profile-pic-background {
+  background-color: #6ea6ff;
+}
+body.dark-mode .camera-icon {
+  color: #fff;
+}
 
 #verify-email {
   background: #9fc6ff;
