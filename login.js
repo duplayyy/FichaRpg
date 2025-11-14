@@ -38,7 +38,7 @@ emailjs.init("kObwvZ7n4D0S94EOA");
 
 // IDs reais do EmailJS
 const SERVICE_ID = "service_ing0mtg";
-const TEMPLATE_ID = "template_lbz6p8p";
+const TEMPLATE_ID = "template_thpnojp";
 
 // =============================
 // TROCA DE TELAS LOGIN/REGISTRO
@@ -94,7 +94,8 @@ verifyBtn.addEventListener("click", () => {
   verifyBtn.textContent = "Enviando...";
 
   emailjs
-    .send(SERVICE_ID, TEMPLATE_ID, {
+    .send(service_ing0mtg, template_lbz6p8p, {
+      name: nomeDoUsuario,
       to_email: email,
       code: generatedCode,
     })
