@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>DUPPON!</title>
+  <title>DUPPON / KANJI n5</title>
   <!-- Coloque style.css na mesma pasta deste index -->
   <link rel="stylesheet" href="style.css" />
 </head>
@@ -26,36 +26,111 @@
       <!-- O botão de modo escuro é um <button> simples com id usado pelo script -->
       <button id="dark-mode-toggle" class="dark-btn" aria-label="Alternar tema">🌙</button>
       <button class="login-btn">Entrar</button>
-      <div class="menu-icon" aria-hidden="true">
-        <div></div><div></div><div></div>
+      <div class="menu-icon" aria-hidden="true" onclick="toggleMenu()">
+      <!-- O conteúdo do seu ícone (por exemplo, 3 linhas <div> ou um ícone de fonte) -->
+        <div></div><div></div> <div></div>
       </div>
+
+      <!-- O novo menu lateral (sidebar) -->
+      <div class="sidebar" id="sidebar">
+        <a href="javascript:void(0)" class="close-btn" onclick="toggleMenu()">&times;</a>
+        <!-- Seus links e informações aqui -->
+         <!-- Novo Container para a Foto de Perfil -->
+          <div class="profile-area">
+           <!-- Container principal do anel de progresso -->
+            <div class="xp-ring-container">
+              <!-- Camada de baixo (cinza, 100% visível) -->
+              <div class="xp-ring-gray"></div>
+            
+              <!-- Camada de cima (verde, que será preenchida com XP) -->
+              <div class="xp-ring-green"></div>
+
+              <!-- A Imagem de Perfil fica por cima de tudo -->
+              <img src="URL_DA_SUA_FOTO_DE_PERFIL.jpg" alt="Foto de Perfil" class="profile-pic">
+            </div>
+       </div>
+        <button class="dropdown-btn">Páginas</button>
+         <div class="dropdown-container">
+    <!-- Links internos ficam DENTRO desta div -->
+          <a href="index.html">Principal</a>
+          <a href="hiragana.html">Hiragana</a>
+          <a href="katakana.html">Katakana</a>
+          <a href="particulas.html">Particulas</a>
+          <button class="dropdown-btn sub-btn">JLPTs</button>
+            <div class="dropdown-container sub-container">
+              <a href="jlptn5.html">JLPT N5</a>
+              <a href="jlptn4.html">JLPT N4</a>
+              <a href="jlptn3.html">JLPT N3</a>
+              <a href="jlptn2.html">JLPT N2</a>
+              <a href="jlptn1.html">JLPT N1</a>
+            </div>
+         </div>
+        <a href="index.html">Início</a>
+        <a href="#services">Serviços</a>
+        <a href="#contact">Contato</a>
+         <!-- Você pode adicionar mais botões ou conteúdo aqui -->
+      </div>
+      <div id="overlay" class="overlay" onclick="toggleMenu()"></div>
     </div>
   </header>
 
   <!-- Main content: cards principais -->
   <main class="cards-container">
-    <!-- Hiragana / Katakana -->
-    <div class="card">
-      <h2>Sem função no momento</h2>
+  <!-- Card Desenho Guiado do Kanji -->
+  <div class="card">
+    <h2>Desenho Guiado do Kanji</h2>
+    <p>Aprenda a desenhar os kanjis do N5 com a técnica de escrita guiada.</p>
+    <button class="hiragana-btn" id="btn-desenhoj5">Iniciar</button>
+  </div>
 
-    </div>
+  <!-- Card Vocabulário e Gramática -->
+  <div class="card">
+    <h2>Vocabulário e Gramática</h2>
+    <p>Reforce seu vocabulário básico e entenda a gramática essencial para o N5.</p>
+    <button class="hiragana-btn" id="btn-vocaegramaj5">Iniciar</button>
+  </div>
 
-    <!-- Kanji (exemplo de vários botões; alguns descartados/desabilitados) -->
-    <div class="card">
-      <h2>Sem função no momento</h2>
+  <!-- Card Prática de Sentenças Básicas -->
+  <div class="card">
+    <h2>Prática de Sentenças Básicas</h2>
+    <p>Monte frases simples e aprenda a construção básica de sentenças em japonês.</p>
+    <button class="hiragana-btn" id="btn-frasesj5">Iniciar</button>
+  </div>
+  
+  <div class="card">
+    <h2>Frente e verso</h2>
+    <p>Memorização com repetição espaçada</p>
+    <button class="hiragana-btn" id="btn-frenteversoj5">Iniciar</button>
+  </div>
 
-    </div>
+  <!-- PARTE DOS SCRIPTS DOS CARDS -->
+  
+  <script>
+      document.getElementById("btn-desenhoj5").addEventListener("click", function() {
+       window.location.href = "desenhoj5.html";
+  }    );
+    </script>
+    
+    <script>
+      document.getElementById("btn-vocaegramaj5").addEventListener("click", function() {
+       window.location.href = "vocaegramaj5.html";
+  }    );
+    </script>
+    
+    <script>
+      document.getElementById("btn-frasesj5").addEventListener("click", function() {
+       window.location.href = "frasesbj5.html";
+  }    );
+    </script>
+    
+    <script>
+      document.getElementById("btn-frenteversoj5").addEventListener("click", function() {
+       window.location.href = "ankij5.html";
+  }    );
+    </script>
+  
+</main>
 
-
-    <!-- Partículas (exemplo futuro) -->
-    <!-- ======= BOTÃO DE PARTÍCULAS ======= -->
-    <div class="card">
-      <h2>Sem função no momento</h2>
-
-    </div>
-
- 
-  </main>
 
 <!-- ===== CARD DE LOGIN ===== -->
 <div id="login-card">
@@ -77,6 +152,49 @@
   </div>
 </div>
 
+<script>// --- Função existente para abrir/fechar a barra lateral ---
+function toggleMenu() {
+    var sidebar = document.getElementById("sidebar");
+    var overlay = document.getElementById("overlay");
+    var currentWidth = sidebar.style.width;
+
+    if (currentWidth === "250px" || currentWidth === "250px") {
+        // Fechar
+        sidebar.style.width = "0";
+        overlay.classList.remove("active");
+    } else {
+        // Abrir
+        sidebar.style.width = "250px";
+        overlay.classList.add("active");
+    }
+}
+
+// --- Nova lógica para o menu expansível (acordeão) ---
+
+// Espera o documento carregar completamente antes de adicionar os listeners de evento
+document.addEventListener('DOMContentLoaded', (event) => {
+    // Seleciona todos os botões que têm a classe 'dropdown-btn'
+    var dropdownBtns = document.getElementsByClassName("dropdown-btn");
+
+    // Itera sobre cada botão encontrado
+    for (var i = 0; i < dropdownBtns.length; i++) {
+        dropdownBtns[i].addEventListener("click", function() {
+            // Quando um botão é clicado:
+            
+            // 1. Opcional: Adiciona/remove uma classe 'active' no próprio botão (para estilização de ícone, se quiser)
+            this.classList.toggle("active");
+            
+            // 2. Seleciona o elemento que está imediatamente abaixo do botão clicado (o container dos links)
+            var dropdownContainer = this.nextElementSibling;
+            
+            // 3. Alterna a classe 'show' no container. 
+            // Se tiver 'show', remove e oculta (CSS display: none).
+            // Se não tiver 'show', adiciona e mostra (CSS display: block).
+            dropdownContainer.classList.toggle("show");
+        });
+    }
+});
+</script>
 
   <script>
 // =============================
